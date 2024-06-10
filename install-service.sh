@@ -11,6 +11,8 @@ ExecStart=$(pwd)/bin/studer232-to-mqtt
 WorkingDirectory=$(pwd)/bin
 Restart=always
 User=${SUDO_USER}
+StandardOutput=null
+StandardError=null
 
 
 [Install]
