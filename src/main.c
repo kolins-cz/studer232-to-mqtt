@@ -36,10 +36,11 @@ read_param_result_t read_param(int addr, int parameter)
     // Encode the read user info value command
     encresult = scomx_encode_read_user_info_value(addr, parameter);
 
-#ifdef DEBUG
-    // Debug Print encresult in HEX form
+#ifdef SERIAL_DEBUG
+    printf("[SCOM DEBUG] Reading param %d from addr %d\n", parameter, addr);
+    printf("[SCOM DEBUG] Encoded command (%zu bytes): ", encresult.length);
     for (size_t i = 0; i < encresult.length; i++) {
-        printf("%02X", encresult.data[i]);
+        printf("%02X ", encresult.data[i]);
     }
     printf("\n");
 #endif
@@ -47,6 +48,9 @@ read_param_result_t read_param(int addr, int parameter)
     // Write the encoded command to the serial port
     bytecounter = serial_write(encresult.data, encresult.length);
     if (bytecounter != encresult.length) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Write failed: sent %zu of %zu bytes\n", bytecounter, encresult.length);
+#endif
         result.error = -1;
         return result;
     }
@@ -54,6 +58,9 @@ read_param_result_t read_param(int addr, int parameter)
     // Read the frame header from the serial port
     bytecounter = serial_read(readbuf, SCOM_FRAME_HEADER_SIZE);
     if (bytecounter != SCOM_FRAME_HEADER_SIZE) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Header read failed: got %zu of %d bytes\n", bytecounter, SCOM_FRAME_HEADER_SIZE);
+#endif
         result.error = -1;
         return result;
     }
@@ -61,13 +68,22 @@ read_param_result_t read_param(int addr, int parameter)
     // Decode the frame header
     dechdr = scomx_decode_frame_header(readbuf, SCOM_FRAME_HEADER_SIZE);
     if (dechdr.error != SCOM_ERROR_NO_ERROR) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Header decode failed: error %d\n", dechdr.error);
+#endif
         result.error = -1;
         return result;
     }
+#ifdef SERIAL_DEBUG
+    printf("[SCOM DEBUG] Header decoded, need to read %d more bytes\n", dechdr.length_to_read);
+#endif
 
     // Read the frame data from the serial port
     bytecounter = serial_read(readbuf, dechdr.length_to_read);
     if (bytecounter != dechdr.length_to_read) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Data read failed: got %zu of %d bytes\n", bytecounter, dechdr.length_to_read);
+#endif
         result.error = -1;
         return result;
     }
@@ -75,6 +91,9 @@ read_param_result_t read_param(int addr, int parameter)
     // Decode the frame data
     decres = scomx_decode_frame(readbuf, dechdr.length_to_read);
     if (decres.error != SCOM_ERROR_NO_ERROR) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Frame decode failed: error %d\n", decres.error);
+#endif
         result.error = -1;
         return result;
     }
@@ -82,6 +101,10 @@ read_param_result_t read_param(int addr, int parameter)
     // Extract the float value from the decoded frame
     result.value = scomx_result_float(decres);
     result.error = 0; // no error
+
+#ifdef SERIAL_DEBUG
+    printf("[SCOM DEBUG] Successfully decoded value: %.3f\n", result.value);
+#endif
 
     return result;
 }

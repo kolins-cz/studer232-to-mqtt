@@ -1,0 +1,3155 @@
+Technical specification
+Xtender serial protocol appendix
+
+hs TUDER,
+
+Technical
+specification
+
+Xtender serial protocol
+appendix
+
+Date =: 06.11.23
+
+SEFE\ Technical specification - xtender serial protocol appendlix.paf
+
+L TUDER,
+
+V1.6.38 1
+Technical specification
+Xtender serial protocol appendix
+
+Contents
+
+1. APPENDIX..
+
+XTENDER 120VAC SPECIFIC PARAMETERS
+XTENDER PARAMETERS.
+XTENDER INFOS ..
+RCC PARAMETERS...
+BSP PARAMETERS...
+BSP INFOS...
+Xcom-CAN BMS PARAMETERS ....
+Xcom-CAN BMS INFOS ..
+\VARIOTRACK PARAMETER:
+\VARIOTRACK INFOS
+VARIOSTRING PARAMETERS ....
+VARIOSTRING INFOS ....
+RCC MESSAGES ....
+
+V1.6.38 2
+Technical specification
+
+Xtender serial protocol appendix
+
+1. Appendix
+
+The information in the appendices is valid for the latest software release. For a detailed changelog, please see the document
+Release_Rxxx.pdf in the latest “Studer system update” available on www.studer-innotec.com.
+
+A major release (from R5xx to R6xx, for example) can imply significant changes that should be validated.
+
+Xtender 120Vac specific parameters
+
+While using Xtenders -01 (120Vac), some parameters have specific values. The following list contain them. The others are the same for all
+
+Xtender types.
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format_| Increment
+
+Expert 1286 AC Output voltage Vac 120 55 140 FLOAT 1
+
+Expert | 1560 Max AC voltage increase with battery voltage Vac 5 2 8 FLOAT 1
+
+Expert 1309 AC input low limit voltage to allow charger function Vac 90 50 115, FLOAT 5
+
+Expert | 1433 Adaptation range of the input current according to the input voltage Vac 5 2 15 FLOAT 1
+
+Expert | 1199 Input voltage giving an opening of the transfer relay with delay Vac 100 40 115 FLOAT 5
+
+Expert | 1200 Input voltage giving an immediate opening of the transfer relay (UPS) Vac 90 40 115 FLOAT 5
+
+Inst. 1432 Absolute max limit for input voltage Vac 135, 117.5 145, FLOAT 5
+Xtender parameters
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+
+Basic 1100 | BASIC SETTINGS ONLY LEVEL | Menu
+
+Basic 1551 Basic parameters set by means of the potentiomenter in the XTS 1:Yes 0:No. 1:Yes BOOL 1
+
+Basic 1107 Maximum current of AC source (Input limit) Aac 32 2 50 FLOAT 1
+
+Basic 1138 Battery charge current Adc 60 0 200 FLOAT 1
+
+Basic 1126 Smart-Boost allowed 1:Yes 0:No, 1:Yes BOOL 1
+
+Basic 1124 Inverter allowed 1:Yes 0:No. 1:Yes BOOL 1
+
+Expert 1125 Charger allowed 1:Yes 0:No. 1:Yes BOOL 1
+
+V1.6.38
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Only 1 bit
+
+Basic 1552 Type of detection of the grid loss (AC-In) 2:Tolerant 1:Slow 4:Fast LONG ENUM 2 ant
+4:Fast
+
+Basic 1187 Standby level % 10 0 100 FLOAT 10
+
+Basic 1395 Restore default settings Ss Ss Ss INT32 Signal
+
+Inst. 1287 Restore factory settings Ss Ss Ss INT32 Signal
+
+Expert 1137 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+
+Expert 1125 Charger allowed 1:Yes 0:No. BOOL 1
+
+Inst. 1646 Charger uses only power from AC-Out 0:No 0:No BOOL 1
+
+Basic 1138 Battery charge current Adc 60 0 FLOAT 1
+
+Expert 1139 Temperature compensation mvV/°Cicell | -3 8 FLOAT 1
+
+asp 1615 Fast charge/inject regulation 0:No 0:No BOOL 1
+
+asp 1645 Pulses cutting regulation for XT (Not XTS) 0:No 0:No BOOL 1
+
+Expert 1568 Undervoltage ONLY LEVEL | Menu
+
+Expert 1108 Battery undervoltage level without load Vde 46.3 36 72 FLOAT 0.1
+
+Expert | 1531 Battery undervoltage dynamic compensation ONLY LEVEL | Menu
+
+Expert | 1191 Battery undervoltage dynamic compensation 1:Yes 0:No 1:Yes BOOL 1
+Only 1 bit
+
+Expert 1532 Kind of dynamic compensation 1:Automatic | 0:Manual 1:Automatic | LONG ENUM 0:Manual
+1:Automatic
+
+asP 1632 Automatic adaptation of dynamic compensation % 65 0 100 FLOAT 1
+
+Expert 1109 Battery undervoltage level at full load Vde 42 36 72 FLOAT 0.1
+
+Expert 1190 Battery undervoltage duration before turn off min 3 0 60 FLOAT 1
+
+Expert 1110 Restart voltage after batteries undervoltage Vde 48 37.9 72 FLOAT 0.1
+
+Expert | 1194 Battery adaptive low voltage (B.L.O) 0:No 0:No 1:Yes BOOL 1
+
+Expert 1195 Max voltage for adaptive low voltage Vde 49.9 37.9 72 FLOAT 0.1
+
+Expert 1307 Reset voltage for adaptive correction Vde 52.8 37.9 72 FLOAT 0.1
+
+Expert 1298 Increment step of the adaptive low voltage Vde 0.5 0 14 FLOAT 0.01
+
+Expert 1121 Battery overvoltage level Vde 68.2 37.9 74.4 FLOAT 0.1
+
+Expert 1122 Restart voltage level after an battery overvoltage Vde 64.8 37.9 72 FLOAT 0.1
+
+Expert 1140 Floating voltage Vde 54.4 37.9 72 FLOAT 0.1
+
+Expert | 1467 Force phase of floating Ss Ss Ss INT32 Signal
+
+V1.6.38 hereon
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr___| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1141 New cycle menu ONLY LEVEL | Menu
+Expert | 1142 Force a new cycle s s s INT32 Signal
+Inst. 1608 Use dynamic compensation of battery level (new cycle) 0:No 0:No 1:Yes BOOL 1
+Expert | 1143 Voltage level 1 to start a new cycle Vde 49.9 36 72 FLOAT 04
+Expert | 1144 Time period under voltage level 1 to start a new cycle min 30 0 240 FLOAT 1
+Expert | 1145 Voltage level 2 to start a new cycle Vde 49.2 36 72 FLOAT 04
+Expert | 1146 Time period under voltage level 2 to start a new cycle sec 60 0 600 FLOAT 2
+Expert | 1149 New cycle priority on absorption and equalization phases 0:No 0:No 1:Yes BOOL 1
+Expert | 1147 Cycling restricted 0:No 0:No 1:Yes BOOL 1
+Expert | 1148 Minimal delay between cycles hours 3 0 540 FLOAT 1
+Expert | 1451 | Absorption phase ONLY LEVEL | Menu
+Expert | 1155 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1156 Absorption voltage Vde 576 37.9 72 FLOAT 04
+Expert | 1157 Absorption duration hours 2 0 18 FLOAT 0.25
+Expert | 1158 End of absorption triggered with current 0:No 0:No 1:Yes BOOL 1
+Expert | 1159 Current limit to quit the absorption phase ‘Adc 4 1 200 FLOAT 1
+Expert | 1160 Maximal frequency of absorption control 0:No 0:No 1:Yes BOOL 1
+Expert | 1161 Minimal delay since last absorption hours 2 0 540 FLOAT 1
+Expert | 1452 | Equalization phase ONLY LEVEL | Menu
+Expert | 1163 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1162 Force equalization s s s INT32 Signal
+Expert | 1291 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1290 Equalization current ‘Adc 60 1 200 FLOAT 1
+Expert | 1164 Equalization voltage Vde 624 37.9 72 FLOAT 0.4
+Expert | 1165 Equalization duration hours 0.5 0.2 10 FLOAT 0.25
+Expert | 1166 Number of cycles before an equalization 25 0 100 FLOAT 1
+Expert | 1284 Equalization with fixed interval 0:No 0:No 1:Yes BOOL 1
+Expert | 1285 Weeks between equalizations weeks 26 1 104 FLOAT 1
+Expert | 1168 End of equalization triggered with current 0:No 0:No 1:Yes BOOL 1
+Expert | 1169 Current threshold to end equalization phase Adc 4 1 30 FLOAT 1
+Expert | 1453 | Reduced floating phase ONLY LEVEL | Menu
+Expert | 1170 Reduced floating allowed 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1171 Floating duration before reduced floating days 1 0 31 FLOAT 1
+Expert | 1172 Reduced floating voltage Vde 528 37.9 72 FLOAT 04
+Expert | 1454 | Periodic absorption phase ONLY LEVEL | Menu
+Expert | 1173 Periodic absorption allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1174 Periodic absorption voltage Vde 576 37.9 72 FLOAT 04
+Expert | 1175 Reduced floating duration before periodic absorption days 7 0 31 FLOAT 1
+Expert | 1176 Periodic absorption duration hours 05 0 10 FLOAT 0.25
+Expert | 1186 | INVERTER ONLY LEVEL | Menu
+Basic | 1124 | _ Inverter allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1286 | AC Output voltage Vac 230 110 280 FLOAT 1
+Expert | 1548 | AC voltage increase according to battery voltage 0:No 0:No 1:Yes BOOL 1
+Expert | 1560 | Max AC voltage increase with battery voltage Vac 10 4 16 FLOAT 1
+Expert | 1112 | _ Inverter frequency Hz 50 45 65 FLOAT 04
+Expert | 1536 | _ Inverter frequency increase when battery full 0:No 0:No 1:Yes BOOL 1
+Expert | 1549 | _ Inverter frequency increase according to battery voltage 0:No 0:No 1:Yes BOOL 1
+Expert | 1546 | Max frequency increase Hz 4 0 10 FLOAT 04
+Expert | 1534 | Speed of voltage or frequency change in function of battery 0 4 3 FLOAT 1
+Expert | 1420 | Standby and tum on ONLY LEVEL | Menu
+Basic | 1187 Standby level % 10 0 100 FLOAT 10
+Expert | 1189 Time delay between standby pulses sec 0.8 0.2 10 FLOAT 0.2
+Expert | 1188 Standby number of pulses 1 1 10 FLOAT 1
+Expert | 1599 Softstart duration sec 0 0 1 FLOAT 0.25
+Expert | 1438 | — Solsafe presence Energy source at AC-Out side 0:No 0:No 1:Yes BOOL 1
+asP 1572 | Modulator ru_soll 0:No 0:No 1:Yes BOOL 1
+Expert | 1197 | AC-IN AND TRANSFER ONLY LEVEL | Menu
+Expert | 1128 | Transfer relay allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1580 | Delay before closing transfer relay min 0 0 30 FLOAT 0.25
+Basic | 1126 | Smart-Boost allowed 1:Yes 0:No 1:Yes BOOL 1
+
+Inst. 1607 | _ Limitation of the power Boost % 100 0 100 FLOAT 5
+Basic | 1107 | Maximum current of AC source (Input limit) ‘Aac 32 2 50 FLOAT 1
+Expert | 1471 Max input current modification ONLY LEVEL | Menu
+Expert | 1566 Using a secondary value for the maximum current of the AC source 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr_| Xtender parameter description Unit Default Min Max Scom format _| Increment
+
+Expert | 1567 Second maximum current of the AC source (Input limit) Aac 16 2 50 FLOAT 1
+
+Expert | 1527 Decrease max input limit current with AC-In voltage 0:No 0:No 1Yes BOOL 1
+
+exer | 1554 Decrease of the max. current of the source with input voltage activated ONo ONo 1Yes BOOL 1
+
+Expert | 1309 AC input low limit voltage to allow charger function Vac 180 100 230 FLOAT 5
+
+Expert | 1433 Adaptation range of the input current according to the input voltage Vac 10 4 30 FLOAT 1
+
+Expert | 1553 Speed of input limit increase 50 0 100 FLOAT 2
+
+expen | 1205 Charge current decrease coet. at voltage limit to tun back in inverter | 4, 100 0 100 FLOAT 5
+
+exer | 1496 Overun ‘AC source current limit without opening the transfer relay (Input ves ONo 1Yes BOOL 1
+Only 1 bit
+
+Basic | 1552 | Type of detection of the grid loss (AC-In) 2Tolerant | 1:Slow 4-Fast LONG ENUM 8 at
+4:Fast
+
+Expert | 1510 | Tolerance on detection of AC-input loss (tolerant UPS mode) 100 2 120 FLOAT 2
+
+Expert | 1199 | _ input voltage giving an opening of the transfer relay with delay Vac 200 80 230 FLOAT 5
+
+Expert | 1198 | _ Time delay before opening of transfer relay sec 8 0 30 FLOAT 1
+
+Expert | 1200 | _ input voltage giving an immediate opening of the transfer relay (UPS) Vac 180 80 230 FLOAT 5
+
+Inst. 1432_| Absolute max limit for input voltage Vac 270 235 290 FLOAT 5
+
+asp__| 1500 | _ Standby of the charger allowed 1:Yes 0:No 1Yes BOOL 1
+
+Expert | 1505 | Delta frequency allowed above the standard input frequency Hz 5 0 35 FLOAT 0.4
+
+Expert | 1506 | Delta frequency allowed under the standard input frequency Hz 5 0 15 FLOAT 0.4
+
+Expert | 1507 | Duration with frequency error before opening the transfer sec 2 0 5 FLOAT 1
+
+Expert | 1575 | _AC-IN current active filtering (Not in parallel) 0:No 0:No 1Yes BOOL 1
+
+Inst. 1557 | Use an energy quota on AC-input 0:No 0:No 1Yes BOOL 1
+
+Inst. 1559 | _AC-In energy quota kWh 1 0.5 100 FLOAT 0.5
+
+Expert | 1201 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+
+, , | 8:Manual YAutomatic ,
+
+Expert | 1202 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | 8M LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+
+V1.6.38 7 berger
+Technical specification
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+0:Any O:Any 1All Only 1 bit
+Expert 1497 Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 1203 Temporal restrictions (AUX 1) ONLY LEVEL | Menu
+Expert | 1204 Program 1 (AUX 1) ONLY LEVEL | Menu
+Expert 1205 Day of the week (AUX 1) None ) 127 LONG ENUM _ | Bit field
+Expert 1206 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1207 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert | 1208 Program 2 (AUX 1) ONLY LEVEL | Menu
+Expert 1209 Day of the week (AUX 1) None ) 127 LONG ENUM | Bit field
+Expert 1210 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1211 End hour (AUX 1) Minutes 1200=20:00 A 1440=24:00 | INT32 1
+Expert | 1212 Program 3 (AUX 1) ONLY LEVEL | Menu
+Expert 1213 Day of the week (AUX 1) 127 LONG ENUM _ | Bit field
+Expert 1214 Start hour (AUX 1) Minutes 1440=24:00 | INT32 1
+Expert 1215 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Inst. 1216 Program 4 (AUX 1) ONLY LEVEL | Menu
+Inst. 1217 Day of the week (AUX 1) None ) 127 LONG ENUM | Bit field
+Inst. 1218 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Inst. 1219 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Inst. 1220 Program 5 (AUX 1) ONLY LEVEL | Menu
+Inst. 1221 Day of the week (AUX 1) None ) 127 LONG ENUM _ | Bit field
+Inst. 1222 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Inst. 1223 End hour (AUX 1) Minutes 1200=20:00 4:00 | INT32 1
+Expert 1269 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert | 1270 Program 1 (AUX 1) ONLY LEVEL | Menu
+Expert 1271 Day of the week (AUX 1) None ) LONG ENUM _ | Bit field
+Expert 1272 Start hour (AUX 1) Minutes 420=07:00 0=00:00 4:00 | INT32 1
+Expert 1273 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1274 Program 2 (AUX 1) ONLY LEVEL | Menu
+Expert 1275 Day of the week (AUX 1) None 0 127 LONG ENUM _ | Bit field
+Expert 1276 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+
+V1.6.38 8
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert 1277 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert | 1278 Program 3 (AUX 1) ONLY LEVEL | Menu
+Expert 1279 Day of the week (AUX 1) None t) 127 LONG ENUM | Bit field
+Expert 1280 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1281 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert 1455 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 1225 Xtender is OFF (AUX 1) 0:No. 0:No. BOOL 1
+Expert 1518 Xtender ON (AUX 1) 0:No 0:No BOOL 1
+Expert | 1543 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 1226 Battery undervoltage alarm (AUX 1) 0:No 0:No BOOL 1
+Expert | 1227 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 1228 Inverter overload (AUX 1) 0:No 0:No BOOL 1
+Expert | 1229 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 1520 No overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 1231 ‘Active charger (AUX 1) 0:No 0:No BOOL 1
+Expert 1232 Active inverter (AUX 1) 0:No 0:No BOOL 1
+Expert 1233 Active Smart-Boost (AUX 1) 0:No 0:No BOOL 1
+Expert | 1234 AC input presence but with fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 1235 AC input presence (AUX 1) 0:No 0:No BOOL 1
+Expert | 1236 Transfer relay ON (AUX 1) 0:No 0:No BOOL 1
+Expert | 1237 ‘AC out presence (AUX 1) 0:No 0:No BOOL 1
+Expert | 1238 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1239 ‘Absorption phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1240 Equalization phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1242 Floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 1243 Reduced floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 1244 Periodic absorption (AUX 1) 0:No 0:No BOOL 1
+Inst. 1601 ‘AC-In energy quota (AUX 1) 0:No 0:No BOOL 1
+Expert | 1245 Contact active according to battery voltage (AUX 1) ONLY LEVEL | Menu
+Expert | 1288 Use dynamic compensation of battery level (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1246 Battery voltage 1 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1247 Battery voltage 1 (AUX 1) Vde 46.8 36 72 FLOAT 04
+
+V1.6.38 9
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1248 Delay 1 (AUX 1) min 1 0 60 FLOAT 1
+Expert | 1249 Battery voltage 2 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1250 Battery voltage 2 (AUX 1) Vde 478 36 72 FLOAT 04
+Expert | 1251 Delay 2 (AUX 1) min 10 0 60 FLOAT 1
+Expert | 1252 Battery voltage 3 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1253 Battery voltage 3 (AUX 1) Vde 48.5 36 72 FLOAT 04
+Expert | 1254 Delay 3 (AUX 1) min 60 0 60 FLOAT 1
+Expert | 1255 Battery voltage to deactivate (AUX 1) Vde 54 36 72 FLOAT 04
+Expert | 1256 Delay to deactivate (AUX 1) min 60 0 480 FLOAT 5
+Expert | 1516 Deactivate if battery in floating phase (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1257 | Contact active with inverter power or Smart-Boost (AUX 1) ONLY LEVEL | Menu
+Expert | 1258 Inverter power level 1 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1259 Power level 1 (AUX 1) %Pnom | 120 20 120 FLOAT 10
+Expert | 1260 Time delay 1 (AUX 1) min 1 0 60 FLOAT 1
+asP 1644 Activated by AUX2 event partial overload 0:No 0:No 1:Yes BOOL 1
+Expert | 1261 Inverter power level 2 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1262 Power level 2 (AUX 1) %Pnom | 80 20 120 FLOAT 10
+Expert | 1263 Time delay 2 (AUX 1) min 5 0 60 FLOAT 1
+Expert | 1264 Inverter power level 3 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1265 Power level 3 (AUX 1) %Pnom | 50 20 120 FLOAT 10
+Expert | 1266 Time delay 3 (AUX 1) min 30 0 60 FLOAT 1
+Expert | 1267 Inverter power level to deactivate (AUX 1) %Pnom | 40 20 120 FLOAT 10
+Expert | 1268 Time delay to deactivate (AUX 1) min 5 0 60 FLOAT 5
+Expert | 1503 | Contact active according to battery temperature (AUX 1) With BSP or BTS ONLY LEVEL | Menu
+Expert | 1446 Contact activated with the temperature of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1447 Contact activated over (AUX 1) °C 3 -10 50 FLOAT 1
+Expert | 1448 Contact deactivated below (AUX 1) °C 5 -10 50 FLOAT 1
+Expert | 1501 Contact active according to SOC (AUX 1) Only with BSP ONLY LEVEL | Menu
+Expert | 1439 Contact activated with the SOC 1 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1440 Contact activated below SOC 1 (AUX 1) %soc  |50 0 100 FLOAT 5
+Expert | 1581 Delay 1 (AUX 1) hours 12 0 99 FLOAT 0.25
+
+V1.6.38
+
+10
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format__| Increment
+
+Expert | 1582 Contact activated with the SOC 2 of battery (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1583 Contact activated below SOC 2 (AUX 1) %soc | 30 0 100 FLOAT 5
+
+Expert | 1584 Delay 2 (AUX 1) hours 0.2 0 99 FLOAT 0.25
+
+Expert | 1585 Contact activated with the SOC 3 of battery (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1586 Contact activated below SOC 3 (AUX 1) %soc | 20 0 100 FLOAT 5
+
+Expert | 1587 Delay 3 (AUX 1) hours 0 0 99 FLOAT 0.25
+
+Expert | 1441 Contact deactivated over SOC (AUX 1) %soc | 90 0 100 FLOAT 5
+
+Expert | 1588 Delay to deactivate (AUX 1) hours 0.2 0 10 FLOAT 0.25
+
+Expert | 1589 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1512 | Security, maximum time of contact (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1514 | Maximum time of operation of contact (AUX 1) min 600 10 1200 FLOAT 10
+
+Expert | 1569 | Resetall settings (AUX 1) s s s INT32 Signal
+
+Expert | 1310 | AUXILIARY CONTACT 2 ONLY LEVEL | Menu
+Only 1 bit
+
+Expert | 1311 Operating mode (AUX 2) aeversed 1:Automatic ayer LONG ENUM 2Reversed automatic
+4:Manual ON
+8:Manual OFF
+
+O:Any O:Any 1A Only 1 bit
+Expert | 1498 | Combination of the events for the auxiliary contact (AUX 2) (Function | (Function | (Function | LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+
+Expert | 1312 | Temporal restrictions (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1313 Program 1 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1314 Day of the week (AUX 2) None 0 127 LONG ENUM | Bit field
+
+Expert | 1315 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 _| INT32. 1
+
+Expert | 1316 End hour (AUX 2) Minutes | 1200=20:00 | 0-00:00 1440=24:00 | INT32. 1
+
+Expert | 1317 Program 2 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1318 Day of the week (AUX 2) None 0 127 LONG ENUM _ | Bit field
+
+Expert | 1319 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 | INT32 1
+
+Expert | 1320 End hour (AUX 2) Minutes | 1200=20:00 | 0-00:00 1440=24:00 | INT32. 1
+
+Expert | 1321 Program 3 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1322 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+
+Expert | 1323 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 _| INT32. 1
+
+V1.6.38
+
+11
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1324 End hour (AUX 2) Minutes | 1200=20:00 1440=24:00 | INT32 1
+
+Inst. 1325 Program 4 (AUX 2) ONLY LEVEL | Menu
+Inst. 1326 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Inst. 1327 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+
+Inst. 1328 End hour (AUX 2) Minutes _ | 1200=20:00 1440=24:00 | INT32 1
+
+Inst. 1329 Program 5 (AUX 2) ONLY LEVEL | Menu
+Inst. 1330 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Inst. 1331 Start hour (AUX 2) Minutes | 420-07:00 _ | 0=00:00 1440=24:00 | INT32 1
+
+Inst. 1332 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1378 | Contact active with a fixed time schedule (AUX 2) ONLY LEVEL | Menu
+Expert | 1379 Program 1 (AUX 2) ONLY LEVEL | Menu
+Expert | 1380 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1381 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+Expert | 1382 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1383 Program 2 (AUX 2) ONLY LEVEL | Menu
+Expert | 1384 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1385 Start hour (AUX 2) Minutes | 420-07:00 _ | 0=00:00 1440=24:00 | INT32 1
+Expert | 1386 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1387 Program 3 (AUX 2) ONLY LEVEL | Menu
+Expert | 1388 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1389 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+Expert | 1390 End hour (AUX 2) Minutes | 1200=20:00 1440=24:00 | INT32 1
+Expert | 1456 | Contact active on event (AUX 2) ONLY LEVEL | Menu
+Expert | 1333 Xtender is OFF (AUX 2) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1519 Xtender ON (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1544 Remote entry (AUX 2) 0:No 0:No BOOL 1
+Expert | 1334 Battery undervoltage alarm (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1335 Battery overvoltage (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1336 Inverter overload (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1337 Overtemperature (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1521 No overtemperature (AUX 2) 0:No 0:No BOOL 1
+Expert | 1339 Active charger (AUX 2) 0:No 0:No BOOL 1
+
+V1.6.38
+
+12
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Scom format__| Increment
+Expert 1340 Active inverter (AUX 2) 0:No 0:No BOOL 1
+Expert 1341 Active Smart-Boost (AUX 2) 0:No 0:No BOOL 1
+Expert | 1342 AC input presence but with fault (AUX 2) 0:No 0:No BOOL 1
+Expert | 1343 AC input presence (AUX 2) 0:No 0:No BOOL 1
+Expert 1344 Transfer contact ON (AUX 2) 0:No 0:No BOOL 1
+Expert | 1345 AC out presence (AUX 2) 0:No 0:No BOOL 1
+Expert | 1346 Bulk charge phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1347 Absorption phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1348 Equalization phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1350 Floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 1351 Reduced floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 1352 Periodic absorption (AUX 2) 0:No 0:No BOOL 1
+inst. 1602 ‘AC-In energy quota (AUX 2) 0:No 0:No BOOL 1
+QsP 1643 Partial overload 0:No 0:No BOOL 1
+Expert | 1353 Contact active according to battery voltage (AUX 2) ONLY LEVEL | Menu
+Expert | 1354 Use dynamic compensation of battery level (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1355 Battery voltage 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1356 Battery voltage 1 (AUX 2) Vde 48 36 72 FLOAT 0.4
+Expert | 1357 Delay 1 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1358 Battery voltage 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1359 Battery voltage 2 (AUX 2) Vde 46.1 36 72 FLOAT 04
+Expert | 1360 Delay 2 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1361 Battery voltage 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1362 Battery voltage 3 (AUX 2) Vde 44.2 36 72 FLOAT 04
+Expert | 1363 Delay 3 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1364 Battery voltage to deactivate (AUX 2) Vde 50.4 36 72 FLOAT 04
+Expert 1365 Delay to deactivate (AUX 2) min 5 0 480 FLOAT 5
+Expert | 1517 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1366 Contact active with inverter power or Smart-Boost (AUX 2) ONLY LEVEL | Menu
+Expert | 1367 Inverter power level 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1368 Power level 1 (AUX 2) % Pnom 120 20 120 FLOAT 10
+Expert 1369 Time delay 1 (AUX 2) min 0 0 60 FLOAT 1
+
+V1.6.38 13
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert | 1370 Inverter power level 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1371 Power level 2 (AUX 2) % Pnom 80 20 120 FLOAT 10
+Expert 1372 Time delay 2 (AUX 2) min 5 t) 60 FLOAT 1
+Expert | 1373 Inverter power level 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1374 Power level 3 (AUX 2) % Pnom 50 20 120 FLOAT 10
+Expert 1375 Time delay 3 (AUX 2) min 30 ) 60 FLOAT 1
+Expert 1376 Inverter power level to deactivate (AUX 2) % Pnom 40 20 120 FLOAT 10
+Expert 1377 Time delay to deactivate (AUX 2) min 5 ) 60 FLOAT 5
+Expert | 1504 Contact active according to battery temperature (AUX 2) With BSP or BTS ONLY LEVEL | Menu
+Expert | 1457 Contact activated with the temperature of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1458 Contact activated over (AUX 2) °c 3 -10 50 FLOAT 1
+Expert 1459 Contact deactivated below (AUX 2) °c 5 -10 50 FLOAT 1
+Expert | 1502 Contact active according to SOC (AUX 2) Only with BSP ONLY LEVEL | Menu
+Expert 1442 Contact activated with the SOC 1 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1443 Contact activated below SOC 1 (AUX 2) % SOC 50 ) 100 FLOAT 5
+Expert 1590 Delay 1 (AUX 2) hours 12 ) 99 FLOAT 0.25
+Expert 1591 Contact activated with the SOC 2 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1592 Contact activated below SOC 2 (AUX 2) % SOC 30 ) 100 FLOAT 5
+Expert 1593 Delay 2 (AUX 2) hours 0.2 ) 99 FLOAT 0.25
+Expert 1594 Contact activated with the SOC 3 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1595 Contact activated below SOC 3 (AUX 2) % SOC 20 ) 100 FLOAT 5
+Expert 1596 Delay 3 (AUX 2) hours ) ) 99 FLOAT 0.25
+Expert 1444 Contact deactivated over SOC (AUX 2) % SOC 90 ) 100 FLOAT 5
+Expert 1597 Delay to deactivate (AUX 2) hours 0.2 ) 10 FLOAT 0.25
+Expert | 1598 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1513 Security, maximum time of contact (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1515 Maximum time of operation of contact (AUX 2) min 600 10 1200 FLOAT 10
+Expert | 1570 Reset all settings (AUX 2) s s s INT32 Signal
+Expert 1489 | AUXILIARY CONTACTS 1 AND 2 EXTENDED FUNCTIONS. ONLY LEVEL | Menu
+Expert 1491 Generator control active 0:No 0:No 1:Yes BOOL 1
+Expert | 1493 Number of starting attempts 5 0 20 FLOAT 1
+
+V1.6.38 14
+
+Technical specification
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert | 1492 Starter pulse duration (with AUX2) sec 3 1 20 FLOAT 1
+Expert 1494 Time before a starter pulse sec 3 1 20 FLOAT 1
+Expert 1574 Main contact hold/interrupt time sec t) t) 30 FLOAT 1
+Expert 1101 | SYSTEM ONLY LEVEL | Menu
+Expert | 1537 Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+Expert | 1545 Remote entry active 1:Open 0:Closed 1:Open LONG ENUM | 0:Closed
+1:Open
+Expert 1538 Prohibits transfert relay 0:No 0:No 1:Yes BOOL 1
+Expert 1539 Prohibits inverter 0:No 0:No BOOL 1
+Expert 1540 Prohibits charger 0:No 0:No 2 BOOL 1
+Expert 1541 Prohibits Smart-Boost 0:No 0:No 1:Yes BOOL 1
+Expert 1542 Prohibits grid feeding 0:No 0:No 1:Yes BOOL 1
+Expert 1566 Using a secondary value for the maximum current of the AC source 0:No 0:No 1:Yes BOOL 1
+Expert 1567 Second maximum current of the AC source (Input limit) Aac 16 2 50 FLOAT 1
+Expert | 1554 Decrease of the max. current of the source with input voltage activated ONo ONo BOOL {
+Expert 1576 ON/OFF command 0:No 0:No BOOL 1
+Expert 1578 Activated by AUX 1 state 0:No 0:No BOOL 1
+Expert | 1579 Prohibits battery priority 0:No 0:No BOOL 1
+Inst. 1600 Disable minigrid mode 0:No 0:No BOOL 1
+QsP 1640 Clear AUX2 event partial overload 0:No 0:No BOOL 1
+inst. 1647 Prohibits charger using only power from AC-Out 0:No 0:No BOOL 1
+Expert | 1296 Batteries priority as energy source (Not recommended in parallel) 0:No 0:No BOOL 1
+Expert | 1297 Battery priority voltage Vde 51.6 37.9 FLOAT 04
+Expert 1565 Buzzer alarm duration min ) ) 60 FLOAT 1
+Expert 1129 Auto restarts ONLY LEVEL | Menu
+Expert 1130 After battery undervoltage 1:Yes 0:No 1:Yes BOOL 1
+Expert 1304 Number of batteries undervoltage allowed before definitive stop 3 1 20 FLOAT 1
+Expert 1404 Time period for batteries undervoltages counting sec 0 0 3000 FLOAT 60
+Expert 1305 Number of batteries critical undervoltage allowed before definitive stop 10 1 20 FLOAT 1
+Expert 1405 Time period for critical batteries undervoltages counting sec 10 ) 3000 FLOAT 5
+
+V1.6.38 15
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Scom format__| Increment
+Expert | 1131 After battery overvoltage 1:Yes 0:No BOOL 1
+Expert 1132 After inverter or Smart-Boost overload 1:Yes 0:No BOOL 1
+Expert 1533 Delay to restart after an overload sec 5 2 FLOAT 1
+Expert 1134 After overtemperature 1:Yes 0:No BOOL 1
+Expert 1111 Autostart to the battery connection 0:No 0:No BOOL 1
+Expert | 1484 System earthing (Earth - Neutral) ONLY LEVEL | Menu
+Expert 1485 Prohibited ground relay 1:Yes 0:No. BOOL 1
+Expert 1486 Continuous neutral 0:No 0:No BOOL 1
+Inst. 1628 Xtender watchdog enabled (SCOM) 0:No 0:No BOOL 1
+Inst. 1629 Xtender watchdog delay (SCOM) sec 60 10 FLOAT 10
+QsP 1616 Use of functions limited to a number of days 0:No 0:No BOOL 1
+QsP 1391 Number of days without functionalitie's restrictions days ) ) FLOAT 1
+QsP 1617 Transfer relay disabled after timeout 0:No 0:No BOOL 1
+QsP 1618 Inverter disabled after timeout 1:Yes 0:No BOOL 1
+QsP 1619 Charger disabled after timeout 0:No 0:No BOOL 1
+QsP 1620 Smart-Boost disabled after timeout 1:Yes 0:No BOOL 1
+QsP 1621 Grid feeding disabled after timeout 0:No 0:No BOOL 1
+Basic 1395 Restore default settings Ss Ss INT32 Signal
+inst. 1287 Restore factory settings s s s INT32 Signal
+Inst. 1550 Parameters saved in flash memory 1:Yes 0:No 1:Yes BOOL 1
+Inst. 1415 ON of the Xtenders Ss Ss Ss INT32 Signal
+Inst. 1399 OFF of the Xtenders Ss Ss Ss INT32 Signal
+Expert 1468 Reset of all the inverters Ss Ss Ss INT32 Signal
+Expert 1282 | MULTI XTENDER SYSTEM ONLY LEVEL | Menu
+Expert 1283 Integral mode 1:Yes 0:No BOOL 1
+Expert 1461 Multi inverters allowed 1:Yes 0:No BOOL 1
+Expert 1462 Multi inverters independents. Need reset {1468} 0:No 0:No BOOL 1
+Expert | 1555 Battery cycle synchronized by the master 1:Yes 0:No BOOL 1
+Expert 1547 Allow slaves standby in multi-Xtender system 1:Yes 0:No BOOL 1
+Expert | 1571 Splitphase: L2 with 180 degrees phaseshift 0:No 0:No BOOL 1
+QsP 1558 Separated Batteries 0:No 0:No BOOL 1
+Inst. 1437 Minigrid compatible 0:No 0:No BOOL 1
+
+V1.6.38 16
+
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr___| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Inst. 1577 | _ Minigrid with shared battery energy 0:No 0:No : BOOL 1
+Inst. 1556 | _Is the central inverter in distributed minigrid 0:No 0:No BOOL 1
+Expert | 1522 | GRID-FEEDING ONLY LEVEL | Menu
+Expert | 1127 | Grid feeding allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1523 | Max grid feeding current ‘Aac 10 0 50 FLOAT 0.2
+Expert | 1524 | _ Battery voltage target for forced grid feeding Vde 48 72 FLOAT 04
+Expert | 1525 | Forced grid feeding start time Minutes | 1200=20:00 1440=24:00 | INT32 1
+Expert | 1526 | Forced grid feeding stop time Minutes | 1200=20:00 1440=24:00 | INT32 1
+Inst. 1610 | Use of the defined phase shift curve for injection 0:No 1:Yes BOOL 1
+A: +0.1:
+Inst. 1622 | Cos phi at P = 0% 0: Cos phi 1 Inductive Capacitive | FLOAT 0.01
+0.4: +0.1:
+Inst. 1623 | Cos phi at the power defined by param {1613} 0: Cos phi1 | Inductive Capacitive | FLOAT 0.01
+0.90 0.90
+Inst. 1613 | Power of the second cos phi point in % of Pnom % 50 20 85 FLOAT 5
++0. 0.4: +0.1:
+Inst. 1624 | Cos phiat P = 100% Capacitive Inductive Capacitive | FLOAT 0.01
+Inst. 1627 | _ARN4105 frequency control enabled 0:No 0:No 1:Yes BOOL 1
+Inst. 1630 | Delta from user frequency to start derating Hz 1 0 3.9 FLOAT 04
+Inst. 1631 Delta from user frequency to reach 100% derating Hz 2 0 3.9 FLOAT 04
+asP 1561 Correction for XTS saturation Reg U 0 -300 300 FLOAT 1
+asP 1562 | Correction for XTS saturation Reg | 0 -300 300 FLOAT 1
+asP 1648 | _Imagnet INT level adjustment for correction 0 -300 300 FLOAT 1
+asP 1649 | magnet ERROR level adjustment for correction 0 -300 300 FLOAT 1
+The cos phi parameter range goes from -0.1 (Inductive 0.9) to +0.1 (Capacitive 0.9) by 0.01 steps.
+Xtender infos
+Unit on
+Nr__| Xtender information description Short desc. | the RCC _| Unit Format | Related parameter or description
+3000 _| Battery voltage Ubat Vde 7 FLOAT
+3001 | Battery temperature That °C soo sersor ‘return | £1 OAT | Value given by the external battery temperature sensor BTS-01
+V1.6.38 17 berger
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+3002_ | Temperature compensation of battery voltage Comp? Ctmp Ctmp FLOAT
+3003 _| Dynamic compensation of battery voltage Comp P Cdyn Cdyn FLOAT
+3004 | Wanted battery charge current Ibat Aust A FLOAT
+3005 _| Battery charge current Ibat (m) Ade A FLOAT
+3006 _| Battery voltage ripple Ubat ond Vrip Vv FLOAT
+3007 _| State of charge Soc % % FLOAT
+3008 _| Low Voltage Disconect LVD LVD Vv FLOAT
+O:Invalid value
+1:Bulk
+2:Absorpt.
+3:Equalise SHORT
+3010 | Battery cycle phase Phase 4:Floating ENUM. | See parameter {1137}
+7:Mixing
+8:Forming
+3011 _| Input voltage Uin Vac Vv FLOAT | See parameter {1197}
+3012 _| Input current Lin ‘Aac A FLOAT
+3013 _| Input power Pin kVA kVA FLOAT | Less accurate than info 3138
+3017 | Input limit value Limit Val__| iLim A FLOAT
+- , 0:0ff SHORT | | «
+3018 | Input limite reached P sharing ton ENUM. |b’: See parameter {1107}
+, 0:0ff SHORT | 5.
+3019 | Boost active Boost ton ENUM. | 8 See parameter {1126}
+0:Opened SHORT
+3020 | State of transfer relay Transfert Cece ENUM
+3021 | Output voltage Uout Vac Vv FLOAT | See parameter {1286}
+3022 | Output current Lout ‘Aac A FLOAT
+3023 | Output power P out kVA kVA FLOAT | Less accurate than info 3139
+P:invalie value Give the current working mode of the inverter. See {1107} for
+3028 | Operating stat Mod cn SHORT | Boost, {1522} for Injection (grid-feeding), charger and inverter
+perating state lode 30 aa ENUM | mode are oblivious. Only in CSV file, the value 6 indicate that the
+“Boost xtender is off.
+4:Injection
+0:Opened SHORT
+3030 | State of output relay Rel out 1:Coecd ENUM
+
+V1.6.38 18 berger
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+" 0:Opened SHORT
+3031 | State of auxiliary relay 1 Aux 1 Creed ENUM | See parameter {1201}
+a 0:Opened SHORT
+3032. | State of auxiliary relay 2 Aux 2 Creed ENUM | See parameter {1201}
+3045 _ | Nbr. of overloads novid FLOAT
+3046_| Nor. overtemperature novimp FLOAT
+3047 _| Nor. batterie overvoltage nowolt FLOAT
+: 0:08f SHORT
+3049. | State of the inverter XT state ton ENUM
+3050 _| Number of battery elements Bat cells FLOAT
+0:08f SHORT
+3051 | Search mode state SB state On ENUM. | See parameter (1187)
+O:Invalid value 0: Invalid value
+TA 1: Automatic
+21 SHORT | 2: Reversed automatic
+3054 | Relay aux 1 mode Aux 1 3M ENUM. | 3: Manual ON
+4M 4: Manual OFF
+5:G 5: Coupled for generator start
+O:Invalid value
+21 SHORT | o. ,
+3055 | Relay aux 2 mode Aux 2 aM ENUM. | See info (3055)
+4M
+5:G
+Bit 0: forbidden inverter {1124}
+Bit 1: forbidden charger {1125}
+Bit 2: forbidden boost {1126}
+: , Bit 3: forbidden transfert {1128}
+3056 | Lockings flag Lockings FLOAT | it 4: forbidden injection {1127}
+Bit 8: forbidden multi {1461}
+Bit 9: multi independants allowed {1462}
+Bit 10: standy slave allowed {1547}
+0:Opened SHORT
+3074 | State of the ground relay Rel_gnd Cece ENUM
+0:Opened SHORT
+3075. | State of the neutral transfer relay Rel_neutral ction ENUM
+3076 _| Discharge of battery of the previous day E out YD kWh kWh FLOAT
+
+V1.6.38 19
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. |the RCC_| Unit Format | Related parameter or description
+3078 _| Discharge of battery of the current day EoutDay | kWh kWh FLOAT
+3080_| Energy AC-In from the previous day EacinYD | kWh kWh FLOAT
+3081 | Energy AC-In from the current day EacinDay | kWh kWh FLOAT
+3082_| Consumers energy of the previous day Eac out YD__| kWh kWh FLOAT
+3083_| Consumers energy of the current day Eac out Dy | kWh kWh FLOAT
+3084 _| Input frequency Fin Hz Hz FLOAT | Replace info 3014
+3085 _| Output frequency Fout Hz Hz FLOAT | Replace info 3024
+O:RM EN 0 SHORT
+3086 | Remote entry state RME LRM EN 1 ENUM
+3087 | Output active power Pouta Ww Ww FLOAT | Less accurate than info 3136
+3088 _| Input active power Pina Ww Ww FLOAT | Less accurate than info 3137
+3089 _| Defined phase FLOAT | 1=L1, 2=L2, 4-13
+3090_| Battery voltage (minute min) Ubat- Vde Vv FLOAT | 1 minute minimum
+3091 _| Battery voltage (minute max) Ubat+ Vde Vv FLOAT | 1 minute maximum
+3092_| Battery voltage (minute avg) Ubat Vde Vv FLOAT | 1 minute average
+3093 _| Battery charge current (minute min) Ibat- ‘Adc A FLOAT | 1 minute minimum
+3094 _| Battery charge current (minute max) Ibat+ Adc A FLOAT | 4 minute maximum
+3095 _| Battery charge current (minute avg) Ibat ‘Adc A FLOAT | 1 minute average
+3096 | Output power min (minute min) Pout- kVA kVA FLOAT | 4 minute minimum
+3097 _| Output power (minute max) Pout+ kVA kVA FLOAT | 1 minute maximum
+3098 _| Output power (minute avg) Pout kVA kVA FLOAT | 1 minute average
+3099 _| Output active power (minute min) Pout-a kW. kW FLOAT | 1 minute minimum
+3100 | Output active power (minute max) Poutea kW kW FLOAT | 1 minute maximum
+3101 | Output active power (minute avg) Pouta kW kW FLOAT | 1 minute average
+3102_| Electronic temperature 1 (minute min) Tpl- °C °C FLOAT | 1 minute minimum
+3103 _| Electronic temperature 1 (minute max) Tpl+ °C °C FLOAT | 1 minute maximum
+3104 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT | 1 minute average
+3105 _| Electronic temperature 2 (minute min) Tp2- °C °C FLOAT | 4 minute minimum
+3106 _| Electronic temperature 2 (minute max) Tp2+ °C °C FLOAT | 1 minute maximum
+3107 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT | 1 minute average
+3108 | Output frequency (minute min) Fout- Hz Hz FLOAT | 1 minute minimum
+3109 | Output frequency (minute max) Fout+ Hz Hz FLOAT | 1 minute maximum
+3110 | Output frequency (minute avg) Fout Hz Hz FLOAT | 1 minute average
+3111_| Input voltage (minute min) Uin- Vac Vv FLOAT | 1 minute minimum
+3112_| Input voltage (minute max) Uine Vac Vv FLOAT | 1 minute maximum
+3113 _| Input voltage (minute avg) Uin Vac Vv FLOAT | 1 minute average
+
+V1.6.38
+
+20
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. | the RCC _| Unit Format | Related parameter or description
+
+3114 | Input current (minute min) lin= ‘Aac A FLOAT | 1 minute minimum
+
+3115 _| Input current (minute max) line ‘Aac A FLOAT [1 minute maximum
+
+3116 _| Input current (minute avg) lin ‘Aac A FLOAT | 1 minute average
+
+3117 _| input active power (minute min) Pin-a kW kW FLOAT [1 minute minimum
+
+3118 _| Input active power (minute max) Pinsa kW kW FLOAT | 1 minute maximum
+
+3119 | input active power (minute avg) Pina kW kW FLOAT | 1 minute average
+
+3120 _| Input frequency (minute min) Fin- Hz Hz FLOAT | 1 minute minimum
+
+3121 _| Input frequency (minute max) Fins Hz Hz FLOAT [1 minute maximum
+
+3122 _| Input frequency (minute avg) Fin Hz Hz FLOAT | 1 minute average
+
+3124 | 1D type iat FLOAT | XTH family = 1, XTM family = 256 et XTS family = 512
+
+3125 | ID Power Power VA VA FLOAT
+
+3126 | 1D Uout Uout Vac Vv FLOAT
+
+3127 | ID batt voltage Idv Vde Vv FLOAT
+
+3128 _| ID lout nom lonom ‘Aac A FLOAT
+
+3129 [1D HW HW FLOAT
+
+3130_| ID SOFT msb ‘Smsb FLOAT | See section "Software version encoding”
+
+3131_ | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+
+3132_| ID HW PWR HWpwr FLOAT
+
+3133 _| Parameter number (in code) pCod FLOAT
+
+3134_| Info user number iCod FLOAT
+
+3135 [1D SID SID FLOAT
+
+3136 _| Output active power Pouta kW kW FLOAT | More accurate than info 3087
+
+3137 _| input active power Pina kW kW FLOAT | More accurate than info 3088
+
+3138 _| Input power Pin kVA kVA FLOAT | More accurate than info 3013
+
+3139 _| Output power Pout kVA kVA FLOAT | More accurate than info 3023
+
+3140 _| System debug 1 DBGI FLOAT
+
+3141_| System debug 2 DBG2 FLOAT
+
+3142 _| System state machine ssM FLOAT
+
+3154 _| input frequency Fin Hz Hz FLOAT
+
+3155 _| Desired AC injection current Inje ‘Aac A FLOAT
+
+3156 | 1D FID msb FLOAT | See section "FID encoding”
+
+3157 _| ID FIDIsb FLOAT | See section "FID encoding”
+
+3158 | Actual freezed current in ARN4105 P(f) Aac FLOAT | ARNA10S, maximum current that can be injected actually, grid
+
+requency dependance
+
+V1.6.38 21 Aorigen
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+ARN4105, current limitation depending on grid frequency :
+0:No limit 0 = no limitation
+1:FreezeOF 1: Value was frozen, grid frequency is >= 50.2Hz
+ae a , 2:N_ImaxOF SHORT | 2: Value not frozen but not at maximum, grid frequency is <
+3159. | AC injection current, type of limitation ARN4105 P(f) Injt So hooeUr ENUM. | so.2he
+4:N_ImaxUF 3: Value was frozen, grid frequency is <-49.8Hz
+5:N_IMaxST 4: Value not frozen but not at maximum, grid frequency is >49.8Hz
+5 : Value not frozen but not at maximum, grid reconnection
+o:invatid val Limitation source is :
+1 Ubatt value 0: Invalid value
+: 1: U batt (actual phase of charge cycle)
+2:Ubattp :
+: 2: U batt peak
+3:Ubattpp :
+Sibert 3: U batt peak peak
+: 4: | batt ({1138})
+5:Pchar :
+3160 | Source of limitation of the functions charger or injector —_| LimSre 6:Ubattinj SHORT | 5:P charger
+9 ys Stim ENUM | 6: U batt injection
+lin} 7: | injection ({1523})
+8:lmax :
+9illim S:lmax
+to.khermal 9:1 input limit (1107})
+: 10 : I thermal
+11:PchNeg :
+IDARNT 1: Pcharger only neg ACout
+: 12: Charger limited by grid frequency
+a an 0:08f SHORT | Target voltage for charge/inject is battery priotrity (displayed on
+3161 | Battery priority active batPr On ENUM. | RCE with *BP") (Only v1 6x)
+“feeding acti , 0:08f SHORT | Target voltage for charge/inject is forced injection (displayed on
+3162 | Forced grid feeding active InjFo On ENUM. | RCC with “IF") (Only v1 6.x)
+DC voltage référence for charge and injection stage. Higher battery
+3164 | Battery voltage target for charger/injection Vde FLOAT | voltage can result in injection and lower battery voltage can result
+in battery charge if allowed.
+3165 | Allowed charge current in limited charger mode Aac FLOAT | AC max current allowed for charging stage to ensure power from
+3166 _| Current on converter output stage DC/AC ‘Aac FLOAT
+3167 _| Voltage on converter output stage DC/AC Vac FLOAT
+
+V1.6.38 22 berger
+Xtender serial protocol appendix
+
+Technical specification
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+, Thermal state :
+one aor 0 = thermal OK
+3168 | Over temperature state OvTempS 2:TR.Eror SHORT | 1 = Transformer alarm
+: ENUM J 2 = Transformer error
+S:EL.Error 4
+ZELStop 4 = Electronique error
+ey 8 = Electronique error halted
+RCC parameters
+Level Nr_| RCC / Xcom-232i parameter description Unit Default Min Max Scom format _| Increment
+Basic_| 5000 | Language 0 3 INT32, 1
+Expert | 5036 | OTHER LANGUAGES ONLY LEVEL | Menu
+Only 1 bit
+1:English
+2:French
+4:German
+Basic | 5038 | Choice of the second language 2:French 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:italian
+128:Slovak
+Only 1 bit
+1:English
+2:French
+4:German
+Basic | 5039 | Choice of the third language 4:German | 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:italian
+128:Slovak
+V1.6.38 23
+Technical specification
+Xtender serial protocol appendix
+
+Level_| Nr __| RCC /Xcom-232i parameter description Unit Default Min Max Scom format _| Increment
+Only 1 bit
+1:English
+2:French
+4:German
+
+Basic | 5040 | Choice of the fourth language 8:Spanish | 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:Italian
+128:Slovak
+
+Basic | 5002 | Date Seconds | 0 0 0 INT32 1
+
+v.0. | 5012 | User level 16 0 m1 Not supported
+
+Expert_| 5019 | Force remote control to user BASIC level s s s INTS2 Signal
+
+Expert | 5057 | DATALOGGER ONLY LEVEL | Menu
+Only 1 bit
+
+Expert | 5101 |  Datalogger enabled 1:Automatic | 1:Automatic | 4:No LONG ENUM | >yutomatic
+4:No
+
+Expert | 5059 | Save today’s datas s s s INTS2 Signal
+
+inst. | 5075 | _Datalogger clear s s s INTS2 Signal
+
+Inst. | 5109 | _Datalogger reset when modifying the installation 0:No 0:No 1:Yes BOOL 1
+
+Inst | 5120 | Erase the 30 oldest log files from the SD card s s s INTS2 Signal
+
+Expert | 5123 | Activation of R&D tracks 0:No 0:No 1:¥es BOOL 1
+Only 1 bit
+XT
+
+Expert | 5076 | Track 1:device xT xT 8.VarioString | LONG ENUM | 2:BSP/BMS
+4:VarioTrack
+8:VarioString
+
+Expert | 5063 | Track 1:device UID 1 1 15 FLOAT 1
+
+Expert | 5077 | _ Track 1: user information reference (1 to n) 140 0 255 FLOAT 1
+Only 1 bit
+EXT
+
+Expert | 5078 | Track 2: device xT xT 8.VarioString | LONG ENUM | 2:BSP/BMS
+4:VarioTrack
+8:VarioString
+
+Expert | 5064 | Track 2: device UID 1 1 15 FLOAT 1
+
+V1.6.38 24 Aorigen
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Expert | 5079 | Track 2: user information reference (1 to n) 141 0 255 FLOAT 1
+Only 1 bit
+1:XT
+Expert | 5080 | Track 3: device 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP/BMS
+
+4:VarioTrack
+8:VarioString
+
+Expert | 5065 | Track 3: device UID 1 1 15 FLOAT 1
+Expert | 5081 | Track 3: user information reference (1 to n) 142 0 255 FLOAT 1
+Only 1 bit
+1:XT
+Expert | 5082 | Track 4: device 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP/BMS
+
+4:VarioTrack
+8:VarioString
+
+Expert | 5066 | Track 4: device UID 1 1 15 FLOAT 1
+Expert | 5083 Track 4: user information reference (1 to n) 160 0 255 FLOAT 1
+
+Basic | 5013 | SAVE AND RESTORE FILES ONLY LEVEL | Menu
+
+Basic | 5041 Save all files (system backup) s s s INT32 Signal
+
+Basic | 5068 | Restore all files (system recovery) s s s INT32 Signal
+
+Basic | 5070 | Apply configuration files (masterfile) s s s INT32 Signal
+
+Only 1 bit
+Expert | 5032 | Separator of the .csv files 1:Automatic | 1:Automatic LONG ENUM pamomatic
+4:,
+
+Expert | 5069 | Advanced backup functions ONLY LEVEL | Menu
+Expert | 5030 Save messages s s s INT32 Signal
+Expert | 5049 Save and restore RCC files ONLY LEVEL | Menu
+Expert | 5015 Save RCC parameters s s s INT32 Signal
+Expert | 5016 Load RCC parameters s s s INT32 Signal
+
+Inst. 5097 Create RCC configuration file (masterfile) s s s INT32 Signal
+Expert | 5098 Load RCC configuration file (masterfile) s s s INT32 Signal
+Expert | 5050 Save and restore Xtender files ONLY LEVEL | Menu
+Expert | 5017 Save Xtender parameters s s s INT32 Signal
+Expert | 5018 Load Xtender parameters s s s INT32 Signal
+
+Inst. 5033 Create Xtender configuration file (masterfile) s s s INT32 Signal
+
+V1.6.38 25
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Expert | 5034 Load Xtender configuration file (masterfile) s s s INT32 Signal
+Expert | 5045 Load Xtender parameters preset 1 1 1 Not supported
+Expert | 5051 Save and restore BSP files ONLY LEVEL | Menu
+Expert | 5052 Save BSP parameters s s s INT32 Signal
+Expert | 5053 Load BSP parameters s s s INT32 Signal
+Inst. 5054 Create BSP configuration file (masterfile) s s s INT32 Signal
+Expert | 5055 Load BSP configuration file (masterfile) Ss Ss Ss INT32 Signal
+Expert | 5084 Save and restore VarioTrack files ONLY LEVEL | Menu
+Expert | 5085 Save VarioTrack parameters s s s INT32 Signal
+Expert | 5086 Load VarioTrack parameters s s s INT32 Signal
+Inst. 5087 Create VarioTrack configuration file (masterfile) s s s INT32 Signal
+Expert | 5088 Load VarioTrack configuration file (masterfile) Ss Ss s INT32 Signal
+Expert | 5114 Save and restore VarioString files ONLY LEVEL | Menu
+Expert | 5115 Save VarioString parameters s s s INT32 Signal
+Expert | 5116 Load VarioString parameters s s s INT32 Signal
+Inst. 5117 Create VarioString configuration file (masterfile) s s s INT32 Signal
+Expert | 5118 Load VarioString configuration file (masterfile) Ss Ss s INT32 Signal
+Inst. 5047 Format the SD card s s s INT32 Signal
+Expert | 5061 Start update s s s INT32 Signal
+Inst. 5042 | MODIFICATION OF ACCESS LEVELS OF MANY PARAMETERS ONLY LEVEL | Menu
+Only 1 bit
+1:Choose
+Inst. 5043 | Change all parameters access level to: 1:Choose | 1:Choose ‘| 8:INSTALLER | LONG ENUM | 2:BASIC.
+4:EXPERT
+&:INSTALLER
+Inst. 5044 Restore default access level of all parameters Ss Ss s INT32 Signal
+Basic | 5007 | BACKLIGHT ONLY LEVEL | Menu
+Only 1 bit
+Basic | 5093 | Backlight mode 1:Delayed | 1:Delayed | 4:0N LONG ENUM zon
+4:0N
+Basic | 5009 | Backlight switch off after sec 120 5 120 FLOAT 5
+Expert | 5026 Red backlight flashing on Xtender off and faulty 1:Yes 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+26
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Basic | 5021 | EXTENDED AND SPECIAL FUNCTIONS ONLY LEVEL | Menu
+Basic | 5006 | Display contrast % 50 0 100 FLOAT 5
+Only 1 bit
+1:Clock
+, , . . Varios; 2:Xtender
+Expert | 5073 | Choice of standard display 2Xtender —_| 1:Clock 16:VarioString | LONG ENUM | 4:35)
+8:VarioTrack
+16:VarioString
+Only 1 bit
+play; Se . . i . j¢ | 4:By default 1:Automatic
+Inst. 5111 Displaying of configuration assistant on startup Automatic | 1:Automatic | feohay LONG ENUM i ee en anu
+4:By default {5073}
+Expert | 5010 | Come back to standard display after sec 600 5 600 FLOAT 5
+Expert | 5011 Visibility of the transitory messages sec 60 0 180 FLOAT 5
+Basic | 5027 | Acoustic alarm active 1:Yes 0:No 1:Yes BOOL 1
+Expert | 5031 Remote control acoustic alarm duration sec 120 5 120 FLOAT 5
+Expert | 5056 | Switching ON and OFF of system on level "VIEW ONLY" 1:Yes 0:No 1:Yes BOOL 1
+Expert | 5071 Reset of all the remotes control s s s INT32 Signal
+Expert | 5121 Reset all devices of the system s s s INT32 Signal
+asp 5090 | Update FID (only 1 device) ONLY LEVEL | Menu
+Only 1 bit
+1:XT
+asp 5091 Choose device type 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP
+4:VarioTrack
+8:VarioString
+asp 5092 Choose device id (UID) 1 1 30 FLOAT 1
+asp 5062 Update device FID (only 1 device) s s s INT32 Signal
+Expert | 5094 | XCOM AND SCOM ONLY LEVEL | Menu
+Expert | 5023 | —Xcom-LAN or Xcom-GSM ONLY LEVEL | Menu
+Expert | 5105 Test of the modem's GPRS signal level (Xcom-GSM) Ss Ss Ss INT32 Signal
+Expert | 5102 (63/90) saving of LAN/GSM connection messages O:No O:No 1-Yes BOOL 1
+
+V1.6.38 27
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format_| Increment
+Only 1 bit
+re . . 5 4 1:Automatic
+Inst. 5072 Studer Portal watchdog activation 1:Automatic | 1:Automatic | 4:No LONG ENUM 2Yes
+4:No
+Inst. 5113 Delay before Studer Portal watchdog forces reconnection | minutes | 10 8 1440 FLOAT 1
+Expert | 5024 | Xcom-232i and Scom ONLY LEVEL | Menu
+Inst. 5067 Clear info {17019} Maximum time interval between two s s s INT32 Signal
+scom requests
+asp 5119 Device identification (LEDs) with the SCOM address 0 0 831 FLOAT 1
+asp 5095 Enable SCOM watchdog 0:No 0:No 1:Yes BOOL 1
+asp 5096 SCOM watchdog delay before reset of Xcom-232i sec 60 10 300 FLOAT 10
+asp a fatvaton of the watchdog hardware (deactivation restarts the Xcom- ONo ONo Yes BOOL {
+asp 5104 Clears the restart flag of Xcom-232i s s s INT32 Signal
+asp 5035 | Erase messages s s s INT32 Signal
+BSP parameters
+Level Nr__| BSP parameter description Unit Default Min Max Scom format_| Increment
+Basic | 6000 | BASIC SETTINGS (BSP) ONLY LEVEL | Menu
+Only 1 bit
+1:Automatic
+Basic | 6057 | Voltage of the system 1:Automatic | 1:Automatic | 8:48V LONG ENUM | 2:12V
+4:24
+8:48V
+Basic | 6001 Nominal capacity Ah 110 20 20000 FLOAT 10
+Basic | 6002 | Nominal discharge duration (C-rating) h 20 1 100 FLOAT 1
+Basic | 6017 | Nominal shunt current A 500 10 10000 FLOAT 10
+Basic | 6018 | Nominal shunt voltage mV 50 10 200 FLOAT 10
+Expert | 6003 | Reset of battery history s s s INT32 Signal
+Basic | 6004 | Restore default settings s s s INT32 Signal
+Inst. 6005 | Restore factory settings s s s INT32 Signal
+Expert | 6016 | ADVANCED SETTINGS (BSP) ONLY LEVEL | Menu
+
+V1.6.38
+
+28
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Level_| Nr _| BSP parameter description Unit Default Min Max Scom format _| Increment
+Expert | 6031 | Reset of user counters s s s INTS2 Signal
+Expert_| 6055 | Manufacturer SOC for 0% displayed % 30 0 60 FLOAT 5
+Expert_| 6056 | Manufacturer SOC for 100% displayed % 100 80 100 FLOAT 5
+Expert_| 6042 | Activate the end of charge synchronization 0:No O:No 1:Yes BOOL 1
+Expert | 6024 | _ End of charge voltage level Vv 52.8 31.9 704 FLOAT 0.4
+Expert | 6025 | _ End of charge current level secap | 2 0 500 FLOAT 1
+Expert_| 6065 | Minimum duration before end of charge min 5 5 300 FLOAT 5
+Expert_| 6048 | Temperature correction of the end of charge voltage mV/*C/cell | 0 8 0 FLOAT 1
+Expert_| 6044 | Activate the state of charge correction by the open circuit voltage 1:Yes O:No 1:Yes BOOL 1
+Expert | 6058 | _ Battery charge current centralized regulation activated 0:No O:No 1:Yes BOOL 1
+Expert | 6059 | Max battery charge current A 60 0 10000 FLOAT 10
+Expert | 6019 | _ Self-discharge rate eaimonth | 3 0 25 FLOAT 0.4
+Expert_| 6020 | Nominal temperature °C 20 0 40 FLOAT 1
+Expert | 6021 | Temperature coefficient secaprc | 0.5 0 3 FLOAT 0.0999756
+Expert | 6022 | Charge efficiency factor % 90 50 100 FLOAT 1
+Expert | 6023 | _Peukert’s exponent 12 1 15 FLOAT 0.010098
+Expert | 6049 | Use C20 Capacity as reference value 1:Yes O:No 1:Yes BOOL 1
+BSP infos
+Unit on
+Nr_| BSP information description Short desc. |the RCC_| Unit Format | Related parameter or description
+7000 _| Battery voltage Ubat Vde 7 FLOAT
+7001 _| Battery current lbat ‘Adc ‘Ado FLOAT
+7002 _| State of Charge SOG % % FLOAT
+7003 | Power Phat Ww Ww FLOAT
+7004. | Remaining autonomy Trem minutes FLOAT oranges pint ialad before 0 % between -60000 and
+7005 _| BSP Temperature That °C °C FLOAT
+7006 _| Relative capacity Crel % % FLOAT | deprecated, return 100 % in version >= 1.5.6
+7007 _| Ah charged today Ode ‘Ah ‘Ah FLOAT
+7008 _| Ah discharged today Od> Ah Ah FLOAT
+7009 | Ah charged yesterday “Ade Ah Ah FLOAT
+V1.6.38 29 hereon
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr BSP information description Short desc. | the RCC Unit Format | Related parameter or description
+
+7010 | Ahdischarged yesterday -1d> Ah Ah FLOAT
+
+7011 | Total An charged tot< kAh kAh FLOAT
+
+7012 | Total Ah discharged tot> kAh kAh FLOAT
+
+7013 | Total time Ttot days days FLOAT
+
+7017 | Custom charge Ah counter cus< Ah Ah FLOAT
+
+7018 | Custom discharge Ah counter cus> Ah Ah FLOAT
+
+7019 | Custom counter duration Tcus h h FLOAT
+
+7029 | Battery temperature That °c °c FLOAT
+
+7030 | Battery voltage (minute avg) Ubat Vde Vv FLOAT
+
+7031 | Battery current (minute avg) Ibat Adc Adc FLOAT
+
+7032 | State of Charge (minute avg) SOC % % FLOAT
+
+7033 _| Battery temperature (minute avg) That °C °C FLOAT
+
+7034 | ID type Idt FLOAT | BSP500 and BSP1200 = 10241d (0x2801)
+
+7035 | ID batt voltage Idv. Vde v FLOAT
+
+7036 | ID HW HW FLOAT
+
+7037 | ID SOFT msb Smsb FLOAT | See section "Software version encoding”
+
+7038 | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+
+7039 | Parameter number (in code) pCod FLOAT
+
+7040 | Info user number iCod FLOAT
+
+7041 ID SID SID FLOAT
+
+7047 | Manufacturer State of Charge mSOC % % FLOAT
+
+7048 | ID FIDmsb FLOAT | See section "FID encoding”
+
+7049 | ID FIDIsb FLOAT | See section "FID encoding”
+
+7059 | Local daily communication error counter (CAN) locE FLOAT
+
+7060 | Number of parameters (in flash) pFsh FLOAT
+
+Xcom-CAN BMS parameters
+
+Level Nr Xcom-CAN parameter description Unit Default Min Max Scom format_| Increment
+Basic 6060 | BASIC SETTINGS (Xcom-CAN BMS) ONLY LEVEL | Menu
+Basic 6004 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 6005 Restore factory settings Ss Ss Ss INT32 Signal
+Expert 6061 | ADVANCED SETTINGS (Xcom-CAN BMS) ONLY LEVEL | Menu
+Expert 6083 SOC settings ONLY LEVEL | Menu
+
+V1.6.38 30 berger
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr__| Xcom-CAN parameter description Unit Default Min Max Scom format _| Increment
+Expert 6070 SOC level under which battery discharge is stopped % 5 ) 100 FLOAT 1
+Expert 6062 SOC level for backup % 20 to) 100 FLOAT 1
+Expert 6063 SOC level for grid feeding % 98 ) 100 FLOAT 1
+Expert 6075 SOC level for end of charge % 100 80 100 FLOAT 1
+Expert 6071 rad battery priomly Famed Nasi when SOC >= SOC for backup 1:Yes 0:No 1Yes BOOL 1
+Expert 6066 Manufacturer SOC for 0% displayed % ) ) 60 FLOAT 5
+Expert 6067 Manufacturer SOC for 100% displayed % 100 80 100 FLOAT 5
+Expert | 6084 Charge/discharge settings ONLY LEVEL | Menu
+Expert 6068 Allow user to define the maximum charge current of the battery 0:No 0:No 1:Yes BOOL 1
+Expert 6069 Maximum charge current defined by user A 10 ) 10000 FLOAT 1
+Expert 6076 Allow user to define the maximum discharge current of the battery 0:No. 0:No. 1:Yes BOOL 1
+Expert 6077 Maximum discharge current defined by user A 10 te) 10000 FLOAT 1
+Expert | 6079 (BETA) Allow periodic full charging 0:No 0:No 1:Yes BOOL 1
+Expert 6080 Waiting time between two periodic full charges h 168 1 1000 FLOAT 1
+Expert | 6081 Time fully charged before resetting periodical full charge min 5 1 60 FLOAT 1
+Expert 6089 Allow adaptative SOC for backup 0:No 0:No 1:Yes BOOL 1
+Expert 6090 Time before reseting adaptative SOC for Backup min 5 1 60 FLOAT 1
+Expert 6091 SOC in percent to reset adaptative SOC for Backup % 99 80 100 FLOAT 1
+Expert 6092 SOC in percent to increase adaptative SOC for Backup % 98 20 100 FLOAT 1
+Expert 6064 Use battery current limits instead of recommended values 0:No 0:No 1:Yes BOOL 1
+Expert 6078 Charge current limit ratio % 80 80 95 FLOAT 1
+Expert 6093 Discharge current limit ratio % 95 80 95 FLOAT 1
+Expert 6087 SOC level to start end of charge derating % 90 80 100 FLOAT 1
+Expert 6088 Charge current rate at end of charge A 20 te) 100 FLOAT 1
+QsP 6082 Ki current regulation % 15 1 100 FLOAT 1
+Expert | 6085 ‘AC-Coupling settings ONLY LEVEL | Menu
+Expert 6072 Solar Inverter connected on AC-Out 0:No 0:No 1:Yes BOOL 1
+Expert | 6073 Delta from user frequency to start derating of solar inverter Hz 1 0 5 FLOAT 04
+Expert 6074 Delta from user frequency to reach 100% derating of solar inverter Hz 2.7 ) 5 FLOAT 0.1
+Expert | 6086 ‘AG-Coupling priority 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 31
+
+Technical specification
+Xtender serial protocol appendix
+Xcom-CAN BMS infos
+Unit on
+Nr_| Xcom-CAN information descri Short desc. | the RCC_| Unit Format | Related parameter or description
+7000 _| Battery voltage Ubat Vde Vv FLOAT
+7001 _| Battery current Ibat Adc Adc FLOAT
+7002 _| State of Charge soc % % FLOAT
+7003 | Power Pat w w FLOAT
+7007 | Ah charged today Ode Ah Ah FLOAT
+7008 _| Ah discharged today Od> Ah Ah FLOAT
+7009 | Ah charged yesterday -td< Ah Ah FLOAT
+7010 | Ah discharged yesterday -1d> Ah Ah FLOAT
+7029 _| Battery temperature That °C °C FLOAT
+7030 _| Battery voltage (minute avg) Ubat Vde Vv FLOAT
+7031 _| Battery current (minute avg) bat Adc Adc FLOAT
+7032 _| State of Charge (minute avg) soc % % FLOAT
+7033_| Battery temperature (minute avg) That °C °C FLOAT
+7047 | Manufacturer State of Charge mSOC % % FLOAT
+7053 _| Battery Type bTyp FLOAT
+7054 | BMS Version BMSv FLOAT
+7055 Nominal or remaining battery capacity (see battery bCap Ah Ah FLOAT
+7056 _| Reserved Manufacturer ID bmid FLOAT
+7057 _| State Of Health SOH % FLOAT
+7058 _| High resolution manufacturer State of Charge hSOC % FLOAT
+7061 _| Charge voltage limit UChL Vde Vv FLOAT
+7062 _| Discharge voltage limit UDiL Vde Vv FLOAT
+7063 _| Charge current limit IChL Adc A FLOAT
+7064 | Discharge current limit IDiL Adc A FLOAT
+7065 | Recommended charge current IChR Adc A FLOAT
+7066 _| Recommended discharge current IDIR Adc A FLOAT
+0:OTHERS
+7067 | Manufacturer name name DBYLON stone
+3:WECO
+
+V1.6.38 32
+
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr Xcom-CAN information description Short desc. | the RCC Unit Format | Related parameter or description
+0:UNK. SOC.
+1:OVER GRID
+2:AT GRID
+3:UNDER GRID
+4:UNDER ADA
+7068 | Soc state state 5:AT BACKUP stone
+6:UNDER BACK
+7:END OF CH
+8:OVER ENDC.
+9:FULL
+10:NORMAL,
+7069 | Soc for backup SocBu % FLOAT
+7070 | Soc for grid-feeding SocGf % FLOAT
+7071 | Soc for end of charge SocEoc % FLOAT
+VarioTrack parameters
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10000 | BASIC SETTINGS ONLY LEVEL | Menu
+Expert | 10054 Block manual programming (dip-switch) 0:No 0:No 1:Yes BOOL 1
+Only 1 bit
+1:Automatic
+Basic 10001 Voltage of the system 1:Automatic 1:Automatic | 8:48V. LONG ENUM 212V
+4:24V
+8:48V
+Expert 10002 Battery charge current Adc 80 0 80 FLOAT 2
+Basic 10037 Synchronisation battery cycle with Xtender 1:Yes 0:No. 1:Yes BOOL 1
+Basic 10005, Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Basic 10009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Basic 10017 Equalization allowed 0:No. 0:No. 1:Yes BOOL 1
+Basic 10021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Basic 10056 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 10057 Restore factory settings Ss Ss Ss INT32 Signal
+Expert | 10003 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+
+V1.6.38 33
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10037 Synchronisation battery cycle with Xtender 1:Yes 0:No 1:Yes BOOL 1
+Expert 10002 Battery charge current Adc 80 ) 80 FLOAT 2
+Expert 10334 Battery undervoltage Vde 40 34 68.2 FLOAT 0.1
+Expert 10036 Temperature compensation mV/°Cicell | -3 8 ) FLOAT 1
+Expert | 10004 | Floating phase ONLY LEVEL | Menu
+Basic 10005 Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Expert | 10006 Force phase of floating Ss Ss Ss INT32 Signal
+Expert | 10007 | Absorption phase ONLY LEVEL | Menu
+Expert 10008 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Basic 10009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Expert | 10010 Force absorption phase Ss Ss Ss INT32 Signal
+Expert 10011 Absorption duration min 120 5 510 FLOAT 5
+Expert | 10012 End of absorption triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 10013 Current threshold to end absorption phase Adc 10 2 80 FLOAT 2
+Expert | 10016 Equalization phase ONLY LEVEL | Menu
+Basic 10017 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 10018 Force equalization Ss Ss Ss INT32 Signal
+Basic 10021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Expert 10020 Equalization current Adc 80 2 80 FLOAT 2
+Expert 10022 Equalization duration min 30 5 510 FLOAT 5
+Expert 10052 Equalization with fixed interval 1:Yes 0:No 1:Yes BOOL 1
+Expert | 10025 Days between equalizations days 26 1 365 FLOAT 1
+Expert | 10026 End of equalization triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 10027 Current threshold to end equalization phase Adc 10 4 30 FLOAT 1
+Expert | 10019 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 10028 New cycle ONLY LEVEL | Menu
+Expert | 10029 Force a new cycle Ss Ss Ss INT32 Signal
+Expert 10030 Voltage level 1 to start a new cycle Vde 48.8 37.9 68.2 FLOAT 0.1
+Expert 10031 Time period under voltage level 1 to start anew cycle min 30 ) 240 FLOAT 1
+Expert 10032 Voltage level 2 to start a new cycle Vde 47.2 37.9 68.2 FLOAT 0.1
+Expert 10033 Time period under voltage level 2 to start anew cycle min 2 ) 240 FLOAT 1
+Expert | 10034 Cycling restricted 1:Yes 0:No 1:Yes BOOL 1
+
+V1.6.38 34
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr_| VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert | 10035 Minimal delay between cycles hours 1 0 540 FLOAT 1
+Expert | 10085 | Battery overvoltage level Vde 68.2 37.9 68.2 FLOAT 0.1
+Expert | 10086 | Restart voltage level after a battery overvoltage Vde 64.8 37.9 68.2 FLOAT 0.4
+Expert | 10038 | SYSTEM ONLY LEVEL | Menu
+Expert | 10054 | Block manual programming (dip-switch) 0:No 0:No 1Yes BOOL 1
+Only 1 bit
+- - ; ; 8Floating 1:No control
+xpert | 10060 | Check Earthing 1:No control] 1:No control | Story LONG ENUM 2:Neg bat pole earth
+:Pos bat pole earth
+8:Floating battery
+inst. | 10087 | _ Disabling of the display button 0:No 0:No 1Yes BOOL 1
+Expert | 10312 | _ Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+Expert | 10313 Remote entry active 2:Open 1:Closed 4£dge LONG ENUM Dope
+4:Edge
+Expert | 10314 ON/OFF command 0:No 0:No BOOL 1
+Expert | 10315 Activated by AUX state 0:No 0:No BOOL 1
+Expert | 10316 Start equalization 0:No 0:No BOOL 1
+Expert | 10317 Send a message when remote entry changes state 0:No 0:No BOOL 1
+Only 1 bit
+Expert | 10075 | Type of MPP tracking 1:P8O 1:P8O 4:Upv fixed | LONG ENUM ae 8° io
+4:Upv fixed
+Expert | 10053 | Open circuit ratio -> MPP % 80 1 99 FLOAT 1
+Expert | 10103 | PV voltage fixed > MPP Vde 70 0 145 FLOAT 1
+asp | 10335 | Partial shading check 0:No 0:No 1Yes BOOL 1
+asp | 10336 | Time between checks min 5 1 30 FLOAT 1
+inst. | 10342 | VarioTrack watchdog enabled (SCOM) 0:No 0:No tes BOOL 1
+inst. | 10343 | VarioTrack watchdog delay (SCOM) sec 60 10 300 FLOAT 10
+Expert | 10200 | _ Reset PV energy meter s s s INT32, Signal
+asP | 10201 | Reset total produced PV energy meter s s s INT32, Signal
+Expert | 10043 | Reset daily solar production meters s s s INT32, Signal
+Expert | 10044 | Reset daily min-max s s s INT32, Signal
+V1.6.38 35 hereon
+
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10056 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 10057 | Restore factory settings s s s INT32 Signal
+Inst. 10058 Parameters saved in flash memory 1:Yes 0:No 1:Yes BOOL 1
+Expert 10039 ON of the VarioTrack Ss Ss Ss INT32 Signal
+Expert 10040 OFF of the VarioTrack Ss Ss Ss INT32 Signal
+Expert 10051 Reset of all VarioTrack Ss Ss Ss INT32 Signal
+Expert | 10088 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10089 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10090 | Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10092 | Contact activated in night mode (AUX 1) ONLY LEVEL | Menu
+Expert 10093 Activated in night mode (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10094 Delay of activation after entering night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 10095 Activation time for the auxiliary relay in night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 10318 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert 10319 Contact activated with fixed time schedule (AUX 1) 0:No 1:Yes BOOL 1
+Expert 10320 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10321 End hour (AUX 1) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10096 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 10198 VarioTrack is ON (AUX 1) 0:No 0:No BOOL 1
+Expert 10091 VarioTrack is OFF (AUX 1) 0:No 0:No BOOL 1
+Expert | 10308 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 10097 Battery undervoltage (AUX 1) 0:No 0:No BOOL 1
+Expert | 10098 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 10099 Earth fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 10100 PV error (48h without charge) (AUX 1) 0:No 0:No BOOL 1
+Expert | 10102 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 10104 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+
+V1.6.38 36
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Scom format__| Increment
+Expert | 10105 Absorption phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 10106 Equalization phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 10107 Floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 10108 Reduced floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 10109 Periodic absorption (AUX 1) 0:No 0:No BOOL 1
+Expert | 10110 | Contact active according to battery voltage (AUX 1) ONLY LEVEL | Menu
+Expert | 10111 Battery voltage 1 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10112 Battery voltage 1 (AUX 1) Vde 46.8 36 72 FLOAT 0.4
+Expert | 10113 Delay 1 (AUX 1) min 1 0 60 FLOAT 1
+Expert | 10114 Battery voltage 2 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10115 Battery voltage 2 (AUX 1) Vde 47.8 36 72 FLOAT 04
+Expert 10116 Delay 2 (AUX 1) min 10 ) 60 FLOAT 1
+Expert | 10117 Battery voltage 3 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10118 Battery voltage 3 (AUX 1) Vde 48.5 36 72 FLOAT 04
+Expert 10119 Delay 3 (AUX 1) min 60 ) 60 FLOAT 1
+Expert | 10120 Battery voltage to deactivate (AUX 1) Vde 54 36 72 FLOAT 04
+Expert 10121 Delay to deactivate (AUX 1) min 60 ) 480 FLOAT 5
+Expert | 10122 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10123 | Contact active according to battery temperature (AUX 1) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 10124 Contact activated with the temperature of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 10125 Contact activated over (AUX 1) °C 3 -10 50 FLOAT 1
+Expert 10126 Contact deactivated below (AUX 1) °c 5 -10 50 FLOAT 1
+Expert | 10127 Only activated if the battery is not in bulk phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10128 | Contact active according to SOC (AUX 1) Only with BSP ONLY LEVEL | Menu
+Expert 10129 Contact activated with the SOC 1 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 10130 Contact activated below SOC 1 (AUX 1) % SOC 50 ) 100 FLOAT 5
+Expert 10131 Delay 1 (AUX 1) hours 12 ) 99 FLOAT 0.25
+Expert 10132 Contact activated with the SOC 2 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 10133 Contact activated below SOC 2 (AUX 1) % 30 ) 100 FLOAT 5
+Expert 10134 Delay 2 (AUX 1) hours 0.2 ) 99 FLOAT 0.25
+Expert 10135 Contact activated with the SOC 3 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 37
+
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert 10136 Contact activated below SOC 3 (AUX 1) % 20 ) 100 FLOAT 5
+Expert 10137 Delay 3 (AUX 1) hours ) ) 99 FLOAT 0.25
+Expert 10138 Contact deactivated over SOC (AUX 1) % SOC 90 t) 100 FLOAT 5
+Expert 10139 Delay to deactivate (AUX 1) hours 0.2 ) 10 FLOAT 0.25
+Expert | 10140 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10141 Reset all settings (AUX 1) s s s INT32 Signal
+Expert | 10142 | AUXILIARY CONTACT 2 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10143 | Operating mode (AUX 2) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10144 | Combination of the events for the auxiliary contact (AUX 2) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10146 Contact activated in night mode (AUX 2) ONLY LEVEL | Menu
+Expert 10147 Activated in night mode (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10148 Delay of activation after entering night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 10149 Activation time for the auxiliary relay in night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 10322 Contact active with a fixed time schedule (AUX 2) ONLY LEVEL | Menu
+Expert 10323 Contact activated with fixed time schedule (AUX 2) 0:No 1:Yes BOOL 1
+Expert 10324 Start hour (AUX 2) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10325 End hour (AUX 2) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10150 Contact active on event (AUX 2) ONLY LEVEL | Menu
+Expert 10199 VarioTrack is ON (AUX 2) 0:No 0:No BOOL 1
+Expert 10145 VarioTrack is OFF (AUX 2) 0:No 0:No BOOL 1
+Expert | 10309 Remote entry (AUX 2) 0:No 0:No BOOL 1
+Expert | 10151 Battery undervoltage (AUX 2) 0:No 0:No BOOL 1
+Expert | 10152 Battery overvoltage (AUX 2) 0:No 0:No BOOL 1
+Expert 10153 Earth fault (AUX 2) 0:No 0:No BOOL 1
+Expert | 10154 PV error (48h without charge) (AUX 2) 0:No 0:No BOOL 1
+Expert | 10156 Overtemperature (AUX 2) 0:No 0:No BOOL 1
+Expert | 10158 Bulk charge phase (AUX 2) 0:No 0:No BOOL 1
+
+V1.6.38 38
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Scom format__| Increment
+Expert | 10159 Absorption phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 10160 Equalization phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 10161 Floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 10162 Reduced floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 10163 Periodic absorption (AUX 2) 0:No 0:No BOOL 1
+Expert | 10164 | Contact active according to battery voltage (AUX 2) ONLY LEVEL | Menu
+Expert | 10165 Battery voltage 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10166 Battery voltage 1 (AUX 2) Vde 46.8 36 72 FLOAT 0.4
+Expert | 10167 Delay 1 (AUX 2) min 1 0 60 FLOAT 1
+Expert | 10168 Battery voltage 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10169 Battery voltage 2 (AUX 2) Vde 47.8 36 72 FLOAT 04
+Expert 10170 Delay 2 (AUX 2) min 10 ) 60 FLOAT 1
+Expert | 10171 Battery voltage 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10172 Battery voltage 3 (AUX 2) Vde 48.5 36 72 FLOAT 04
+Expert 10173 Delay 3 (AUX 2) min 60 ) 60 FLOAT 1
+Expert | 10174 Battery voltage to deactivate (AUX 2) Vde 54 36 72 FLOAT 04
+Expert 10175 Delay to deactivate (AUX 2) min 60 ) 480 FLOAT 5
+Expert | 10176 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10177 | Contact active according to battery temperature (AUX 2) With BSP or BTS ONLY LEVEL | Menu
+Expert | 10178 Contact activated with the temperature of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 10179 Contact activated over (AUX 2) °C 3 -10 50 FLOAT 1
+Expert 10180 Contact deactivated below (AUX 2) °c 5 -10 50 FLOAT 1
+Expert | 10181 Only activated if the battery is not in bulk phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10182 | Contact active according to SOC (AUX 2) Only with BSP ONLY LEVEL | Menu
+Expert 10183 Contact activated with the SOC 1 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 10184 Contact activated below SOC 1 (AUX 2) % SOC 50 ) 100 FLOAT 5
+Expert 10185 Delay 1 (AUX 2) hours 12 ) 99 FLOAT 0.25
+Expert 10186 Contact activated with the SOC 2 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 10187 Contact activated below SOC 2 (AUX 2) % 30 ) 100 FLOAT 5
+Expert 10188 Delay 2 (AUX 2) hours 0.2 ) 99 FLOAT 0.25
+Expert 10189 Contact activated with the SOC 3 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 39
+
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert 10190 Contact activated below SOC 3 (AUX 2) % 20 ) 100 FLOAT 5
+Expert 10191 Delay 3 (AUX 2) hours ) ) 99 FLOAT 0.25
+Expert 10192 Contact deactivated over SOC (AUX 2) % SOC 90 t) 100 FLOAT 5
+Expert 10193 Delay to deactivate (AUX 2) hours 0.2 ) 10 FLOAT 0.25
+Expert | 10194 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10195 | _ Reset all settings (AUX 2) s s s INT32 Signal
+Expert | 10202 | AUXILIARY CONTACT 3 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10203 | Operating mode (AUX 3) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10204 | Combination of the events for the auxiliary contact (AUX 3) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10205 | Contact activated in night mode (AUX 3) ONLY LEVEL | Menu
+Expert 10206 Activated in night mode (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10207 Delay of activation after entering night mode (AUX 3) min 1 0 1440 FLOAT 1
+Expert | 10208 Activation time for the auxiliary relay in night mode (AUX 3) min 1 0 1440 FLOAT 1
+Expert | 10326 Contact active with a fixed time schedule (AUX 3) ONLY LEVEL | Menu
+Expert 10327 Contact activated with fixed time schedule (AUX 3) 0:No 1:Yes BOOL 1
+Expert 10328 Start hour (AUX 3) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10329 End hour (AUX 3) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10209 Contact active on event (AUX 3) ONLY LEVEL | Menu
+Expert 10210 VarioTrack is ON (AUX 3) 0:No 0:No BOOL 1
+Expert 10211 VarioTrack is OFF (AUX 3) 0:No 0:No BOOL 1
+Expert | 10310 Remote entry (AUX 3) 0:No 0:No BOOL 1
+Expert | 10212 Battery undervoltage (AUX 3) 0:No 0:No BOOL 1
+Expert | 10213 Battery overvoltage (AUX 3) 0:No 0:No BOOL 1
+Expert 10214 Earth fault (AUX 3) 0:No 0:No BOOL 1
+Expert | 10215 PV error (48h without charge) (AUX 3) 0:No 0:No BOOL 1
+Expert | 10216 Overtemperature (AUX 3) 0:No 0:No BOOL 1
+Expert | 10217 Bulk charge phase (AUX 3) 0:No 0:No BOOL 1
+
+V1.6.38 40
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Scom format__| Increment
+Expert | 10218 Absorption phase (AUX 3) 0:No 0:No BOOL 1
+Expert | 10219 Equalization phase (AUX 3) 0:No 0:No BOOL 1
+Expert | 10220 Floating (AUX 3) 0:No 0:No BOOL 1
+Expert | 10221 Reduced floating (AUX 3) 0:No 0:No BOOL 1
+Expert | 10222 Periodic absorption (AUX 3) 0:No 0:No BOOL 1
+Expert | 10223 | Contact active according to battery voltage (AUX 3) ONLY LEVEL | Menu
+Expert | 10224 Battery voltage 1 activate (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10225 Battery voltage 1 (AUX 3) Vde 46.8 36 72 FLOAT 0.4
+Expert | 10226 Delay 1 (AUX 3) min 1 0 60 FLOAT 1
+Expert | 10227 Battery voltage 2 activate (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10228 Battery voltage 2 (AUX 3) Vde 47.8 36 72 FLOAT 04
+Expert | 10229 Delay 2 (AUX 3) min 10 0 60 FLOAT 1
+Expert | 10230 Battery voltage 3 activate (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10231 Battery voltage 3 (AUX 3) Vde 48.5 36 72 FLOAT 04
+Expert 10232 Delay 3 (AUX 3) min 60 ) 60 FLOAT 1
+Expert | 10233 Battery voltage to deactivate (AUX 3) Vde 54 36 72 FLOAT 04
+Expert 10234 Delay to deactivate (AUX 3) min 60 ) 480 FLOAT 5
+Expert | 10235 Deactivate if battery in floating phase (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10236 | Contact active according to battery temperature (AUX 3) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 10237 Contact activated with the temperature of battery (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert 10238 Contact activated over (AUX 3) °C 3 -10 50 FLOAT 1
+Expert 10239 Contact deactivated below (AUX 3) °c 5 -10 50 FLOAT 1
+Expert | 10240 Only activated if the battery is not in bulk phase (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10241 Contact active according to SOC (AUX 3) Only with BSP ONLY LEVEL | Menu
+Expert 10242 Contact activated with the SOC 1 of battery (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert 10243 Contact activated below SOC 1 (AUX 3) % SOC 50 ) 100 FLOAT 5
+Expert 10244 Delay 1 (AUX 3) hours 12 ) 99 FLOAT 0.25
+Expert 10245 Contact activated with the SOC 2 of battery (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert 10246 Contact activated below SOC 2 (AUX 3) % 30 ) 100 FLOAT 5
+Expert 10247 Delay 2 (AUX 3) hours 0.2 ) 99 FLOAT 0.25
+Expert 10248 Contact activated with the SOC 3 of battery (AUX 3) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 41
+
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert 10249 Contact activated below SOC 3 (AUX 3) % 20 ) 100 FLOAT 5
+Expert 10250 Delay 3 (AUX 3) hours ) ) 99 FLOAT 0.25
+Expert 10251 Contact deactivated over SOC (AUX 3) % SOC 90 t) 100 FLOAT 5
+Expert 10252 Delay to deactivate (AUX 3) hours 0.2 ) 10 FLOAT 0.25
+Expert | 10253 Deactivate if battery in floating phase (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10254 | _ Reset all settings (AUX 3) s s s INT32 Signal
+Expert | 10255 | AUXILIARY CONTACT 4 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10256 | Operating mode (AUX 4) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10257 | Combination of the events for the auxiliary contact (AUX 4) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10258 | Contact activated in night mode (AUX 4) ONLY LEVEL | Menu
+Expert 10259 Activated in night mode (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10260 Delay of activation after entering night mode (AUX 4) min 1 0 1440 FLOAT 1
+Expert | 10261 Activation time for the auxiliary relay in night mode (AUX 4) min 1 0 1440 FLOAT 1
+Expert | 10330 Contact active with a fixed time schedule (AUX 4) ONLY LEVEL | Menu
+Expert 10331 Contact activated with fixed time schedule (AUX 4) 0:No 1:Yes BOOL 1
+Expert 10332 Start hour (AUX 4) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10333 End hour (AUX 4) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10262 Contact active on event (AUX 4) ONLY LEVEL | Menu
+Expert 10263 VarioTrack is ON (AUX 4) 0:No 0:No BOOL 1
+Expert 10264 VarioTrack is OFF (AUX 4) 0:No 0:No BOOL 1
+Expert | 10311 Remote entry (AUX 4) 0:No 0:No BOOL 1
+Expert | 10265 Battery undervoltage (AUX 4) 0:No 0:No BOOL 1
+Expert | 10266 Battery overvoltage (AUX 4) 0:No 0:No BOOL 1
+Expert 10267 Earth fault (AUX 4) 0:No 0:No BOOL 1
+Expert | 10268 PV error (48h without charge) (AUX 4) 0:No 0:No BOOL 1
+Expert | 10269 Overtemperature (AUX 4) 0:No 0:No BOOL 1
+Expert | 10270 Bulk charge phase (AUX 4) 0:No 0:No BOOL 1
+
+V1.6.38 42
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Scom format__| Increment
+Expert | 10271 Absorption phase (AUX 4) 0:No 0:No BOOL 1
+Expert | 10272 Equalization phase (AUX 4) 0:No 0:No BOOL 1
+Expert | 10273 Floating (AUX 4) 0:No 0:No BOOL 1
+Expert | 10274 Reduced floating (AUX 4) 0:No 0:No BOOL 1
+Expert | 10275 Periodic absorption (AUX 4) 0:No 0:No BOOL 1
+Expert | 10276 | Contact active according to battery voltage (AUX 4) ONLY LEVEL | Menu
+Expert | 10277 Battery voltage 1 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10278 Battery voltage 1 (AUX 4) Vde 46.8 36 72 FLOAT 0.4
+Expert | 10279 Delay 1 (AUX 4) min 1 0 60 FLOAT 1
+Expert | 10280 Battery voltage 2 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10281 Battery voltage 2 (AUX 4) Vde 47.8 36 72 FLOAT 04
+Expert 10282 Delay 2 (AUX 4) min 10 ) 60 FLOAT 1
+Expert | 10283 Battery voltage 3 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10284 Battery voltage 3 (AUX 4) Vde 48.5 36 72 FLOAT 04
+Expert 10285 Delay 3 (AUX 4) min 60 ) 60 FLOAT 1
+Expert | 10286 Battery voltage to deactivate (AUX 4) Vde 54 36 72 FLOAT 04
+Expert 10287 Delay to deactivate (AUX 4) min 60 ) 480 FLOAT 5
+Expert | 10288 Deactivate if battery in floating phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10289 | Contact active according to battery temperature (AUX 4) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 10290 Contact activated with the temperature of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10291 Contact activated over (AUX 4) °C 3 -10 50 FLOAT 1
+Expert 10292 Contact deactivated below (AUX 4) °c 5 -10 50 FLOAT 1
+Expert | 10293 Only activated if the battery is not in bulk phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10294 | Contact active according to SOC (AUX 4) Only with BSP ONLY LEVEL | Menu
+Expert 10295 Contact activated with the SOC 1 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10296 Contact activated below SOC 1 (AUX 4) % SOC 50 ) 100 FLOAT 5
+Expert 10297 Delay 1 (AUX 4) hours 12 ) 99 FLOAT 0.25
+Expert 10298 Contact activated with the SOC 2 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10299 Contact activated below SOC 2 (AUX 4) % 30 ) 100 FLOAT 5
+Expert 10300 Delay 2 (AUX 4) hours 0.2 ) 99 FLOAT 0.25
+Expert 10301 Contact activated with the SOC 3 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 43
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| VarioTrack parameter description Unit Default Min Max Scom format_| Increment
+Expert | 10302 Contact activated below SOC 3 (AUX 4) % 20 0 100 FLOAT 5
+
+Expert | 10303 Delay 3 (AUX 4) hours 0 0 99 FLOAT 0.25
+Expert | 10304 Contact deactivated over SOC (AUX 4) %Soc | 90 0 100 FLOAT 5
+
+Expert | 10305 Delay to deactivate (AUX 4) hours 0.2 0 10 FLOAT 0.25
+Expert | 10306 Deactivate if battery in floating phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+
+Expert | 10307 | Reset all settings (AUX 4) s s s INT32 Signal
+
+VarioTrack infos
+
+Unit on
+Nr__| VarioTrack information description Short desc. |the RCC_| Unit Format | Related parameter or description
+11000 | Battery voltage Ubat Vde Vv FLOAT
+11001 | Battery current Ibat ‘Adc A FLOAT
+11002 | Voltage of the PV generator Upv Vde Vv FLOAT
+11003 | Current of the PV generator Ipv ‘Adc A FLOAT
+11004 | Power of the PV generator Psol kW kW FLOAT
+11005 | Battery temperature That °C °C FLOAT
+11006 | Production in (Ah) for the current day Cd Ah Ah FLOAT
+11007 | Production in (kWh) for the current day Ed kWh kWh FLOAT
+11008 | Produced energy resettable counter kWhR kWh kWh FLOAT
+11009 | Total produced energy MWhT. MWh MWh FLOAT
+11010 | Production in (Ah) for the previous day Cat Ah Ah FLOAT
+11011 | Production in (Wh) for the previous day Edt kWh kWh FLOAT
+11012 | Number of parameters (in code) pCod FLOAT
+11013 | Number of parameters (in flash) pFla FLOAT
+11014 | Number of infos users iCod FLOAT
+0:VT-80 5
+
+. 1:VT-65 HORT
+
+11015 | Model of VarioTrack Type DVT AO ENUM
+3:VT-HV
+
+V1.6.38 44
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioTrack information description Short desc. | the RCC_| Unit Format | Related parameter or description
+See the VarioTrack user manual for a description of the modes.
+11016 | Operating mode Mode sient Mode 3: is available up to VT code version 1.5.8.
+Modes 8: to 11: are available from VT code version 1.5.10.
+9:Charge V
+10:Charge |
+11:Charge T
+12:Ch. bsp
+11017 | Max PV voltage for the current day PVmx Vde Vv FLOAT
+11018 | Max battery current of the current day bmx Adc A FLOAT
+11019 | Max power production for the current day PVxP kW kW FLOAT
+11020 | Max battery voltage for the current day Bmax Vde Vv FLOAT
+11021 | Min battery voltage for the current day Bmin Vde Vv FLOAT
+11025 | Number of irradiation hours for the current day Sd h h FLOAT
+11026 | Number of irradiation hours for the previous day Sd h h FLOAT
+O:No Error
+1:BatOverV
+2:Earth
+3:No Batt
+4:OverTemp
+5:BatOverV SHORT
+11034 | Type of error Er 6:PvOverV ENUM. | See the VarioTrack user manual for a description of these errors
+1
+12:HardErr
+11037 | Number of days before next equalization Eqin days days FLOAT
+
+V1.6.38 45
+
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr VarioTrack information description Shortdesc. | the RCC | Unit Format | Related parameter or description
+O:Bulk
+1:Absorpt.
+2:Equalize
+3:Floating
+4
+SHORT
+11038 | Battery cycle phase Phas ENUM
+11039 | Battery voltage (minute avg) UbaM Vde 7 FLOAT
+11040 | Battery current (minute avg) ibaM ‘Adc A FLOAT
+11041 | PV voltage (minute avg) UpvM Vde Vv FLOAT
+11043 | PV power (minute avg) PsoM kw kW FLOAT
+11044 | Battery temperature (minute avg) TbaM °C °C FLOAT
+11045 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT
+11046 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT
+11047 | ID type Idt FLOAT | VT65 and VT80 = 9079d (0x2601)
+11048 | ID batt voltage Idv Vde Vv FLOAT
+11049 | ID HW HW FLOAT
+11050 | ID SOFT msb Smsb FLOAT | See section "Software version encoding"
+11051 | ID SOFT Isb Slsb FLOAT | See section "Software version encoding”
+11052 | ID SID SID FLOAT
+7 0:Opened SHORT
+11061. | State of auxiliary relay 1 Aux 1Cheed ENUM
+7 0:Opened SHORT
+11062 | State of auxiliary relay 2 Aux 2 1:Coecd ENUM
+SHORT
+11063 | Relay aux 1 mode Aux ENUM
+
+V1.6.38 46
+
+Technical specification
+
+Xtender serial protocol appendix
+
+Unit on
+Nr_| VarioTrack information description Short desc. | the RCC_| Unit Format | Related parameter or description
+0:
+1:A
+21 SHORT
+11064 | Relay aux 2 mode Aux 2 aM ENUM
+4M
+5:G
+3:
+4:XTslave
+‘cati 5:VTslave SHORT
+11066 | Synchronisation state Syne ENUM
+8:VTmaster
+9:Autonom.
+10:VSslave
+11:VSmaster
+11067 | ID FID msb FLOAT | See section "FID encoding”
+11068 | ID FID Isb FLOAT | See section "FID encoding”
+; 0:0ff SHORT
+11069 | State of the VarioTrack VT state 1:0n ENUM
+11076 | Local daily communication error counter (CAN) locEr FLOAT
+‘i 0:Opened SHORT
+11077 | State of auxiliary relay 3 Aux3 1Gosed ENUM
+‘i 0:Opened SHORT
+11078 | State of auxiliary relay 4 Aux 4 1Gosed ENUM
+SHORT
+11079 | Relay aux 3 mode Aux3 ENUM
+
+V1.6.38
+
+47
+
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr VarioTrack information description Short desc. | the RCC Unit Format | Related parameter or description
+
+0:
+
+1s
+
+2:1 SHORT
+
+11080 | Relay aux 4 mode Aux 4 3M ENUM
+
+4:M
+
+5:G
+
+0:RM EN 0 SHORT
+
+11082 | Remote entry state RME 1:RMEN 1 ENUM
+VarioString parameters
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+Basic 14000 | BASIC SETTINGS ONLY LEVEL | Menu
+Expert | 14174 Block manual programming (dip-switch) 0:No. 0:No. 1:Yes BOOL 1
+Expert | 14001 Battery charge current (VS-120) Adc 120 0 120 FLOAT 2
+Expert | 14217 Battery charge current (VS-70) Adc 70 0 70 FLOAT 1
+Only 1 bit
+1:Automatic
+Basic 14002 Configuration of PV modules (VS-120) 1:Automatic 1:Automatic | 8:Parallel LONG ENUM 2:Independent
+4:Serial
+8:Parallel
+
+Basic 14067 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 14068 Restore factory settings Ss Ss Ss INT32 Signal
+Expert | 14003 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+Basic 14036 Synchronisation battery cycle with Xtender 1:Yes 0:No. 1:Yes BOOL 1
+Expert | 14001 Battery charge current (VS-120) Adc 120 0 120 FLOAT 2
+Expert | 14217 Battery charge current (VS-70) Adc 70 0 70 FLOAT 1
+Expert 14216 Battery undervoltage Vde 40 34 68.2 FLOAT 0.1
+Expert 14035, Temperature compensation mV/°Cicell | -3. 8 0 FLOAT 1
+Expert | 14004 Floating phase ONLY LEVEL | Menu
+Expert 14005, Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Expert | 14006 Force phase of floating Ss Ss Ss INT32 Signal
+Expert | 14007 Absorption phase ONLY LEVEL | Menu
+
+V1.6.38 48
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+Expert 14008 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert 14009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Expert | 14010 Force absorption phase s s s INT32 Signal
+Expert 14011 Absorption duration min 120 5 510 FLOAT 5
+Expert | 14012 End of absorption triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 14013 Current threshold to end absorption phase Adc 10 2 120 FLOAT 2
+Expert | 14016 Equalization phase ONLY LEVEL | Menu
+Expert 14017 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 14018 Force equalization s s s INT32 Signal
+Expert 14021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Expert 14020 Equalization current Adc 80 2 120 FLOAT 2
+Expert 14022 Equalization duration min 30 5 510 FLOAT 5
+Expert 14023 Equalization with fixed interval 1:Yes 0:No 1:Yes BOOL 1
+Expert | 14024 Days between equalizations days 26 1 365 FLOAT 1
+Expert | 14025 End of equalization triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 14026 Current threshold to end equalization phase Adc 10 4 30 FLOAT 1
+Expert | 14019 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 14027 New cycle ONLY LEVEL | Menu
+Expert | 14028 Force a new cycle s s s INT32 Signal
+Expert 14029 Voltage level 1 to start a new cycle Vde 48.8 37.9 68.2 FLOAT 0.1
+Expert 14030 Time period under voltage level 1 to start anew cycle min 30 ) 240 FLOAT 1
+Expert 14031 Voltage level 2 to start a new cycle Vde 47.2 37.9 68.2 FLOAT 0.1
+Expert 14032 Time period under voltage level 2 to start anew cycle min 2 ) 240 FLOAT 1
+Expert 14033 Cycling restricted 1:Yes 0:No 1:Yes BOOL 1
+Expert 14034 Minimal delay between cycles hours 1 ) 540 FLOAT 1
+Expert 14065 Battery overvoltage level Vde 68.2 37.9 68.2 FLOAT 0.1
+Expert 14066 Restart voltage level after a battery overvoltage Vde 64.8 37.9 68.2 FLOAT 0.1
+Expert | 14037 | SYSTEM ONLY LEVEL | Menu
+Expert | 14174 | Block manual programming (dip-switch) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 49
+
+Technical specification
+Xtender serial protocol appendix
+
+Level
+
+VarioString parameter description
+
+Unit
+
+Default
+
+Scom format__| Increment
+
+Expert
+
+14040
+
+Type of battery grounding
+
+1:No control
+
+1:No control
+
+8:Bat floating
+
+Only 1 bit
+
+1:No control
+2:Bat+ grounded
+4:Bat- grounded
+8:Bat floating
+
+LONG ENUM
+
+Expert
+
+14194
+
+Configuration for VS-120
+
+ONLY LEVEL | Menu
+
+Expert
+
+14041
+
+Type of PV grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14175
+
+Type of PV1 grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14042
+
+Type of PV2 grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14180
+
+Type of MPPT algorithm
+
+ONLY LEVEL | Menu
+
+Expert
+
+14043
+
+Type of MPP tracking algorithm PV
+
+8:LSF
+
+1:P&O
+
+8:LSF
+
+Only 1 bit
+1:P80
+2:06 ratio
+4:Upv fixed
+8:LSF
+
+LONG ENUM
+
+Expert
+
+14044
+
+PV voltage fixed (for PV in series)
+
+Vde
+
+700
+
+200
+
+FLOAT 10
+
+Expert
+
+14179
+
+PV voltage fixed (for PV in //)
+
+Vde
+
+500
+
+100
+
+FLOAT 10
+
+Expert
+
+14045
+
+Ratio of PV open circuit voltage
+
+0.7
+
+0.5
+
+FLOAT 0.010009766
+
+Expert
+
+14176
+
+Type of MPP tracking algorithm PV1
+
+8:LSF
+
+1:P&O
+
+8:LSF
+
+Only 1 bit
+1:P80
+2:06 ratio
+4:Upv fixed
+8:LSF
+
+LONG ENUM
+
+Expert
+
+14177
+
+PV1 voltage fixed
+
+Vde
+
+500
+
+100
+
+600
+
+FLOAT 10
+
+V1.6.38
+
+50
+
+& TUBER)
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+
+Expert 14178 Ratio of PV1 open circuit voltage 0.7 0.5 1 FLOAT 0.010009766
+Only 1 bit
+1:P&O
+
+Expert 14046 Type of MPP tracking algorithm PV2 8:LSF 1:P&O 8:LSF LONG ENUM 2:0€ ratio
+4:Upv fixed
+8:LSF
+
+Expert 14047 PV2 voltage fixed Vde 500 100 600 FLOAT 10
+
+Expert 14048, Ratio of PV2 open circuit voltage 0.7 0.5 1 FLOAT 0.010009766,
+
+Inst. 14192 Establishment time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14193 Averaging time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14190 PV wiring type erased from memory Ss Ss Ss INT32 Signal
+
+Expert | 14195 Configuration for VS-70 ONLY LEVEL | Menu
+Only 1 bit
+1:No control
+
+Expert | 14196 Type of PV grounding 1:No control | 1:No control | 8:PV floating | LONG ENUM | 2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+Expert | 14180 Type of MPPT algorithm ONLY LEVEL | Menu
+Only 1 bit
+1:P&O
+
+Expert 14197 Type of MPP tracking algorithm PV 8:LSF 1:P&O 8:LSF LONG ENUM 2:0€ ratio
+4:Upv fixed
+8:LSF
+
+Expert 14198 PV voltage fixed Vde 500 100 600 FLOAT 10
+
+Expert 14199 Ratio of PV open circuit voltage 0.7 0.5 1 FLOAT 0.010009766,
+
+Inst. 14192 Establishment time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14193 Averaging time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Expert | 14200 Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+
+, 4 1:Closed
+
+Expert | 14201 Remote entry active 2:Open 1:Closed 4:Edge LONG ENUM | 9:65en
+4:Edge
+
+Expert 14202 ON/OFF command 0:No. 0:No. 1:Yes BOOL 1
+
+Expert 14203 Activated by AUX1 state 0:No. 0:No. 1:Yes BOOL 1
+
+Expert 14204 Start equalization 0:No. 0:No. BOOL 1
+
+V1.6.38 51 Aorigen
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Scom format__| Increment
+Expert | 14205 Send a message when remote entry changes state 0:No 0:No BOOL 1
+Inst. 14218 | VarioString watchdog enabled (SCOM) 0:No 0:No BOOL 1
+Inst. 14219 | VarioString watchdog delay (SCOM) sec 60 10 FLOAT 10
+Expert | 14182 | Reset PV energy meter s s INT32 Signal
+asp 14183 | Reset total produced PV energy meter s s INT32 Signal
+Expert | 14051 Reset daily solar production meters s s INT32 Signal
+Expert | 14052 | — Reset daily min-max s s INT32 Signal
+Basic 14067 Restore default settings Ss Ss INT32 Signal
+Inst. 14068 | Restore factory settings s s INT32 Signal
+Inst. 14069 Parameters saved in flash memory 1:Yes 0:No BOOL 1
+Expert 14038 ON of the VarioString Ss Ss INT32 Signal
+Expert 14039 OFF of the VarioString Ss Ss INT32 Signal
+Expert 14059 Reset of all VarioString Ss Ss INT32 Signal
+Expert | 14070 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 14071 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+0:Any O:Any 1:All Only 1 bit
+Expert | 14072 | Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 14073 Contact activated in night mode (AUX 1) ONLY LEVEL | Menu
+Expert 14074 Activated in night mode (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14075 Delay of activation after entering night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 14076 Activation time for the auxiliary relay in night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 14206 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert 14207 Contact activated with fixed time schedule (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14208 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Expert 14209 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 14077 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 14188 VarioString is ON (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14078 VarioString is OFF (AUX 1) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 52
+
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Scom format__| Increment
+Expert | 14214 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 14079 Battery undervoltage (AUX 1) 0:No 0:No BOOL 1
+Expert | 14080 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 14081 Earth fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 14082 PV error (48h without charge) (AUX 1) 0:No 0:No BOOL 1
+Expert | 14083 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 14084 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14085 Absorption phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14086 Equalization phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14087 Floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 14088 Reduced floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 14089 Periodic absorption (AUX 1) 0:No 0:No BOOL 1
+Expert | 14090 | Contact active according to battery voltage (AUX 1) ONLY LEVEL | Menu
+Expert | 14091 Battery voltage 1 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14092 Battery voltage 1 (AUX 1) Vde 46.8 36 72 FLOAT 04
+Expert | 14093 Delay 1 (AUX 1) min 1 0 60 FLOAT 1
+Expert | 14094 Battery voltage 2 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14095 Battery voltage 2 (AUX 1) Vde 478 36 72 FLOAT 0.4
+Expert 14096 Delay 2 (AUX 1) min 10 ) 60 FLOAT 1
+Expert | 14097 Battery voltage 3 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14098 Battery voltage 3 (AUX 1) Vde 48.5 36 72 FLOAT 04
+Expert 14099 Delay 3 (AUX 1) min 60 0 60 FLOAT 1
+Expert | 14100 Battery voltage to deactivate (AUX 1) Vde 54 36 72 FLOAT 0.4
+Expert 14101 Delay to deactivate (AUX 1) min 60 ) 480 FLOAT 5
+Expert | 14102 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14103 | Contact active according to battery temperature (AUX 1) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 14104 Contact activated with the temperature of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14105 Contact activated over (AUX 1) °C 3 -10 50 FLOAT 1
+Expert 14106 Contact deactivated below (AUX 1) °c 5 -10 50 FLOAT 1
+Expert | 14107 Only activated if the battery is not in bulk phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14108 | Contact active according to SOC (AUX 1) Only with BSP ONLY LEVEL | Menu
+
+V1.6.38 53
+
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level_| Nr__| VarioString parameter description Unit Default Min Max Scom format _| Increment
+Expert_| 14109 Contact activated with the SOC 1 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert_| 14110 Contact activated below SOG 1 (AUX 1) %S0C | 50 0 100 FLOAT 5
+Expert | 14111 Delay 1 (AUX 1) hours 12 0 99 FLOAT 0.25
+Expert | 14112 Contact activated with the SOC 2 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14113 Contact activated below SOG 2 (AUX 1) % 30 0 100 FLOAT 5
+Expert | 14114 Delay 2 (AUX 1) hours | 0.2 0 99 FLOAT 0.25
+Expert | 14115 Contact activated with the SOC 3 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14116 Contact activated below SOG 3 (AUX 1) % 20 0 100 FLOAT 5
+Expert | 14117 Delay 3 (AUX 1) hours [0 0 99 FLOAT 0.25
+Expert | 14118 Contact deactivated over SOC (AUX 1) %S0c | 90 0 100 FLOAT 5
+Expert_| 14119 Delay to deactivate (AUX 1) hours | 0.2 0 10 FLOAT 0.25
+Expert | 14120 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:¥es BOOL 1
+Expert_| 14121 | Reset all settings (AUX 1) s s s INTS2 Signal
+Expert | 14122 | AUXILIARY CONTACT 2 ONLY LEVEL | Menu
+Only 1 bit
+. , _. |8:Manual T:Automatic ,
+Expert | 14123 | Operating mode (AUX 2) :Automatic | 1:Automatic | 8M LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any +All Only 1 bit
+Expert | 14124 | Combination of the events for the auxiliary contact (AUX 2) (Function | (Function | (Function | LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 14125 | Contact activated in night mode (AUX 2) ONLY LEVEL | Menu
+Expert | 14126 ‘Activated in night mode (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14127 Delay of activation after entering night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 14128 Activation time for the auxiliary relay in night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 14210 | Contact active with a fixed time schedule (AUX 2) ONLY LEVEL | Menu
+Expert | 14211 Contact activated with fixed time schedule (AUX 2) 0:No 0:No 1:¥es BOOL 1
+Expert | 14212 Start hour (AUX 2) Minutes | 420=07:00 _ | 0=00:00 1440=24:00 | INT32, 1
+Expert | 14213 End hour (AUX 2) Minutes _ | 1200=20:00 | 0-00-00 1440=24:00 | INT32, 1
+Expert | 14129 | Contact active on event (AUX 2) ONLY LEVEL _| Menu
+Expert | 14189 VarioString is ON (AUX 2) 0:No 0:No 1:¥es BOOL 1
+Expert_| 14130 VarioString is OFF (AUX 2) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+54
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| VarioString parameter description Unit Default Min Max Scom format_| Increment
+Expert | 14215 Remote entry (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14131 Battery undervoltage (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14132 Battery overvoltage (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14133 Earth fault (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14134 PV error (48h without charge) (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14135 Overtemperature (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14136 Bulk charge phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14137 Absorption phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14138 Equalization phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14139 Floating (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14140 Reduced floating (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14141 Periodic absorption (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14142 | Contact active according to battery voltage (AUX 2) ONLY LEVEL | Menu
+Expert | 14143 Battery voltage 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14144 Battery voltage 1 (AUX 2) Vde 46.8 36 72 FLOAT 04
+Expert | 14145 Delay 1 (AUX 2) min 1 0 60 FLOAT 1
+Expert | 14146 Battery voltage 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14147 Battery voltage 2 (AUX 2) Vde 478 36 72 FLOAT 04
+Expert | 14148 Delay 2 (AUX 2) min 10 0 60 FLOAT 1
+Expert | 14149 Battery voltage 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14150 Battery voltage 3 (AUX 2) Vde 48.5 36 72 FLOAT 04
+Expert | 14151 Delay 3 (AUX 2) min 60 0 60 FLOAT 1
+Expert | 14152 Battery voltage to deactivate (AUX 2) Vde 54 36 72 FLOAT 04
+Expert | 14153 Delay to deactivate (AUX 2) min 60 0 480 FLOAT 5
+Expert | 14154 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14155 | Contact active according to battery temperature (AUX 2) With BSP or BTS ONLY LEVEL | Menu
+Expert | 14156 Contact activated with the temperature of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14157 Contact activated over (AUX 2) °C 3 -10 50 FLOAT 1
+Expert | 14158 Contact deactivated below (AUX 2) °C 5 -10 50 FLOAT 1
+Expert | 14159 Only activated if the battery is not in bulk phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14160 | Contact active according to SOC (AUX 2) Only with BSP ONLY LEVEL | Menu
+
+V1.6.38
+
+55
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| VarioString parameter description Unit Default Min Max Scom format_| Increment
+Expert | 14161 Contact activated with the SOC 1 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14162 Contact activated below SOC 1 (AUX 2) %So0c  |50 0 100 FLOAT 5
+Expert | 14163 Delay 1 (AUX 2) hours 12 0 99 FLOAT 0.25
+Expert | 14164 Contact activated with the SOC 2 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14165 Contact activated below SOC 2 (AUX 2) % 30 0 100 FLOAT 5
+Expert | 14166 Delay 2 (AUX 2) hours 0.2 0 99 FLOAT 0.25
+Expert | 14167 Contact activated with the SOC 3 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14168 Contact activated below SOC 3 (AUX 2) % 20 0 100 FLOAT 5
+Expert | 14169 Delay 3 (AUX 2) hours 0 0 99 FLOAT 0.25
+Expert | 14170 Contact deactivated over SOC (AUX 2) % SOC | 90 0 100 FLOAT 5
+Expert | 14171 Delay to deactivate (AUX 2) hours 0.2 0 10 FLOAT 0.25
+Expert | 14172 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14173 | _ Resetall settings (AUX 2) s s s INT32 Signal
+
+VarioString infos
+
+Unit on
+Nr__| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+15000 | Battery voltage Ubat Vde Vv FLOAT
+15001 | Battery current Ibat Adc A FLOAT
+
+O:Bulk
+
+1:Absorpt.
+
+2:Equalize
+
+SHORT
+
+15002 | Battery cycle phase Phas ENUM
+
+V1.6.38 56
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_ | VarioString information description Short desc. |the RCC_| Unit Format | Related parameter or description
+0:Unknown
+independ.
+15003 | PV type of wiring conf 2:Series stone
+3:Parallel
+4-Error
+15004 | PV voltage Upy Vde Vv FLOAT
+15005 | PVi voltage Upvi Vde Vv FLOAT
+15006 | PV2 voltage Upv2 Vde Vv FLOAT
+15007 | PV current Ipy ‘Ade A FLOAT
+15008 | PV1 current Ipvi ‘Ade A FLOAT
+15009 | PV2 current Ipv2 ‘Ade A FLOAT
+15010 | PV power Ppv kW kW FLOAT
+15011 | PVi power Ppvi kW kW FLOAT
+15012 | PV2 power Ppv2 kW kW FLOAT
+O:Night
+1:Security
+2:0FF
+3:Charge
+4:ChargeV
+15013 | PV operating mode Mode 5:Charge | sient
+6:ChargeP
+7:Chargelpy
+8:ChargeT
+9:
+O:Night
+1:Security
+2:0FF
+3:Charge
+4:ChargeV
+15014 | PV1 operating mode Modt 5:Charge | stone
+6:ChargeP
+7:Chargelpy
+8:ChargeT
+V1.6.38 57
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioString information description Short desc. the Hc Unit Format | Related parameter or description
+
+O:Night
+
+1:Security
+
+2:0FF
+
+3:Charge
+
+:Charge'
+
+15015 | PV2 operating mode Mod2 5:Charge I stone
+
+6:ChargeP
+
+7:Chargelpv
+
+&:ChargeT
+
+9:
+
+10:Ch.Ibsp
+15016 | Production PV in (Ah) for the current day Cad Ah Ah FLOAT
+15017 | Production PV in (kWh) for the current day Ed kWh kWh FLOAT
+15018 | Production PV1 in (kWh) for the current day Edt kWh kWh FLOAT
+15019 | Production PV2 in (kWh) for the current day Ed2 kWh kWh FLOAT
+15020 | Produced PV energy resettable counter kWhR kWh kWh FLOAT
+15021 | Produced PV1 energy resettable counter kWht kWh kWh FLOAT
+15022 | Produced PV2 energy resettable counter kWh2 kWh kWh FLOAT
+15023 | Total PV produced energy MWhT MWh MWh FLOAT
+15024 | Total PV1 produced energy MWht MWh MWh FLOAT
+15025 | Total PV2 produced energy MWh2 MWh MWh FLOAT
+15026 | Production PV in (Ah) for the previous day Cat Ah Ah FLOAT
+15027 | Production PV in (Wh) for the previous day Ed- kWh kWh FLOAT
+15028 | Production PV1 in (Wh) for the previous day Edt- kWh kWh FLOAT
+15029 | Production PV2 in (Wh) for the previous day Ed2- kWh kWh FLOAT
+15030 | Number of irradiation hours for the current day Sd h h FLOAT
+15031_| Number of irradiation hours for the previous day Sd h h FLOAT
+15032_| Battery temperature Tat °C °C FLOAT
+15033 | Max PV voltage for the current day Upmx Vde Vv FLOAT
+15034 | Max PV1 voltage for the current day Upmi Vde Vv FLOAT
+15035 | Max PV2 voltage for the current day Upm2 Vde Vv FLOAT
+15036 | Max battery current of the current day Ibmx Adc A FLOAT
+15037 | Max PV power for the current day Ppmx kW. kW FLOAT
+15038 | Max PV1 power for the current day Ppmi kW kW FLOAT
+15039 | Max PV2 power for the current day Ppm2 kW. kW FLOAT
+15040 | Max battery voltage for the current day Ubmx Vde Vv FLOAT
+
+V1.6.38 58
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+
+15041 | Min battery voltage for the current day Ubmn Vde Vv FLOAT
+15042 | Time in absorption of the current day Tabs h h FLOAT
+15043 | BAT- and Earth voltage Baté Vde Vv FLOAT
+15044 | PV- and Earth voltage pv-E Vde Vv FLOAT
+15045. | PV1- and Earth voltage pvié Vde Vv FLOAT
+15046 | PV2- and Earth voltage pv2E Vde Vv FLOAT
+
+O:None
+
+1:OverV_B
+
+2:OverV_PV
+
+3:OverV_PV1
+
+4:OverV_PV2
+
+5:Overl_PV
+
+6:Overl_PV1
+
+7:Overl_PV2 SHORT
+18049 | Type of error Er 8:GroundBat ENUM
+
+9:GroundPV
+
+10:GroundPV1
+
+11:GroundPV2
+
+12:OverTemp
+
+13:UnderV_B
+
+14:Cabling
+
+1:Other
+
+od wi 0:No SHORT
+
+15050 | Synchronized with Xtender battery cycle Sync tvs ENUM
+
+0
+
+1
+
+2
+
+3
+
+4:XTslave
+
+“cath 5:VTslave SHORT
+
+15051. | Synchronisation state Sync 8 ENUM
+
+7
+
+8:VTmaster
+
+9:Autonom
+
+10:VSslave
+
+11:VSmaster
+15052_| Number of days before next equalization Eqin days days FLOAT
+
+V1.6.38
+
+59
+
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr_| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+
+15053 | Battery set point Bset Vde 7 FLOAT
+15054 | Battery voltage (minute avg) Ubat Vde Vv FLOAT
+15055 | Battery voltage (minute max) Ubat+ Vde Vv FLOAT
+15056 | Battery voltage (minute min) Ubat- Vde Vv FLOAT
+15057 | Battery current (minute avg) Ibat Adc A FLOAT
+15058 | PV voltage (minute avg) Upv Vde Vv FLOAT
+15059 | PV1 voltage (minute avg) Upvi Vde Vv FLOAT
+15060 | PV2 voltage (minute avg) Upv2 Vde Vv FLOAT
+15061 | PV power (minute avg) Ppv kW KW. FLOAT
+15062 | PV1 power (minute avg) Ppvi kW kW. FLOAT
+15063 | PV2 power (minute avg) Ppv2 kW KW. FLOAT
+15064 | Battery temperature (minute avg) Tat °C °C FLOAT
+15065 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT
+15066 | Electronic temperature 1 (minute max) Tpi+ °C °C FLOAT
+15067 | Electronic temperature 1 (minute min) Tpl- °C °C FLOAT
+15068 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT
+15069 | Electronic temperature 2 (minute max) Tp2+ °C °C FLOAT
+15070 | Electronic temperature 2 (minute min) Tp2- °C °C FLOAT
+15071 | Number of parameters (in code) pCod FLOAT
+15072. | Number of parameters (in flash) pFla FLOAT
+15073 | Number of infos users iCod FLOAT
+15074 | ID type Iat FLOAT | VS120 = 12801d (0x3201), VS70 = 13057d (0x3301)
+15075 | ID bat voltage Idv Vde Vv FLOAT
+15076 | ID HW HW FLOAT
+15077 | ID SOFT msb Smsb FLOAT | See section "Software version encoding”
+15078 | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+15079 | ID SID SID FLOAT
+15088 | State of auxiliary Aux 1 Aux 1 O:Opened sient
+15089 | State of auxiliary Aux 2 Aux 2 (Opened stone
+
+SHORT
+15090 | Relay Aux 1 mode Aux 1 ENUM
+
+V1.6.38 60
+
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioString information description Short desc. _| the RCC Format | Related parameter or description
+SHORT
+15091 | Relay Aux 2 mode Aux 2 ENUM
+15102 [1D FID msb FLOAT | See section "FID encoding”
+15103 | 1D FID Isb FLOAT | See section "FID encoding”
+ee 0:0ff SHORT
+15108 | State of the VarioString VS state ton ENUM
+15109 | Local daily communication error counter (CAN) locEr FLOAT
+O:RM EN 0 SHORT
+15111 | Remote entry state RME AMEN 4 ENUM
+
+RCC messages
+
+Level Nr___| Messages
+V.O. 0 | Warning (000): Battery low
+
+V.O. 1 Waring (001): Battery too high
+
+V.O. 2 __| Waring (002): Bulk charge too long
+
+V.O. 3 | (03): AC-In synchronization in progress
+
+V.O. 4 __ | Waring (004): Input frequency AC-In wrong
+V.O. 5 __ | Warning (005): Input frequency AC-In wrong
+V.O. 6 __| Warning (006): Input voltage AC-In too high
+V.O. 7 | Warning (007): Input voltage AC-In too low
+V.O. 8 __ | Halted (008): Inverter overload SC
+
+V.O. 9 __ | Halted (009): Charger short circuit
+
+V.O. 10 | (010): System start-up in progress
+
+V.O. 11 | Warming (011): AC-In Energy quota
+
+V.O. 12__| (012): Use of battery temperature sensor
+
+V.O. 13 _ | (013): Use of additional remote control
+
+V.O. 14 | Halted (014): Over temperature EL
+
+VO. 15 _| Halted (015): Inverter overload BL
+
+V.O. 16 | Waming (016): Fan error detected
+
+V.O. 17__| (017): Programing mode
+
+V.O. 18 _ | Warming (018): Excessive battery voltage ripple
+
+V1.6.38 61
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 19 _| Halted (019): Battery undervoltage
+
+VO. 20 | Halted (020): Battery overvoltage
+
+V.O. 21 __| (021): Transfer not authorized, AC-Out current is higher than {1107}
+Vv.O. 22 | Halted (022): Voltage presence on AC-Out
+
+V.O. 23 _ | Halted (023): Phase not defined
+
+Vv.O. 24 | Warming (024): Change the clock battery
+
+V.O. 25 _| Halted (025): Unknown Command board. Software upgrade needed
+V.O. 26 _| Halted (026): Unknown Power board. Software upgrade needed
+V.O. 27__ | Halted (027): Unknown extension board. Software upgrade needed
+V.O. 28 _| Halted (028): Voltage incompatibility Power - Command
+
+V.O. 29 _ [Halted (029): Voltage incompatibility Ext. - Command
+
+V.O. 30 _| Halted (030): Power incompatibility Power - Command
+
+V.O. 31 __ | Halted (031): Command board software incompatibility
+
+V.O. 32__ | Halted (032): Power board software incompatibility
+
+V.O. 33 _| Halted (033): Extension board software incompatibility
+
+V.O. 34 _| Halted (034): FID corruption, call factory
+
+V.O. 35 _ | (035): Memory structure modified
+
+V.O. 36 _| Halted (036): Parameter file lacking
+
+V.O. 37__ | Waming (037): Message file lack. SW upgrade advised
+
+V.O. 38 __ | Waming (038): Upgrade of the device software advised
+
+V.O. 39 | Waming (039): Upgrade of the device software advised
+
+V.O. 40 | Waming (040): Upgrade of the device software advised
+
+V.O. 41 [Waring (041): Over temperature TR
+
+V.O. 42__| Halted (042): Unauthorized energy source at the output
+
+V.O. 43 | (043): Start of monthly test
+
+V.O. 44 _| (044): End of successfully monthly test
+
+V.O. 45 | Warning (045): Monthly autonomy test failed
+
+V.O. 46 _| (046): Start of weekly test
+
+V.O. 47 __| (047): End of successfully weekly test
+
+V.O. 48 _ | Warming (048): Weekly autonomy test failed
+
+V.O. 49 | (049): Transfer opened because AC-In max current exceeded {1107}
+V.O. 50 _| Error (050): Incomplete data transfer
+
+Vv.O. 51 _ | (051): The update is finished
+
+VO. 52 _| (052): Your installation is already updated
+
+V.O. 53 _ | Halted (053): Devices not compatible, software update required
+V.O. 54 _| (054): Please wait. Data transfer in progress
+
+V1.6.38
+
+62
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 55 _| Error (055): No SD card inserted
+
+VO. 56 _| Waming (056): Upgrade of the RCC software advised
+
+V.O. 57 _ | (057): Operation finished successfully
+
+Vv.O. 58 _| Halted (058): Master synchronization missing
+
+V.O. 59 _| Halted (059): Inverter overload HW
+
+Vv.O. 60 _| Waring (060): Time security 1512 AUX1
+
+V.O. 61 _| Waming (061): Time security 1513 AUX2
+
+V.O. 62 __ | Waming (062): Genset, no AC-In coming after AUX command
+V.O. 63 _| (063): Save parameter XT
+
+V.O. 64 _| (064): Save parameter BSP
+
+V.O. 65 _| (065): Save parameter VarioTrack
+
+V.O. 71 | Error (071): Insufficient disk space on SD card
+
+V.O. 72__ | Halted (072): COM identification incorrect
+
+V.O. 73 _ | (073): Datalogger is enabled on this RCC
+
+V.O. 74__ | (074): Save parameter Xcom-MS
+
+V.O. 75 _ | (075): MPPT MS address changed successfully
+
+V.O. 76 : Error during change of MPPT MS address
+
+V.O. 77 : Wrong MPPT MS DIP Switch position
+
+V.O. 78 _ | (078): SMS or email sent
+
+V.O. 79 _ | Halted (079): More than 9 XTs in the system
+
+V.O. 80 _| Halted (080): No battery (or reverse polarity)
+
+V.O. 81 _| Waming (081): Earthing fault
+
+V.O. 82__| Halted (082): PV overvoltage
+
+V.O. 83 _ | Waming (083): No solar production in the last 48h
+
+V.O. 84 _| (084): Equalization performed
+
+V.O. 85 _| Error (085): Modem not available
+
+V.O. 86 _| Error (086): Incorrect PIN code, unable to initiate the modem
+V.O. 87 _| Error (087): Insufficient Signal from GSM modem
+
+V.O. 88 _| Error (088): No connection to GSM network
+
+V.O. 89 _| Error (089): No Xcom server access
+
+V.O. 90 _| (090): Xcom server connected
+
+V.O. 91 _ | Waming (091): Update finished. Update software of other RCC/Xcom-232i
+Vv.O. 92 _| Error (092): More than 4 RCC or Xcom in the system
+
+VO. 93 _| Error (093): More than 1 BSP in the system
+
+V.O. 94 _| Error (094): More than 1 Xcom-MS in the system
+
+V.O. 95 _| Error (095): More than 15 VarioTrack in the system
+
+V1.6.38
+
+63
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 121 __ | Error (121): Impossible communication with target device
+VO. 122 D card corrupted
+
+V.O. 123 D card not formatted
+
+Vv.O. 124 _ | Error (124): SD card not compatible
+
+V.O. 125 D card format not recognized. Should be FAT
+Vv.O. 126 SD card write protected
+
+V.O. 127 __ | Error (127): SD card, file(s) corrupted
+
+V.O. 128 D card file or directory could not be found
+V.O. 129 _ | Error (129): SD card has been prematurely removed
+V.O. 130__| Error (130): Update directory is empty
+
+V.O. 131__ | (131): The VarioTrack is configured for 12V batteries
+V.O. 132__ | (132): The VarioTrack is configured for 24V batteries
+V.O. 133 __ | (133): The VarioTrack is configured for 48V batteries
+V.O. 134 _ | (134): Reception level of the GSM signal
+
+V.O. 137__| (137): VarioTrack master synchronization lost
+
+V.O. 138 _ | Error (138): XT master synchronization lost
+
+V.O. 139 _ | (139): Synchronized on VarioTrack master
+
+V.O. 140 __ | (140): Synchronized on XT master
+
+V.O. 141__ | Error (141): More than 1 Xcom-SMS in the system
+
+V.O. 142__ | Error (142): More than 15 VarioString in the system
+
+V.O. 143 _ | (143): Save parameter Xcom-SMS.
+
+V.O. 144 _ | (144): Save parameter VarioString
+
+V.O. 145 _ | Error (145): SIM card blocked, PUK code required
+
+V.O. 146 _ | Error (146): SIM card missing
+
+V.O. 147 __| Error (147): Install R532 firmware release prior to install an older release
+V.O. 148 _ | (148): Datalogger function interrupted (SD card removed)
+V.O. 149 _ | Error (149): Parameter setting incomplete
+
+V.O. 150 _ | Error (150): Cabling error between PV and VarioString
+V.O. 162 ommunication loss with RCC or Xcom-232i
+V.O. 163 ommunication loss with Xtender
+
+V.O. 164 | Error (164): Communication loss with BSP
+
+V.O. 165 ommunication loss with Xcom-MS
+
+Vv.O. 166 Communication loss with VarioT rack
+
+VO. 167 __| Error (167): Communication loss with VarioString
+
+V.O. 168 _| (168): Synchronized with VarioString master
+
+V.O. 169 _ | (169): Synchronization with VarioString master lost
+
+V1.6.38
+
+64
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+
+V.O. 170 _ | Warning (170): No solar production in the last 48h on PV1
+
+VO. 171__ | Warning (171): No solar production in the last 48h on PV2
+
+V.O. 172__ | Error (172): FID change impossible. More than one unit.
+
+Vv.O. 173 _ | Error (173): Incompatible Xtender. Please contact Studer Innotec SA
+V.O. 174 __ | (174): Inaccessible parameter, managed by the Xcom-CAN
+
+Vv.O. 175 __ | Halted (175): Critical undervoltage
+
+V.O. 176 _ | (176): Calibration setting lost
+
+V.O. 177__ | (177): An Xtender has started up
+
+V.O. 178 _ | (178): No BSP nor Xcom-CAN. Necessary for programming SOC
+V.O. 179 _ | (179): No BTS or BSP. Necessary for programming with temperature
+V.O. 180 _ | (180): Command entry activated
+
+V.O. 181 __ | Error (181): Disconnection of BTS
+
+V.O. 182__| (182): BTS/BSP battery temperature measurement used by a device
+V.O. 183 _ | Halted (183): An Xtender has lost communication with the system
+V.O. 184 _ | Error (184): Check phase orientation or circuit breakers state on AC-In
+V.O. 185 _ | Warning (185): AC-In voltage level with delay too low
+
+V.O. 186 _ | Halted (186): Critical undervoltage (fast)
+
+V.O. 187 _ | Halted (187): Critical overvoltage (fast)
+
+V.O. 188 _| (188): CAN stage startup
+
+V.O. 189 _| Error (189): Incompatible configuration file
+
+V.O. 190 _ | (190): The Xcom-SMS is busy
+
+V.O. 191 _ | (191): Parameter not supported
+
+V.O. 192 __ | (192): Unknown reference
+
+V.O. 193 _ | (193): Invalid value
+
+V.O. 194 _ | (194): Value too low
+
+V.O. 195 _ | (195): Value too high
+
+V.O. 196 | (196): Writing error
+
+V.O. 197 _ | (197): Reading error
+
+V.O. 198 _ | (198): User level insufficient
+
+V.O. 199 _ | (199): No data for the report
+
+V.O. 200 _| Error (200): Memory full
+
+V.O. 202 | Waming (202): Battery alarm arrives
+
+Vv.O. 203 _| (203): Battery alarm leaves
+
+VO. 204 _| Error (204): Battery stop arrives
+
+V.O. 205 _| (205): Battery stop leaves
+
+V.O. 206 _| Halted (206): Board hardware incompatibility
+
+V1.6.38
+
+65
+
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+
+V.O. 207 _ | (207): AUX1 relay activation
+
+VO. 208 | (208): AUX1 relay deactivation
+
+V.O. 209 _ | (209): AUX2 relay activation
+
+Vv.O. 210 __| (210): AUX2 relay deactivation
+
+V.O. 211 __ | (211): Command entry deactivated
+
+Vv.O. 212 _| Error (212): VarioTrack software incompatibility. Upgrade needed
+V.O. 213 _ | (213): Battery current limitation by the BSP stopped
+
+V.O. 214 _ | Waming (214): Half period RMS voltage limit exceeded, transfer opened
+V.O. 215 _ | Waming (215): UPS limit reached, transfer opened
+
+V.O. 216 _ | Waming (216): Scom watchdog caused the reset of Xcom-232i
+V.O. 217 _ | Waming (217): CAN problem at Xtender declaration
+
+V.O. 218 _ | Waming (218): CAN problem while writing parameters
+
+V.O. 222 _ | (222): Front ON/OFF button pressed
+
+V.O. 223 _| (223): Main OFF detected
+
+V.O. 224 | (224): Delay before closing transfer relay in progress {1580}
+V.O. 225 _| Error (225): Communication with lithium battery lost
+
+V.O. 226 _| (226): Communication with lithium battery restored
+
+V.O. 227 _| Error (227): Overload on high voltage DC side
+
+V.O. 228
+
+V.O. 229 _| Error (229): Short-circuit on high voltage DC side
+
+V.O. 230 _ | (230): Bat. notification arrives
+
+V.O. 231 __| (231): Bat. notification leaves
+
+V.O. 232 _| Error (232): SD card, unable to access file
+
+V.O. 233 _| Error (233): SD card, file header corruption
+
+V.O. 234 __| Error (234): SD card, file checksum error
+
+V.O. 235 _ | Halted (235): Communication lost with Xcom-CAN
+
+V1.6.38 66
+
