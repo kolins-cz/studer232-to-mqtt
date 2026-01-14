@@ -136,17 +136,27 @@ int main(int argc, const char *argv[])
         return rc;
     }
 
+    // Enable automatic reconnection
+    mosquitto_reconnect_delay_set(mqtt_client, 1, 30, true);
+
     rc = mosquitto_connect(mqtt_client, mqtt_server, mqtt_port, 60);
     if (rc != MOSQ_ERR_SUCCESS) {
-        printf("Connect failed, return code %d\n", rc);
-        return rc;
+        printf("Connect failed, return code %d - continuing anyway (will retry)\n", rc);
+    } else {
+        printf("Connected to MQTT broker\n");
+        
+        // Publish "online" status after connecting
+        char *online_status = "online";
+        rc = mosquitto_publish(mqtt_client, NULL, "studer/commstatus", strlen(online_status), online_status, 0, true);
+        if (rc != MOSQ_ERR_SUCCESS) {
+            printf("Publish online status failed, return code %d\n", rc);
+        }
     }
-
-    // Publish "online" status after connecting
-    char *online_status = "online";
-    rc = mosquitto_publish(mqtt_client, NULL, "studer/commstatus", strlen(online_status), online_status, 0, true);
+    
+    // Start the network loop in background thread
+    rc = mosquitto_loop_start(mqtt_client);
     if (rc != MOSQ_ERR_SUCCESS) {
-        printf("Publish failed, return code %d\n", rc);
+        printf("Failed to start mosquitto loop, return code %d\n", rc);
         return rc;
     }
 
@@ -175,12 +185,8 @@ int main(int argc, const char *argv[])
                 // Publish the value to MQTT
                 rc = mosquitto_publish(mqtt_client, NULL, topic, strlen(value_str), value_str, 0, false);
                 if (rc != MOSQ_ERR_SUCCESS) {
-                    printf("Publish failed, return code %d\n", rc);
-                    rc = mosquitto_reconnect(mqtt_client);
-                    if (rc != MOSQ_ERR_SUCCESS) {
-                        printf("Reconnect failed, return code %d\n", rc);
-                        return rc;
-                    }
+                    printf("Publish failed, return code %d (continuing)\n", rc);
+                    // Don't try to reconnect manually - loop_start handles it automatically
                 }
             } else {
                 // Print an error message
@@ -196,7 +202,8 @@ int main(int argc, const char *argv[])
         usleep(500000); // Sleep for 500 milliseconds
     }
 
-    // Cleanup for Mosquitto
+    // Cleanup for Mosquitto (never reached in this case, but good practice)
+    mosquitto_loop_stop(mqtt_client, false);
     mosquitto_disconnect(mqtt_client);
     mosquitto_destroy(mqtt_client);
     mosquitto_lib_cleanup();
