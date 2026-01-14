@@ -1,0 +1,149 @@
+esphome:
+  name: studer-monitor
+  platform: ESP32
+  board: esp32dev
+
+# Enable logging
+logger:
+  level: DEBUG
+
+# Enable Home Assistant API
+api:
+
+ota:
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Studer Monitor Fallback"
+    password: "fallback123"
+
+captive_portal:
+
+# UART configuration for Studer XCom-232i
+uart:
+  id: uart_bus
+  tx_pin: GPIO17
+  rx_pin: GPIO16
+  baud_rate: 115200
+  parity: EVEN
+  stop_bits: 1
+
+# Studer component
+studer:
+  id: studer_hub
+  uart_id: uart_bus
+
+# Sensors - define what you want to read
+sensor:
+  # Xtender 1 (address 101)
+  - platform: studer
+    studer_id: studer_hub
+    address: 101
+    parameter: 3137
+    name: "XT1 Input Active Power"
+    unit_of_measurement: "kW"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 3
+    multiply: -1  # Sign correction
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 101
+    parameter: 3138
+    name: "XT1 Input Apparent Power"
+    unit_of_measurement: "kVA"
+    device_class: apparent_power
+    state_class: measurement
+    accuracy_decimals: 3
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 101
+    parameter: 3136
+    name: "XT1 Output Active Power"
+    unit_of_measurement: "kW"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 3
+    multiply: -1
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 101
+    parameter: 3104
+    name: "XT1 Temperature"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+  
+  # Xtender 2 (address 102)
+  - platform: studer
+    studer_id: studer_hub
+    address: 102
+    parameter: 3137
+    name: "XT2 Input Active Power"
+    unit_of_measurement: "kW"
+    device_class: power
+    state_class: measurement
+    accuracy_decimals: 3
+    multiply: -1
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 102
+    parameter: 3104
+    name: "XT2 Temperature"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+  
+  # System totals (address 100)
+  - platform: studer
+    studer_id: studer_hub
+    address: 100
+    parameter: 3000
+    name: "Battery Voltage"
+    unit_of_measurement: "V"
+    device_class: voltage
+    state_class: measurement
+    accuracy_decimals: 2
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 100
+    parameter: 3085
+    name: "Output Frequency"
+    unit_of_measurement: "Hz"
+    device_class: frequency
+    state_class: measurement
+    accuracy_decimals: 2
+    
+  - platform: studer
+    studer_id: studer_hub
+    address: 100
+    parameter: 3138
+    name: "Total Apparent Power"
+    unit_of_measurement: "kVA"
+    device_class: apparent_power
+    state_class: measurement
+    accuracy_decimals: 3
+  
+  # Phase L1 (address 191)
+  - platform: studer
+    studer_id: studer_hub
+    address: 191
+    parameter: 3005
+    name: "L1 Battery Current"
+    unit_of_measurement: "A"
+    device_class: current
+    state_class: measurement
+    accuracy_decimals: 2
+    
+  # Add more sensors as needed...
