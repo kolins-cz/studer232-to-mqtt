@@ -61,6 +61,7 @@ read_param_result_t read_param(int addr, int parameter)
 #ifdef SERIAL_DEBUG
         printf("[SCOM DEBUG] Header read failed: got %zu of %d bytes\n", bytecounter, SCOM_FRAME_HEADER_SIZE);
 #endif
+        serial_flush(); // Clear buffer on error
         result.error = -1;
         return result;
     }
@@ -71,6 +72,7 @@ read_param_result_t read_param(int addr, int parameter)
 #ifdef SERIAL_DEBUG
         printf("[SCOM DEBUG] Header decode failed: error %d\n", dechdr.error);
 #endif
+        serial_flush(); // Clear buffer on error
         result.error = -1;
         return result;
     }
@@ -78,12 +80,24 @@ read_param_result_t read_param(int addr, int parameter)
     printf("[SCOM DEBUG] Header decoded, need to read %d more bytes\n", dechdr.length_to_read);
 #endif
 
+    // Sanity check on length to prevent hang
+    if (dechdr.length_to_read > sizeof(readbuf) || dechdr.length_to_read == 0) {
+#ifdef SERIAL_DEBUG
+        printf("[SCOM DEBUG] Invalid length_to_read: %d (buffer size: %zu)\n", 
+               dechdr.length_to_read, sizeof(readbuf));
+#endif
+        serial_flush(); // Clear buffer on error
+        result.error = -1;
+        return result;
+    }
+
     // Read the frame data from the serial port
     bytecounter = serial_read(readbuf, dechdr.length_to_read);
     if (bytecounter != dechdr.length_to_read) {
 #ifdef SERIAL_DEBUG
         printf("[SCOM DEBUG] Data read failed: got %zu of %d bytes\n", bytecounter, dechdr.length_to_read);
 #endif
+        serial_flush(); // Clear buffer on error
         result.error = -1;
         return result;
     }
@@ -94,6 +108,7 @@ read_param_result_t read_param(int addr, int parameter)
 #ifdef SERIAL_DEBUG
         printf("[SCOM DEBUG] Frame decode failed: error %d\n", decres.error);
 #endif
+        serial_flush(); // Clear buffer on error
         result.error = -1;
         return result;
     }

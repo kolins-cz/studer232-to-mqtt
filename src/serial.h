@@ -29,3 +29,6 @@ int serial_write(const void *ptr, unsigned size);
 
 // read size bytes from serial into ptr buffer
 int serial_read(void *ptr, unsigned size);
+
+// flush/clear serial input buffer
+void serial_flush(void);

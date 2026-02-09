@@ -165,3 +165,9 @@ int serial_read(void *ptr, unsigned size)
 
     return bts_read;
 }
+
+// flush/clear serial input buffer
+void serial_flush(void) {
+    SERIAL_DEBUG_PRINT("Flushing serial input buffer\n");
+    tcflush(serial_fd, TCIFLUSH);
+}
