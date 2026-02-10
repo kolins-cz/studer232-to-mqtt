@@ -1,0 +1,66 @@
+4.2.1 READ_PROPERTY service
+
+This service is used to read an object’s property.
+
+The DTE sends a request frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 0 byte
+0x00 Ox01
+
+service_flags :
+service_id
+object_type
+object_id
+
+property_id
+property_data :
+
+is_response =O, error=0
+
+0x01 for READ_PROPERTY
+
+the object type identifier, defined later in this document
+
+the object identifier, specific to each object type, i.e. two objects with
+different type can have the same id
+
+identify the property in the object
+
+no property data
+
+The Xcom-232i responds with a frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes N bytes or 2 bytes
+0x02 or 0x03 0x01
+
+service_flags
+service_id
+object_type
+object_id
+
+property_id
+
+property_data :
+
+flags_response = 1, error= Oor1
+
+0x01 for READ_PROPERTY
+
+same as the request
+
+same as the request
+
+same as the request
+
+If error in service_flags is 0, the value of the property with the number
+of bytes of its type. If not, 2 bytes of type ERROR identifying the error
+
+code.
+
+V1.6.32
+
+12
+
+y RY

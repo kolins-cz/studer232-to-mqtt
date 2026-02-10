@@ -1,0 +1,56 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level_| Nr __| RCC /Xcom-232i parameter description Unit Default Min Max Scom format _| Increment
+Only 1 bit
+1:English
+2:French
+4:German
+
+Basic | 5040 | Choice of the fourth language 8:Spanish | 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:Italian
+128:Slovak
+
+Basic | 5002 | Date Seconds | 0 0 0 INT32 1
+
+v.0. | 5012 | User level 16 0 m1 Not supported
+
+Expert_| 5019 | Force remote control to user BASIC level s s s INTS2 Signal
+
+Expert | 5057 | DATALOGGER ONLY LEVEL | Menu
+Only 1 bit
+
+Expert | 5101 |  Datalogger enabled 1:Automatic | 1:Automatic | 4:No LONG ENUM | >yutomatic
+4:No
+
+Expert | 5059 | Save today’s datas s s s INTS2 Signal
+
+inst. | 5075 | _Datalogger clear s s s INTS2 Signal
+
+Inst. | 5109 | _Datalogger reset when modifying the installation 0:No 0:No 1:Yes BOOL 1
+
+Inst | 5120 | Erase the 30 oldest log files from the SD card s s s INTS2 Signal
+
+Expert | 5123 | Activation of R&D tracks 0:No 0:No 1:¥es BOOL 1
+Only 1 bit
+XT
+
+Expert | 5076 | Track 1:device xT xT 8.VarioString | LONG ENUM | 2:BSP/BMS
+4:VarioTrack
+8:VarioString
+
+Expert | 5063 | Track 1:device UID 1 1 15 FLOAT 1
+
+Expert | 5077 | _ Track 1: user information reference (1 to n) 140 0 255 FLOAT 1
+Only 1 bit
+EXT
+
+Expert | 5078 | Track 2: device xT xT 8.VarioString | LONG ENUM | 2:BSP/BMS
+4:VarioTrack
+8:VarioString
+
+Expert | 5064 | Track 2: device UID 1 1 15 FLOAT 1
+
+V1.6.38 24 Aorigen

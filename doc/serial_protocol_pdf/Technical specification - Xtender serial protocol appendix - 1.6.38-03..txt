@@ -1,0 +1,52 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+1. Appendix
+
+The information in the appendices is valid for the latest software release. For a detailed changelog, please see the document
+Release_Rxxx.pdf in the latest “Studer system update” available on www.studer-innotec.com.
+
+A major release (from R5xx to R6xx, for example) can imply significant changes that should be validated.
+
+Xtender 120Vac specific parameters
+
+While using Xtenders -01 (120Vac), some parameters have specific values. The following list contain them. The others are the same for all
+
+Xtender types.
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format_| Increment
+
+Expert 1286 AC Output voltage Vac 120 55 140 FLOAT 1
+
+Expert | 1560 Max AC voltage increase with battery voltage Vac 5 2 8 FLOAT 1
+
+Expert 1309 AC input low limit voltage to allow charger function Vac 90 50 115, FLOAT 5
+
+Expert | 1433 Adaptation range of the input current according to the input voltage Vac 5 2 15 FLOAT 1
+
+Expert | 1199 Input voltage giving an opening of the transfer relay with delay Vac 100 40 115 FLOAT 5
+
+Expert | 1200 Input voltage giving an immediate opening of the transfer relay (UPS) Vac 90 40 115 FLOAT 5
+
+Inst. 1432 Absolute max limit for input voltage Vac 135, 117.5 145, FLOAT 5
+Xtender parameters
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+
+Basic 1100 | BASIC SETTINGS ONLY LEVEL | Menu
+
+Basic 1551 Basic parameters set by means of the potentiomenter in the XTS 1:Yes 0:No. 1:Yes BOOL 1
+
+Basic 1107 Maximum current of AC source (Input limit) Aac 32 2 50 FLOAT 1
+
+Basic 1138 Battery charge current Adc 60 0 200 FLOAT 1
+
+Basic 1126 Smart-Boost allowed 1:Yes 0:No, 1:Yes BOOL 1
+
+Basic 1124 Inverter allowed 1:Yes 0:No. 1:Yes BOOL 1
+
+Expert 1125 Charger allowed 1:Yes 0:No. 1:Yes BOOL 1
+
+V1.6.38
+

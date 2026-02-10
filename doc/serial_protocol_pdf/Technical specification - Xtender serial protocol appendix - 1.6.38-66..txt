@@ -1,0 +1,55 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+
+V.O. 207 _ | (207): AUX1 relay activation
+
+VO. 208 | (208): AUX1 relay deactivation
+
+V.O. 209 _ | (209): AUX2 relay activation
+
+Vv.O. 210 __| (210): AUX2 relay deactivation
+
+V.O. 211 __ | (211): Command entry deactivated
+
+Vv.O. 212 _| Error (212): VarioTrack software incompatibility. Upgrade needed
+V.O. 213 _ | (213): Battery current limitation by the BSP stopped
+
+V.O. 214 _ | Waming (214): Half period RMS voltage limit exceeded, transfer opened
+V.O. 215 _ | Waming (215): UPS limit reached, transfer opened
+
+V.O. 216 _ | Waming (216): Scom watchdog caused the reset of Xcom-232i
+V.O. 217 _ | Waming (217): CAN problem at Xtender declaration
+
+V.O. 218 _ | Waming (218): CAN problem while writing parameters
+
+V.O. 222 _ | (222): Front ON/OFF button pressed
+
+V.O. 223 _| (223): Main OFF detected
+
+V.O. 224 | (224): Delay before closing transfer relay in progress {1580}
+V.O. 225 _| Error (225): Communication with lithium battery lost
+
+V.O. 226 _| (226): Communication with lithium battery restored
+
+V.O. 227 _| Error (227): Overload on high voltage DC side
+
+V.O. 228
+
+V.O. 229 _| Error (229): Short-circuit on high voltage DC side
+
+V.O. 230 _ | (230): Bat. notification arrives
+
+V.O. 231 __| (231): Bat. notification leaves
+
+V.O. 232 _| Error (232): SD card, unable to access file
+
+V.O. 233 _| Error (233): SD card, file header corruption
+
+V.O. 234 __| Error (234): SD card, file checksum error
+
+V.O. 235 _ | Halted (235): Communication lost with Xcom-CAN
+
+V1.6.38 66
+

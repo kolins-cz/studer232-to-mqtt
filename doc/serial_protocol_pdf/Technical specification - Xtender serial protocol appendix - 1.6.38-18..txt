@@ -1,0 +1,41 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+3002_ | Temperature compensation of battery voltage Comp? Ctmp Ctmp FLOAT
+3003 _| Dynamic compensation of battery voltage Comp P Cdyn Cdyn FLOAT
+3004 | Wanted battery charge current Ibat Aust A FLOAT
+3005 _| Battery charge current Ibat (m) Ade A FLOAT
+3006 _| Battery voltage ripple Ubat ond Vrip Vv FLOAT
+3007 _| State of charge Soc % % FLOAT
+3008 _| Low Voltage Disconect LVD LVD Vv FLOAT
+O:Invalid value
+1:Bulk
+2:Absorpt.
+3:Equalise SHORT
+3010 | Battery cycle phase Phase 4:Floating ENUM. | See parameter {1137}
+7:Mixing
+8:Forming
+3011 _| Input voltage Uin Vac Vv FLOAT | See parameter {1197}
+3012 _| Input current Lin ‘Aac A FLOAT
+3013 _| Input power Pin kVA kVA FLOAT | Less accurate than info 3138
+3017 | Input limit value Limit Val__| iLim A FLOAT
+- , 0:0ff SHORT | | «
+3018 | Input limite reached P sharing ton ENUM. |b’: See parameter {1107}
+, 0:0ff SHORT | 5.
+3019 | Boost active Boost ton ENUM. | 8 See parameter {1126}
+0:Opened SHORT
+3020 | State of transfer relay Transfert Cece ENUM
+3021 | Output voltage Uout Vac Vv FLOAT | See parameter {1286}
+3022 | Output current Lout ‘Aac A FLOAT
+3023 | Output power P out kVA kVA FLOAT | Less accurate than info 3139
+P:invalie value Give the current working mode of the inverter. See {1107} for
+3028 | Operating stat Mod cn SHORT | Boost, {1522} for Injection (grid-feeding), charger and inverter
+perating state lode 30 aa ENUM | mode are oblivious. Only in CSV file, the value 6 indicate that the
+“Boost xtender is off.
+4:Injection
+0:Opened SHORT
+3030 | State of output relay Rel out 1:Coecd ENUM
+
+V1.6.38 18 berger

@@ -1,0 +1,37 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr__| Xcom-CAN parameter description Unit Default Min Max Scom format _| Increment
+Expert 6070 SOC level under which battery discharge is stopped % 5 ) 100 FLOAT 1
+Expert 6062 SOC level for backup % 20 to) 100 FLOAT 1
+Expert 6063 SOC level for grid feeding % 98 ) 100 FLOAT 1
+Expert 6075 SOC level for end of charge % 100 80 100 FLOAT 1
+Expert 6071 rad battery priomly Famed Nasi when SOC >= SOC for backup 1:Yes 0:No 1Yes BOOL 1
+Expert 6066 Manufacturer SOC for 0% displayed % ) ) 60 FLOAT 5
+Expert 6067 Manufacturer SOC for 100% displayed % 100 80 100 FLOAT 5
+Expert | 6084 Charge/discharge settings ONLY LEVEL | Menu
+Expert 6068 Allow user to define the maximum charge current of the battery 0:No 0:No 1:Yes BOOL 1
+Expert 6069 Maximum charge current defined by user A 10 ) 10000 FLOAT 1
+Expert 6076 Allow user to define the maximum discharge current of the battery 0:No. 0:No. 1:Yes BOOL 1
+Expert 6077 Maximum discharge current defined by user A 10 te) 10000 FLOAT 1
+Expert | 6079 (BETA) Allow periodic full charging 0:No 0:No 1:Yes BOOL 1
+Expert 6080 Waiting time between two periodic full charges h 168 1 1000 FLOAT 1
+Expert | 6081 Time fully charged before resetting periodical full charge min 5 1 60 FLOAT 1
+Expert 6089 Allow adaptative SOC for backup 0:No 0:No 1:Yes BOOL 1
+Expert 6090 Time before reseting adaptative SOC for Backup min 5 1 60 FLOAT 1
+Expert 6091 SOC in percent to reset adaptative SOC for Backup % 99 80 100 FLOAT 1
+Expert 6092 SOC in percent to increase adaptative SOC for Backup % 98 20 100 FLOAT 1
+Expert 6064 Use battery current limits instead of recommended values 0:No 0:No 1:Yes BOOL 1
+Expert 6078 Charge current limit ratio % 80 80 95 FLOAT 1
+Expert 6093 Discharge current limit ratio % 95 80 95 FLOAT 1
+Expert 6087 SOC level to start end of charge derating % 90 80 100 FLOAT 1
+Expert 6088 Charge current rate at end of charge A 20 te) 100 FLOAT 1
+QsP 6082 Ki current regulation % 15 1 100 FLOAT 1
+Expert | 6085 ‘AC-Coupling settings ONLY LEVEL | Menu
+Expert 6072 Solar Inverter connected on AC-Out 0:No 0:No 1:Yes BOOL 1
+Expert | 6073 Delta from user frequency to start derating of solar inverter Hz 1 0 5 FLOAT 04
+Expert 6074 Delta from user frequency to reach 100% derating of solar inverter Hz 2.7 ) 5 FLOAT 0.1
+Expert | 6086 ‘AG-Coupling priority 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 31
+

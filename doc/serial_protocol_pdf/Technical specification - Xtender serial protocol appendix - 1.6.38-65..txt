@@ -1,0 +1,75 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+
+V.O. 170 _ | Warning (170): No solar production in the last 48h on PV1
+
+VO. 171__ | Warning (171): No solar production in the last 48h on PV2
+
+V.O. 172__ | Error (172): FID change impossible. More than one unit.
+
+Vv.O. 173 _ | Error (173): Incompatible Xtender. Please contact Studer Innotec SA
+V.O. 174 __ | (174): Inaccessible parameter, managed by the Xcom-CAN
+
+Vv.O. 175 __ | Halted (175): Critical undervoltage
+
+V.O. 176 _ | (176): Calibration setting lost
+
+V.O. 177__ | (177): An Xtender has started up
+
+V.O. 178 _ | (178): No BSP nor Xcom-CAN. Necessary for programming SOC
+V.O. 179 _ | (179): No BTS or BSP. Necessary for programming with temperature
+V.O. 180 _ | (180): Command entry activated
+
+V.O. 181 __ | Error (181): Disconnection of BTS
+
+V.O. 182__| (182): BTS/BSP battery temperature measurement used by a device
+V.O. 183 _ | Halted (183): An Xtender has lost communication with the system
+V.O. 184 _ | Error (184): Check phase orientation or circuit breakers state on AC-In
+V.O. 185 _ | Warning (185): AC-In voltage level with delay too low
+
+V.O. 186 _ | Halted (186): Critical undervoltage (fast)
+
+V.O. 187 _ | Halted (187): Critical overvoltage (fast)
+
+V.O. 188 _| (188): CAN stage startup
+
+V.O. 189 _| Error (189): Incompatible configuration file
+
+V.O. 190 _ | (190): The Xcom-SMS is busy
+
+V.O. 191 _ | (191): Parameter not supported
+
+V.O. 192 __ | (192): Unknown reference
+
+V.O. 193 _ | (193): Invalid value
+
+V.O. 194 _ | (194): Value too low
+
+V.O. 195 _ | (195): Value too high
+
+V.O. 196 | (196): Writing error
+
+V.O. 197 _ | (197): Reading error
+
+V.O. 198 _ | (198): User level insufficient
+
+V.O. 199 _ | (199): No data for the report
+
+V.O. 200 _| Error (200): Memory full
+
+V.O. 202 | Waming (202): Battery alarm arrives
+
+Vv.O. 203 _| (203): Battery alarm leaves
+
+VO. 204 _| Error (204): Battery stop arrives
+
+V.O. 205 _| (205): Battery stop leaves
+
+V.O. 206 _| Halted (206): Board hardware incompatibility
+
+V1.6.38
+
+65
+

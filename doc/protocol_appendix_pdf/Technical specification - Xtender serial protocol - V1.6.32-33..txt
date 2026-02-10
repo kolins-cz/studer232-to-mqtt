@@ -1,0 +1,23 @@
+« Property_data » decoding :
+
+Décodage de la partie property_data :
+
+Name Size | Value Format Remark
+message_total_number 4 DO 03 00 00 = 976d INT32 The total number of message in
+bytes the XCOM-232i
+10 00 = 16d:
+2 The number defining the meaning
+message_type bytes | Warning (016): Fan error ENUM of the message.
+detected
+ource_addre: 4 69 00 00 00 = 105d: INT32. Source address of the message.
+Source_adcress bytes | Xtender 5 See 3.5 Addressing the devices.
+4 82 AD 9E 59 = The time at which the message
+timestamp bytes 1503571330 : INT32 occurred in seconds since January
+24.08.2017 at 10:42:10 1, 1970.
+value 4 00 00 00 00 DYNAMIC An optional value of the message.
+bytes Not yet used currently.
+
+V1.6.32
+
+33
+

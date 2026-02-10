@@ -1,0 +1,47 @@
+SHORT_ENUM : a value that is part of a enumeration of possible values,
+represented with a 16 bit integer
+
+LONG_ENUM : a value that is part of a enumeration of possible values,
+represented with a 32 bit integer
+
+ERROR : 16 bit error code
+
+INT32 : 32 bit signed value
+
+FLOAT : float in 32 bit IEEE 754 format, little endian
+STRING : ISO_8859-15 string of 8 bit characters
+
+DYNAMIC : @ property with a different format for each object id
+BYTE_STREAM : a stream a byte of abitrary length
+
+example of dynamic property:
+
+for the object type 1 and object id 3000 (XT batery voltage), the format is FLOAT and
+“value” is a 4 byte IEEE 754 little endian float.
+
+4.3 Error codes
+
+The following error codes of type ERROR can be returned:
+
+name error_id meaning
+
+INVALID_FRAME 0x0001 | malformed frame
+
+DEVICE_NOT_FOUND 0x0002 | wrong dst_adar field
+RESPONSE_TIMEOUT 0x0003 | no response of the server
+SERVICE_NOT_SUPPORTED 0x0011 | wrong service_id field
+INVALID_SERVICE_ARGUMENT 0x0012 | wrong service_data
+SCOM_ERROR_GATEWAY_BUSY 0x0013 | gateway (for example XCOM-232i) busy
+TYPE_NOT_SUPPORTED 0x0021 _| the object_type requested doesn't exist
+OBJECT_ID_NOT_FOUND 0x0022 _| no object with this object_id was found
+PROPERTY_NOT_SUPPORTED 0x0023 the property identified by property_id doesn't
+INVALID_DATA_LENGTH 0x0024 meee” property_data has an invalid number of
+PROPERTY_IS_READ_ONLY 0x0025 | a writing to this property is not allowed
+INVALID_DATA 0x0026 _| this value is impossible for this property
+DATA_TOO_SMALL 0x0027 _| the value is below the minimum limit
+DATA_TOO_BIG 0x0028 _| the value is above the maximum limit
+WRITE_PROPERTY_FAILED 0x0029 | writing is possible, but failed
+READ_PROPERTY_FAILED 0x002A _| reading is possible, but failed
+ACCESS_DENIED 0x0028 | insufficient user access
+
+V1.6.32 14 Meriger

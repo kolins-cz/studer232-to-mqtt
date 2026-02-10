@@ -1,0 +1,215 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level
+
+VarioString parameter description
+
+Unit
+
+Default
+
+Scom format__| Increment
+
+Expert
+
+14040
+
+Type of battery grounding
+
+1:No control
+
+1:No control
+
+8:Bat floating
+
+Only 1 bit
+
+1:No control
+2:Bat+ grounded
+4:Bat- grounded
+8:Bat floating
+
+LONG ENUM
+
+Expert
+
+14194
+
+Configuration for VS-120
+
+ONLY LEVEL | Menu
+
+Expert
+
+14041
+
+Type of PV grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14175
+
+Type of PV1 grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14042
+
+Type of PV2 grounding
+
+1:No control
+
+1:No control
+
+8:PV floating
+
+Only 1 bit
+
+1:No control
+2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+LONG ENUM
+
+Expert
+
+14180
+
+Type of MPPT algorithm
+
+ONLY LEVEL | Menu
+
+Expert
+
+14043
+
+Type of MPP tracking algorithm PV
+
+8:LSF
+
+1:P&O
+
+8:LSF
+
+Only 1 bit
+1:P80
+2:06 ratio
+4:Upv fixed
+8:LSF
+
+LONG ENUM
+
+Expert
+
+14044
+
+PV voltage fixed (for PV in series)
+
+Vde
+
+700
+
+200
+
+FLOAT 10
+
+Expert
+
+14179
+
+PV voltage fixed (for PV in //)
+
+Vde
+
+500
+
+100
+
+FLOAT 10
+
+Expert
+
+14045
+
+Ratio of PV open circuit voltage
+
+0.7
+
+0.5
+
+FLOAT 0.010009766
+
+Expert
+
+14176
+
+Type of MPP tracking algorithm PV1
+
+8:LSF
+
+1:P&O
+
+8:LSF
+
+Only 1 bit
+1:P80
+2:06 ratio
+4:Upv fixed
+8:LSF
+
+LONG ENUM
+
+Expert
+
+14177
+
+PV1 voltage fixed
+
+Vde
+
+500
+
+100
+
+600
+
+FLOAT 10
+
+V1.6.38
+
+50
+
+& TUBER)
+

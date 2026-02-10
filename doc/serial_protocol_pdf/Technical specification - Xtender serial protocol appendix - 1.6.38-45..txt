@@ -1,0 +1,32 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioTrack information description Short desc. | the RCC_| Unit Format | Related parameter or description
+See the VarioTrack user manual for a description of the modes.
+11016 | Operating mode Mode sient Mode 3: is available up to VT code version 1.5.8.
+Modes 8: to 11: are available from VT code version 1.5.10.
+9:Charge V
+10:Charge |
+11:Charge T
+12:Ch. bsp
+11017 | Max PV voltage for the current day PVmx Vde Vv FLOAT
+11018 | Max battery current of the current day bmx Adc A FLOAT
+11019 | Max power production for the current day PVxP kW kW FLOAT
+11020 | Max battery voltage for the current day Bmax Vde Vv FLOAT
+11021 | Min battery voltage for the current day Bmin Vde Vv FLOAT
+11025 | Number of irradiation hours for the current day Sd h h FLOAT
+11026 | Number of irradiation hours for the previous day Sd h h FLOAT
+O:No Error
+1:BatOverV
+2:Earth
+3:No Batt
+4:OverTemp
+5:BatOverV SHORT
+11034 | Type of error Er 6:PvOverV ENUM. | See the VarioTrack user manual for a description of these errors
+1
+12:HardErr
+11037 | Number of days before next equalization Eqin days days FLOAT
+
+V1.6.38 45
+

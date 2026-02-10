@@ -1,0 +1,40 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_ | VarioString information description Short desc. |the RCC_| Unit Format | Related parameter or description
+0:Unknown
+independ.
+15003 | PV type of wiring conf 2:Series stone
+3:Parallel
+4-Error
+15004 | PV voltage Upy Vde Vv FLOAT
+15005 | PVi voltage Upvi Vde Vv FLOAT
+15006 | PV2 voltage Upv2 Vde Vv FLOAT
+15007 | PV current Ipy ‘Ade A FLOAT
+15008 | PV1 current Ipvi ‘Ade A FLOAT
+15009 | PV2 current Ipv2 ‘Ade A FLOAT
+15010 | PV power Ppv kW kW FLOAT
+15011 | PVi power Ppvi kW kW FLOAT
+15012 | PV2 power Ppv2 kW kW FLOAT
+O:Night
+1:Security
+2:0FF
+3:Charge
+4:ChargeV
+15013 | PV operating mode Mode 5:Charge | sient
+6:ChargeP
+7:Chargelpy
+8:ChargeT
+9:
+O:Night
+1:Security
+2:0FF
+3:Charge
+4:ChargeV
+15014 | PV1 operating mode Modt 5:Charge | stone
+6:ChargeP
+7:Chargelpy
+8:ChargeT
+V1.6.38 57
+

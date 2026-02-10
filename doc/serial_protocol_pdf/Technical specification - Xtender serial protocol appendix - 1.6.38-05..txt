@@ -1,0 +1,41 @@
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr___| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1141 New cycle menu ONLY LEVEL | Menu
+Expert | 1142 Force a new cycle s s s INT32 Signal
+Inst. 1608 Use dynamic compensation of battery level (new cycle) 0:No 0:No 1:Yes BOOL 1
+Expert | 1143 Voltage level 1 to start a new cycle Vde 49.9 36 72 FLOAT 04
+Expert | 1144 Time period under voltage level 1 to start a new cycle min 30 0 240 FLOAT 1
+Expert | 1145 Voltage level 2 to start a new cycle Vde 49.2 36 72 FLOAT 04
+Expert | 1146 Time period under voltage level 2 to start a new cycle sec 60 0 600 FLOAT 2
+Expert | 1149 New cycle priority on absorption and equalization phases 0:No 0:No 1:Yes BOOL 1
+Expert | 1147 Cycling restricted 0:No 0:No 1:Yes BOOL 1
+Expert | 1148 Minimal delay between cycles hours 3 0 540 FLOAT 1
+Expert | 1451 | Absorption phase ONLY LEVEL | Menu
+Expert | 1155 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1156 Absorption voltage Vde 576 37.9 72 FLOAT 04
+Expert | 1157 Absorption duration hours 2 0 18 FLOAT 0.25
+Expert | 1158 End of absorption triggered with current 0:No 0:No 1:Yes BOOL 1
+Expert | 1159 Current limit to quit the absorption phase ‘Adc 4 1 200 FLOAT 1
+Expert | 1160 Maximal frequency of absorption control 0:No 0:No 1:Yes BOOL 1
+Expert | 1161 Minimal delay since last absorption hours 2 0 540 FLOAT 1
+Expert | 1452 | Equalization phase ONLY LEVEL | Menu
+Expert | 1163 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1162 Force equalization s s s INT32 Signal
+Expert | 1291 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1290 Equalization current ‘Adc 60 1 200 FLOAT 1
+Expert | 1164 Equalization voltage Vde 624 37.9 72 FLOAT 0.4
+Expert | 1165 Equalization duration hours 0.5 0.2 10 FLOAT 0.25
+Expert | 1166 Number of cycles before an equalization 25 0 100 FLOAT 1
+Expert | 1284 Equalization with fixed interval 0:No 0:No 1:Yes BOOL 1
+Expert | 1285 Weeks between equalizations weeks 26 1 104 FLOAT 1
+Expert | 1168 End of equalization triggered with current 0:No 0:No 1:Yes BOOL 1
+Expert | 1169 Current threshold to end equalization phase Adc 4 1 30 FLOAT 1
+Expert | 1453 | Reduced floating phase ONLY LEVEL | Menu
+Expert | 1170 Reduced floating allowed 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+

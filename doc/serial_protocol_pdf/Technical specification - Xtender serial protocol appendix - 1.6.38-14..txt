@@ -1,0 +1,38 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert | 1370 Inverter power level 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1371 Power level 2 (AUX 2) % Pnom 80 20 120 FLOAT 10
+Expert 1372 Time delay 2 (AUX 2) min 5 t) 60 FLOAT 1
+Expert | 1373 Inverter power level 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1374 Power level 3 (AUX 2) % Pnom 50 20 120 FLOAT 10
+Expert 1375 Time delay 3 (AUX 2) min 30 ) 60 FLOAT 1
+Expert 1376 Inverter power level to deactivate (AUX 2) % Pnom 40 20 120 FLOAT 10
+Expert 1377 Time delay to deactivate (AUX 2) min 5 ) 60 FLOAT 5
+Expert | 1504 Contact active according to battery temperature (AUX 2) With BSP or BTS ONLY LEVEL | Menu
+Expert | 1457 Contact activated with the temperature of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1458 Contact activated over (AUX 2) °c 3 -10 50 FLOAT 1
+Expert 1459 Contact deactivated below (AUX 2) °c 5 -10 50 FLOAT 1
+Expert | 1502 Contact active according to SOC (AUX 2) Only with BSP ONLY LEVEL | Menu
+Expert 1442 Contact activated with the SOC 1 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1443 Contact activated below SOC 1 (AUX 2) % SOC 50 ) 100 FLOAT 5
+Expert 1590 Delay 1 (AUX 2) hours 12 ) 99 FLOAT 0.25
+Expert 1591 Contact activated with the SOC 2 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1592 Contact activated below SOC 2 (AUX 2) % SOC 30 ) 100 FLOAT 5
+Expert 1593 Delay 2 (AUX 2) hours 0.2 ) 99 FLOAT 0.25
+Expert 1594 Contact activated with the SOC 3 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1595 Contact activated below SOC 3 (AUX 2) % SOC 20 ) 100 FLOAT 5
+Expert 1596 Delay 3 (AUX 2) hours ) ) 99 FLOAT 0.25
+Expert 1444 Contact deactivated over SOC (AUX 2) % SOC 90 ) 100 FLOAT 5
+Expert 1597 Delay to deactivate (AUX 2) hours 0.2 ) 10 FLOAT 0.25
+Expert | 1598 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1513 Security, maximum time of contact (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1515 Maximum time of operation of contact (AUX 2) min 600 10 1200 FLOAT 10
+Expert | 1570 Reset all settings (AUX 2) s s s INT32 Signal
+Expert 1489 | AUXILIARY CONTACTS 1 AND 2 EXTENDED FUNCTIONS. ONLY LEVEL | Menu
+Expert 1491 Generator control active 0:No 0:No 1:Yes BOOL 1
+Expert | 1493 Number of starting attempts 5 0 20 FLOAT 1
+
+V1.6.38 14
+

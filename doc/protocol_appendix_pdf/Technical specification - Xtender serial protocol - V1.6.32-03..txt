@@ -1,0 +1,55 @@
+. OTHER SERVICES..
+
+4.5.11 Signal encoding...
+4.6 MESSAGE OBIECTS.....
+4.6.1 Description of the reading function:
+4.6.2 Notification of new messages: ..
+4.6.3 Sorting the messages
+4.6.4 Request frame :...
+4.6.5 Response frame :....
+4.6.6 Content of property _data ..
+4.7 CUSTOM DATALOG FIELD OBJECT...
+4.7.1 Format of the string ....
+4.7.2 Importing into Data Analysis Too!
+4.7.3 Property.
+
+4.8 FILE TRANSFER OBJECT.
+4.8.1 Request frame.....
+4.8.2 Response frame
+4.8.3 Transfer sequence ..
+
+4.9 MULTI INFOS OBJECT.
+4.9.1 Request frame.
+4.9.2 Response frame
+
+EXAMPLES OF FRAMES...
+
+5.1 CLIBRARY.....
+5.2 COMMAND LINE TOOL
+5.3 READ THE VALUE OF A USER INFO...
+5.4 READ THE QSP_VALUE OF A PARAMETER ..
+5.5 WRITE THE QSP_VALUE OF A PARAMETER.
+5.6 READ MESSAGES
+5.7 FILE TRANSFER OBJECT
+
+5.7.1 Reading a directory...
+
+5.7.2 Reading a datalog file .
+5.8 READ MULTI INFOS...
+
+6.1 GUID OBJECT.
+6.1.1 Description of the reading function:.
+6.1.2 Request frame :
+6.1.3 Response frame :
+6.1.4 Content of data property.
+6.1.5 Read GUID sample...
+
+6.2 SCREEN OBJECT
+6.2.1 Request frame :
+6.2.2 Trame de réponse «....
+6.2.3 Content of data property.
+6.2.4 Algorithm to decompress images.
+6.2.5 Read Screen sample ....
+
+V1.6.32
+

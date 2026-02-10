@@ -1,0 +1,40 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1248 Delay 1 (AUX 1) min 1 0 60 FLOAT 1
+Expert | 1249 Battery voltage 2 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1250 Battery voltage 2 (AUX 1) Vde 478 36 72 FLOAT 04
+Expert | 1251 Delay 2 (AUX 1) min 10 0 60 FLOAT 1
+Expert | 1252 Battery voltage 3 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1253 Battery voltage 3 (AUX 1) Vde 48.5 36 72 FLOAT 04
+Expert | 1254 Delay 3 (AUX 1) min 60 0 60 FLOAT 1
+Expert | 1255 Battery voltage to deactivate (AUX 1) Vde 54 36 72 FLOAT 04
+Expert | 1256 Delay to deactivate (AUX 1) min 60 0 480 FLOAT 5
+Expert | 1516 Deactivate if battery in floating phase (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1257 | Contact active with inverter power or Smart-Boost (AUX 1) ONLY LEVEL | Menu
+Expert | 1258 Inverter power level 1 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1259 Power level 1 (AUX 1) %Pnom | 120 20 120 FLOAT 10
+Expert | 1260 Time delay 1 (AUX 1) min 1 0 60 FLOAT 1
+asP 1644 Activated by AUX2 event partial overload 0:No 0:No 1:Yes BOOL 1
+Expert | 1261 Inverter power level 2 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1262 Power level 2 (AUX 1) %Pnom | 80 20 120 FLOAT 10
+Expert | 1263 Time delay 2 (AUX 1) min 5 0 60 FLOAT 1
+Expert | 1264 Inverter power level 3 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1265 Power level 3 (AUX 1) %Pnom | 50 20 120 FLOAT 10
+Expert | 1266 Time delay 3 (AUX 1) min 30 0 60 FLOAT 1
+Expert | 1267 Inverter power level to deactivate (AUX 1) %Pnom | 40 20 120 FLOAT 10
+Expert | 1268 Time delay to deactivate (AUX 1) min 5 0 60 FLOAT 5
+Expert | 1503 | Contact active according to battery temperature (AUX 1) With BSP or BTS ONLY LEVEL | Menu
+Expert | 1446 Contact activated with the temperature of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1447 Contact activated over (AUX 1) °C 3 -10 50 FLOAT 1
+Expert | 1448 Contact deactivated below (AUX 1) °C 5 -10 50 FLOAT 1
+Expert | 1501 Contact active according to SOC (AUX 1) Only with BSP ONLY LEVEL | Menu
+Expert | 1439 Contact activated with the SOC 1 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1440 Contact activated below SOC 1 (AUX 1) %soc  |50 0 100 FLOAT 5
+Expert | 1581 Delay 1 (AUX 1) hours 12 0 99 FLOAT 0.25
+
+V1.6.38
+
+10
+

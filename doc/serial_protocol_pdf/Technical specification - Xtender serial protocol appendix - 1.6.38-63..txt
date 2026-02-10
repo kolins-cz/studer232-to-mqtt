@@ -1,0 +1,77 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 55 _| Error (055): No SD card inserted
+
+VO. 56 _| Waming (056): Upgrade of the RCC software advised
+
+V.O. 57 _ | (057): Operation finished successfully
+
+Vv.O. 58 _| Halted (058): Master synchronization missing
+
+V.O. 59 _| Halted (059): Inverter overload HW
+
+Vv.O. 60 _| Waring (060): Time security 1512 AUX1
+
+V.O. 61 _| Waming (061): Time security 1513 AUX2
+
+V.O. 62 __ | Waming (062): Genset, no AC-In coming after AUX command
+V.O. 63 _| (063): Save parameter XT
+
+V.O. 64 _| (064): Save parameter BSP
+
+V.O. 65 _| (065): Save parameter VarioTrack
+
+V.O. 71 | Error (071): Insufficient disk space on SD card
+
+V.O. 72__ | Halted (072): COM identification incorrect
+
+V.O. 73 _ | (073): Datalogger is enabled on this RCC
+
+V.O. 74__ | (074): Save parameter Xcom-MS
+
+V.O. 75 _ | (075): MPPT MS address changed successfully
+
+V.O. 76 : Error during change of MPPT MS address
+
+V.O. 77 : Wrong MPPT MS DIP Switch position
+
+V.O. 78 _ | (078): SMS or email sent
+
+V.O. 79 _ | Halted (079): More than 9 XTs in the system
+
+V.O. 80 _| Halted (080): No battery (or reverse polarity)
+
+V.O. 81 _| Waming (081): Earthing fault
+
+V.O. 82__| Halted (082): PV overvoltage
+
+V.O. 83 _ | Waming (083): No solar production in the last 48h
+
+V.O. 84 _| (084): Equalization performed
+
+V.O. 85 _| Error (085): Modem not available
+
+V.O. 86 _| Error (086): Incorrect PIN code, unable to initiate the modem
+V.O. 87 _| Error (087): Insufficient Signal from GSM modem
+
+V.O. 88 _| Error (088): No connection to GSM network
+
+V.O. 89 _| Error (089): No Xcom server access
+
+V.O. 90 _| (090): Xcom server connected
+
+V.O. 91 _ | Waming (091): Update finished. Update software of other RCC/Xcom-232i
+Vv.O. 92 _| Error (092): More than 4 RCC or Xcom in the system
+
+VO. 93 _| Error (093): More than 1 BSP in the system
+
+V.O. 94 _| Error (094): More than 1 Xcom-MS in the system
+
+V.O. 95 _| Error (095): More than 15 VarioTrack in the system
+
+V1.6.38
+
+63
+

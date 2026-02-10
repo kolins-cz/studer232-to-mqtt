@@ -1,0 +1,73 @@
+4.9 Multi infos object
+
+This object allows to ask 1 to 76 user infos simultaneously in one request.
+
+4.9.1 Request frame
+
+The DTE sends a request frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 3 * N bytes
+0x00 Ox01
+
+service_flags
+service_id
+object_type
+object_id
+
+property_id
+
+property_data :
+
+: is_response =O, error=0
+
+: 0x01 for READ_PROPERTY
+
+: Ox000A for Multi Infos
+
+: 0x00000001 for Infos
+
+: 0x0001 (not relevant)
+
+Data
+
+Format | Descriptions
+
+0-1
+
+luint16_t | User info reference
+
+2
+
+luint8_t | Aggregation type
+
+The possible values for the aggragation type are :
+
+e¢ 0x00 : read only the value of the master device.
+
+e¢ 0x01 - OxOF : read only the value of the device with uid 0x01 to Ox0F.
+¢ 0x10 - OxFC : reserved.
+
+For each user info to read, 3 bytes of data containing :
+
+¢ OxFD : read the average value for all devices of the same type.
+
+e OxFE : sum of values for all devices of the same type.
+
+¢  OxFF : reserved.
+
+4.9.2 Response frame
+
+The Xcom-232i responds with a frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 2 bytes error or
+0x02 or 0x03 0x01 8 +7 *N bytes
+
+service_flags
+
+flags_response = 1, error= Oor1
+
+service_id 0x01 for READ_PROPERTY
+object_type same as the request
+V1.6.32 26 Meriger

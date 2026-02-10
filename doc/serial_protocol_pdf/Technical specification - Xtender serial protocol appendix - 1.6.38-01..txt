@@ -1,0 +1,18 @@
+Technical specification
+Xtender serial protocol appendix
+
+hs TUDER,
+
+Technical
+specification
+
+Xtender serial protocol
+appendix
+
+Date =: 06.11.23
+
+SEFE\ Technical specification - xtender serial protocol appendlix.paf
+
+L TUDER,
+
+V1.6.38 1

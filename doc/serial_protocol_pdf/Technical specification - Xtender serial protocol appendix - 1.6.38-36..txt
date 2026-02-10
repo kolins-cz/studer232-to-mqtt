@@ -1,0 +1,39 @@
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10056 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 10057 | Restore factory settings s s s INT32 Signal
+Inst. 10058 Parameters saved in flash memory 1:Yes 0:No 1:Yes BOOL 1
+Expert 10039 ON of the VarioTrack Ss Ss Ss INT32 Signal
+Expert 10040 OFF of the VarioTrack Ss Ss Ss INT32 Signal
+Expert 10051 Reset of all VarioTrack Ss Ss Ss INT32 Signal
+Expert | 10088 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10089 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10090 | Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10092 | Contact activated in night mode (AUX 1) ONLY LEVEL | Menu
+Expert 10093 Activated in night mode (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 10094 Delay of activation after entering night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 10095 Activation time for the auxiliary relay in night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 10318 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert 10319 Contact activated with fixed time schedule (AUX 1) 0:No 1:Yes BOOL 1
+Expert 10320 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10321 End hour (AUX 1) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10096 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 10198 VarioTrack is ON (AUX 1) 0:No 0:No BOOL 1
+Expert 10091 VarioTrack is OFF (AUX 1) 0:No 0:No BOOL 1
+Expert | 10308 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 10097 Battery undervoltage (AUX 1) 0:No 0:No BOOL 1
+Expert | 10098 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 10099 Earth fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 10100 PV error (48h without charge) (AUX 1) 0:No 0:No BOOL 1
+Expert | 10102 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 10104 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+
+V1.6.38 36
+

@@ -1,0 +1,55 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioString information description Short desc. the Hc Unit Format | Related parameter or description
+
+O:Night
+
+1:Security
+
+2:0FF
+
+3:Charge
+
+:Charge'
+
+15015 | PV2 operating mode Mod2 5:Charge I stone
+
+6:ChargeP
+
+7:Chargelpv
+
+&:ChargeT
+
+9:
+
+10:Ch.Ibsp
+15016 | Production PV in (Ah) for the current day Cad Ah Ah FLOAT
+15017 | Production PV in (kWh) for the current day Ed kWh kWh FLOAT
+15018 | Production PV1 in (kWh) for the current day Edt kWh kWh FLOAT
+15019 | Production PV2 in (kWh) for the current day Ed2 kWh kWh FLOAT
+15020 | Produced PV energy resettable counter kWhR kWh kWh FLOAT
+15021 | Produced PV1 energy resettable counter kWht kWh kWh FLOAT
+15022 | Produced PV2 energy resettable counter kWh2 kWh kWh FLOAT
+15023 | Total PV produced energy MWhT MWh MWh FLOAT
+15024 | Total PV1 produced energy MWht MWh MWh FLOAT
+15025 | Total PV2 produced energy MWh2 MWh MWh FLOAT
+15026 | Production PV in (Ah) for the previous day Cat Ah Ah FLOAT
+15027 | Production PV in (Wh) for the previous day Ed- kWh kWh FLOAT
+15028 | Production PV1 in (Wh) for the previous day Edt- kWh kWh FLOAT
+15029 | Production PV2 in (Wh) for the previous day Ed2- kWh kWh FLOAT
+15030 | Number of irradiation hours for the current day Sd h h FLOAT
+15031_| Number of irradiation hours for the previous day Sd h h FLOAT
+15032_| Battery temperature Tat °C °C FLOAT
+15033 | Max PV voltage for the current day Upmx Vde Vv FLOAT
+15034 | Max PV1 voltage for the current day Upmi Vde Vv FLOAT
+15035 | Max PV2 voltage for the current day Upm2 Vde Vv FLOAT
+15036 | Max battery current of the current day Ibmx Adc A FLOAT
+15037 | Max PV power for the current day Ppmx kW. kW FLOAT
+15038 | Max PV1 power for the current day Ppmi kW kW FLOAT
+15039 | Max PV2 power for the current day Ppm2 kW. kW FLOAT
+15040 | Max battery voltage for the current day Ubmx Vde Vv FLOAT
+
+V1.6.38 58
+

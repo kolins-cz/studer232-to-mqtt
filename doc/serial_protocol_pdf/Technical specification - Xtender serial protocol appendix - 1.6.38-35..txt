@@ -1,0 +1,38 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr_| VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert | 10035 Minimal delay between cycles hours 1 0 540 FLOAT 1
+Expert | 10085 | Battery overvoltage level Vde 68.2 37.9 68.2 FLOAT 0.1
+Expert | 10086 | Restart voltage level after a battery overvoltage Vde 64.8 37.9 68.2 FLOAT 0.4
+Expert | 10038 | SYSTEM ONLY LEVEL | Menu
+Expert | 10054 | Block manual programming (dip-switch) 0:No 0:No 1Yes BOOL 1
+Only 1 bit
+- - ; ; 8Floating 1:No control
+xpert | 10060 | Check Earthing 1:No control] 1:No control | Story LONG ENUM 2:Neg bat pole earth
+:Pos bat pole earth
+8:Floating battery
+inst. | 10087 | _ Disabling of the display button 0:No 0:No 1Yes BOOL 1
+Expert | 10312 | _ Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+Expert | 10313 Remote entry active 2:Open 1:Closed 4£dge LONG ENUM Dope
+4:Edge
+Expert | 10314 ON/OFF command 0:No 0:No BOOL 1
+Expert | 10315 Activated by AUX state 0:No 0:No BOOL 1
+Expert | 10316 Start equalization 0:No 0:No BOOL 1
+Expert | 10317 Send a message when remote entry changes state 0:No 0:No BOOL 1
+Only 1 bit
+Expert | 10075 | Type of MPP tracking 1:P8O 1:P8O 4:Upv fixed | LONG ENUM ae 8° io
+4:Upv fixed
+Expert | 10053 | Open circuit ratio -> MPP % 80 1 99 FLOAT 1
+Expert | 10103 | PV voltage fixed > MPP Vde 70 0 145 FLOAT 1
+asp | 10335 | Partial shading check 0:No 0:No 1Yes BOOL 1
+asp | 10336 | Time between checks min 5 1 30 FLOAT 1
+inst. | 10342 | VarioTrack watchdog enabled (SCOM) 0:No 0:No tes BOOL 1
+inst. | 10343 | VarioTrack watchdog delay (SCOM) sec 60 10 300 FLOAT 10
+Expert | 10200 | _ Reset PV energy meter s s s INT32, Signal
+asP | 10201 | Reset total produced PV energy meter s s s INT32, Signal
+Expert | 10043 | Reset daily solar production meters s s s INT32, Signal
+Expert | 10044 | Reset daily min-max s s s INT32, Signal
+V1.6.38 35 hereon
+

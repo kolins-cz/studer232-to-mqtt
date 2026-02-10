@@ -1,0 +1,38 @@
+Technical specification
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+0:Any O:Any 1All Only 1 bit
+Expert 1497 Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 1203 Temporal restrictions (AUX 1) ONLY LEVEL | Menu
+Expert | 1204 Program 1 (AUX 1) ONLY LEVEL | Menu
+Expert 1205 Day of the week (AUX 1) None ) 127 LONG ENUM _ | Bit field
+Expert 1206 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1207 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert | 1208 Program 2 (AUX 1) ONLY LEVEL | Menu
+Expert 1209 Day of the week (AUX 1) None ) 127 LONG ENUM | Bit field
+Expert 1210 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1211 End hour (AUX 1) Minutes 1200=20:00 A 1440=24:00 | INT32 1
+Expert | 1212 Program 3 (AUX 1) ONLY LEVEL | Menu
+Expert 1213 Day of the week (AUX 1) 127 LONG ENUM _ | Bit field
+Expert 1214 Start hour (AUX 1) Minutes 1440=24:00 | INT32 1
+Expert 1215 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Inst. 1216 Program 4 (AUX 1) ONLY LEVEL | Menu
+Inst. 1217 Day of the week (AUX 1) None ) 127 LONG ENUM | Bit field
+Inst. 1218 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Inst. 1219 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Inst. 1220 Program 5 (AUX 1) ONLY LEVEL | Menu
+Inst. 1221 Day of the week (AUX 1) None ) 127 LONG ENUM _ | Bit field
+Inst. 1222 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Inst. 1223 End hour (AUX 1) Minutes 1200=20:00 4:00 | INT32 1
+Expert 1269 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert | 1270 Program 1 (AUX 1) ONLY LEVEL | Menu
+Expert 1271 Day of the week (AUX 1) None ) LONG ENUM _ | Bit field
+Expert 1272 Start hour (AUX 1) Minutes 420=07:00 0=00:00 4:00 | INT32 1
+Expert 1273 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1274 Program 2 (AUX 1) ONLY LEVEL | Menu
+Expert 1275 Day of the week (AUX 1) None 0 127 LONG ENUM _ | Bit field
+Expert 1276 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+
+V1.6.38 8
+

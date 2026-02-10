@@ -1,0 +1,38 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Scom format__| Increment
+Expert | 14214 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 14079 Battery undervoltage (AUX 1) 0:No 0:No BOOL 1
+Expert | 14080 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 14081 Earth fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 14082 PV error (48h without charge) (AUX 1) 0:No 0:No BOOL 1
+Expert | 14083 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 14084 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14085 Absorption phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14086 Equalization phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 14087 Floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 14088 Reduced floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 14089 Periodic absorption (AUX 1) 0:No 0:No BOOL 1
+Expert | 14090 | Contact active according to battery voltage (AUX 1) ONLY LEVEL | Menu
+Expert | 14091 Battery voltage 1 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14092 Battery voltage 1 (AUX 1) Vde 46.8 36 72 FLOAT 04
+Expert | 14093 Delay 1 (AUX 1) min 1 0 60 FLOAT 1
+Expert | 14094 Battery voltage 2 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14095 Battery voltage 2 (AUX 1) Vde 478 36 72 FLOAT 0.4
+Expert 14096 Delay 2 (AUX 1) min 10 ) 60 FLOAT 1
+Expert | 14097 Battery voltage 3 activate (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14098 Battery voltage 3 (AUX 1) Vde 48.5 36 72 FLOAT 04
+Expert 14099 Delay 3 (AUX 1) min 60 0 60 FLOAT 1
+Expert | 14100 Battery voltage to deactivate (AUX 1) Vde 54 36 72 FLOAT 0.4
+Expert 14101 Delay to deactivate (AUX 1) min 60 ) 480 FLOAT 5
+Expert | 14102 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14103 | Contact active according to battery temperature (AUX 1) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 14104 Contact activated with the temperature of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14105 Contact activated over (AUX 1) °C 3 -10 50 FLOAT 1
+Expert 14106 Contact deactivated below (AUX 1) °c 5 -10 50 FLOAT 1
+Expert | 14107 Only activated if the battery is not in bulk phase (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14108 | Contact active according to SOC (AUX 1) Only with BSP ONLY LEVEL | Menu
+
+V1.6.38 53
+

@@ -1,0 +1,36 @@
+3. Data link layer
+
+The data link layer, as defined in the OSI model, is used to send and receive frame on the
+RS-232.
+3.1 RS-232 configuration
+The default RS-232 configuration is defined as :
+e A fixed baudrate of 38400 bps
+e 1 start bit
+e 8 bit of data, LSB first
+e 1 parity bit
+e even parity
+e 1 stop bit
+
+If you require a higher speed, it is possible to increase the Xcom-232i baudrate to 115200
+bps. To do that, you require the last version of Xcom Configurator (available to download
+on the Studer official website under Download center->Software and Updates) in order to
+create the new configuration file. After the configuration file generation, insert the SD card
+in the powered Xcom-232i to upgrade his baudrate.
+
+#s XCOM Configurator V1.0.26 - oO x
+SD Card Drive F:/XCOM CONFIG v||2
+Xcom Mode 232% (115200 bps) .
+Default settings Quit Generate
+
+Figure 1: Xcom Configurator
+
+As the baudrate is 3 times bigger, the cable length is 3 times shorter. The maximal cable
+length is about 1.3 meters.
+
+The Xcom-232i MUST have at least the software version 1.5.88 or 1.6.20 in order to
+support the configuration file.
+3.2 Byte Endianness
+
+All values are in little endian, i.e. LSB bytes are sent on the Physical layer first.
+
+V1.6.32 6 Meriger

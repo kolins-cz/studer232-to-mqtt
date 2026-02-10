@@ -1,0 +1,41 @@
+6.2.5 Read Screen sample
+
+Reading of screen frame.
+
+Request
+start_- | frame_- header_- | frame_- | data_-
+byte flags sre_addr dst_addr data_length checksum | data checksum
+1 byte 1 byte 4 bytes 4 bytes 2 bytes 2 bytes N bytes 2 bytes
+always 501 (Xcom- A
+AA 0 1 232i gateway) =N=10 computed | 10 bytes | computed
+AA 00 01 00 00 00 F5 01 00 00 0A 00 00 D6 10 bytes 01 06
+service_flags service_id object_type object_id property_id | property_
+data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 0 byte
+is_response = false | read_property screen up=80 00 00 00 0 >
+error = false set=40 00 00 00
+esc=20 00 00 00
+down=10 00 00 00
+screen=00 00 00 00
+00 o1 00 01 00 00 00 00 00 00 -
+Total number of bytes: 14+10+2 = 26 bytes
+Response
+start_- | frame_- header_- | frame_- | data_-
+byte flags sre_addr dst_addr data_length checksum | data checksum
+1 byte 1 byte 4 bytes 4 bytes 2 bytes 2 bytes N bytes 2 bytes
+always 501 (Xcom- 7 1034
+ian | 00100010 | 52, gateway) 1 =N-= 1034 | computed | pia, | computed
+AA 22 F5 01 00 00 01000000 OA 04 26 24 1034 C5 5B
+bytes
+service_flags service_id object_type object_id property_id | property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 1024 bytes
+is_response = true tead_property screen 0 0 screen
+error = false
+02 o1 00 01 00 00 00 00 00 00 1024 bytes
+
+Total number of bytes: 14+1034+2 = 1050 bytes
+
+V1.6.32
+
+42
+

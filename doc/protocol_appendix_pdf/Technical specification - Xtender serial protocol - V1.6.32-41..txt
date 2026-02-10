@@ -1,0 +1,54 @@
+6.2.3 Content of data property
+
+"O" and varying bits on a total of 15 bits.
+
+"10" and the number of white bits to send on a total of 14 bits.
+
+"11" and the number of black bits to send on a total of 14 bits.
+
+All displays are then compressed using the following algorithms :
+
+The property_id in the request allows to choose a complete image (0x00) or the delta
+
+(0x01). The delta of the image is carried out with an XOR in between the previous and the
+current image.
+
+BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT | BIT
+15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0
+0 15 successive pixels of different values
+
+1 0 The number of successive white pixels (0 uptil 16383)
+
+1 1 The number of successive white pixels (0 uptil 16383)
+
+int index = 0;
+
+for(i=0; i < frame_length; i++)
+
+6.2.4 Algorithm to decompress images
+
+41
+
+{
+if( buffer[i] & BIT15 )
+{
+int count = buffer[i] & Ox3FFF;
+bool value = buffer[i] & BIT14;
+while(count > 0)
+{
+setPixel(index, value);
+index++;
+count--;
+}
+}
+else
+{
+for(int j = 0; j < 15; j++)
+{
+bool value = (buffer[i] >> j) & BITO;
+setPixel(index, value);
+index++;
+}
+}
+}
+V1.6.32 bergen

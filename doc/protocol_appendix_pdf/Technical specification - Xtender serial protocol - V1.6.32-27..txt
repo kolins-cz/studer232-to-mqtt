@@ -1,0 +1,37 @@
+object_id : same as the request
+property_id : same as the request
+
+property_data : If error in service_flags is 1, 2 bytes of type ERROR identifying the error
+code. Otherwise, the following data structure :
+
+Data Format | Descriptions
+
+0-3 uint32_t | 32 bits data with the following structure :
+
+e Bits 0, 1, 2, 3 : version of the service in Xcom-
+LAN/GSM. 15 version is O000b
+
+e Bit 4: 0=Xcom-LAN, 1=Xcom-GSM
+
+¢ Bit 5: O=no XT, 1=XT present
+
+« Bit 6: O=no BSP, 1=BSP present
+
+¢ Bit 7: O=no VT, 1=VT present
+
+e Bit 8: O=no VS, 1=VS present
+
+¢ Bits 9 31 : reserved
+
+4-7 uint32_t | Date/time posix on 4 bytes
+
+8-... uint16_t | User info reference (similar to request frame)
+
+uint8_t | Aggregation type (similar to request frame)
+
+float32_t| Value of the requested user info, as a 4-bytes
+float.
+
+V1.6.32 27
+
+y RY

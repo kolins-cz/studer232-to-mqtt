@@ -1,0 +1,48 @@
+4.2.2 WRITE_PROPERTY service
+This service is used to write an object’s property.
+
+The DTE sends a request frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes n byte
+0x00 0x02
+service_flags : is_response = 0, error = 0
+service_id : 0x02 for WRITE_PROPERTY
+object_type : the object type identifier, defined later in this document
+object_id : the object identifier, specific to each object type, i.e. two objects with
+
+different types can have the same id
+property_id : identify the property in the object
+property_data : the data in the right data type.
+
+The Xcom-232i responds with a frame with the following frame_data:
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 0 or 2 bytes
+0x02 or 0x03 0x02
+
+service_flags : flags_response = 1, error= Oor1
+
+service_id : 0x01 for READ_PROPERTY
+object_type : same as the request
+object_id : same as the request
+property_id : same as the request
+
+property_data : If error in service_flags is 0, 0 byte of data. If not, 2 bytes of type
+ERROR identifying the error code.
+
+4.2.3 Format
+
+The property data are encoded in different formats described below. Some properties have
+a format that can be different from one object to an other for the same object_type. For
+example an the value_qsp of parameter can be an ENUM or a FLOAT depending on the
+parameter id (identified by the object_id). In this case it is described here as type
+DYNAMIC. The DTE must then know the exact type of the property for each object to
+
+decode it.
+BOOL : binary data, 1 byte, 0 = false, 1 = true, other values are invalid
+FORMAT : a property what define the format of an other property, 16 bit
+
+integer
+
+V1.6.32 13 Meriger

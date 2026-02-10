@@ -1,0 +1,74 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 19 _| Halted (019): Battery undervoltage
+
+VO. 20 | Halted (020): Battery overvoltage
+
+V.O. 21 __| (021): Transfer not authorized, AC-Out current is higher than {1107}
+Vv.O. 22 | Halted (022): Voltage presence on AC-Out
+
+V.O. 23 _ | Halted (023): Phase not defined
+
+Vv.O. 24 | Warming (024): Change the clock battery
+
+V.O. 25 _| Halted (025): Unknown Command board. Software upgrade needed
+V.O. 26 _| Halted (026): Unknown Power board. Software upgrade needed
+V.O. 27__ | Halted (027): Unknown extension board. Software upgrade needed
+V.O. 28 _| Halted (028): Voltage incompatibility Power - Command
+
+V.O. 29 _ [Halted (029): Voltage incompatibility Ext. - Command
+
+V.O. 30 _| Halted (030): Power incompatibility Power - Command
+
+V.O. 31 __ | Halted (031): Command board software incompatibility
+
+V.O. 32__ | Halted (032): Power board software incompatibility
+
+V.O. 33 _| Halted (033): Extension board software incompatibility
+
+V.O. 34 _| Halted (034): FID corruption, call factory
+
+V.O. 35 _ | (035): Memory structure modified
+
+V.O. 36 _| Halted (036): Parameter file lacking
+
+V.O. 37__ | Waming (037): Message file lack. SW upgrade advised
+
+V.O. 38 __ | Waming (038): Upgrade of the device software advised
+
+V.O. 39 | Waming (039): Upgrade of the device software advised
+
+V.O. 40 | Waming (040): Upgrade of the device software advised
+
+V.O. 41 [Waring (041): Over temperature TR
+
+V.O. 42__| Halted (042): Unauthorized energy source at the output
+
+V.O. 43 | (043): Start of monthly test
+
+V.O. 44 _| (044): End of successfully monthly test
+
+V.O. 45 | Warning (045): Monthly autonomy test failed
+
+V.O. 46 _| (046): Start of weekly test
+
+V.O. 47 __| (047): End of successfully weekly test
+
+V.O. 48 _ | Warming (048): Weekly autonomy test failed
+
+V.O. 49 | (049): Transfer opened because AC-In max current exceeded {1107}
+V.O. 50 _| Error (050): Incomplete data transfer
+
+Vv.O. 51 _ | (051): The update is finished
+
+VO. 52 _| (052): Your installation is already updated
+
+V.O. 53 _ | Halted (053): Devices not compatible, software update required
+V.O. 54 _| (054): Please wait. Data transfer in progress
+
+V1.6.38
+
+62
+

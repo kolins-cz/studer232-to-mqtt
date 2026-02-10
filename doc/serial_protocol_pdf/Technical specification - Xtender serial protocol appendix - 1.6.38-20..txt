@@ -1,0 +1,46 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. |the RCC_| Unit Format | Related parameter or description
+3078 _| Discharge of battery of the current day EoutDay | kWh kWh FLOAT
+3080_| Energy AC-In from the previous day EacinYD | kWh kWh FLOAT
+3081 | Energy AC-In from the current day EacinDay | kWh kWh FLOAT
+3082_| Consumers energy of the previous day Eac out YD__| kWh kWh FLOAT
+3083_| Consumers energy of the current day Eac out Dy | kWh kWh FLOAT
+3084 _| Input frequency Fin Hz Hz FLOAT | Replace info 3014
+3085 _| Output frequency Fout Hz Hz FLOAT | Replace info 3024
+O:RM EN 0 SHORT
+3086 | Remote entry state RME LRM EN 1 ENUM
+3087 | Output active power Pouta Ww Ww FLOAT | Less accurate than info 3136
+3088 _| Input active power Pina Ww Ww FLOAT | Less accurate than info 3137
+3089 _| Defined phase FLOAT | 1=L1, 2=L2, 4-13
+3090_| Battery voltage (minute min) Ubat- Vde Vv FLOAT | 1 minute minimum
+3091 _| Battery voltage (minute max) Ubat+ Vde Vv FLOAT | 1 minute maximum
+3092_| Battery voltage (minute avg) Ubat Vde Vv FLOAT | 1 minute average
+3093 _| Battery charge current (minute min) Ibat- ‘Adc A FLOAT | 1 minute minimum
+3094 _| Battery charge current (minute max) Ibat+ Adc A FLOAT | 4 minute maximum
+3095 _| Battery charge current (minute avg) Ibat ‘Adc A FLOAT | 1 minute average
+3096 | Output power min (minute min) Pout- kVA kVA FLOAT | 4 minute minimum
+3097 _| Output power (minute max) Pout+ kVA kVA FLOAT | 1 minute maximum
+3098 _| Output power (minute avg) Pout kVA kVA FLOAT | 1 minute average
+3099 _| Output active power (minute min) Pout-a kW. kW FLOAT | 1 minute minimum
+3100 | Output active power (minute max) Poutea kW kW FLOAT | 1 minute maximum
+3101 | Output active power (minute avg) Pouta kW kW FLOAT | 1 minute average
+3102_| Electronic temperature 1 (minute min) Tpl- °C °C FLOAT | 1 minute minimum
+3103 _| Electronic temperature 1 (minute max) Tpl+ °C °C FLOAT | 1 minute maximum
+3104 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT | 1 minute average
+3105 _| Electronic temperature 2 (minute min) Tp2- °C °C FLOAT | 4 minute minimum
+3106 _| Electronic temperature 2 (minute max) Tp2+ °C °C FLOAT | 1 minute maximum
+3107 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT | 1 minute average
+3108 | Output frequency (minute min) Fout- Hz Hz FLOAT | 1 minute minimum
+3109 | Output frequency (minute max) Fout+ Hz Hz FLOAT | 1 minute maximum
+3110 | Output frequency (minute avg) Fout Hz Hz FLOAT | 1 minute average
+3111_| Input voltage (minute min) Uin- Vac Vv FLOAT | 1 minute minimum
+3112_| Input voltage (minute max) Uine Vac Vv FLOAT | 1 minute maximum
+3113 _| Input voltage (minute avg) Uin Vac Vv FLOAT | 1 minute average
+
+V1.6.38
+
+20
+

@@ -1,0 +1,37 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| VarioString parameter description Unit Default Min Max Scom format_| Increment
+Expert | 14161 Contact activated with the SOC 1 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14162 Contact activated below SOC 1 (AUX 2) %So0c  |50 0 100 FLOAT 5
+Expert | 14163 Delay 1 (AUX 2) hours 12 0 99 FLOAT 0.25
+Expert | 14164 Contact activated with the SOC 2 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14165 Contact activated below SOC 2 (AUX 2) % 30 0 100 FLOAT 5
+Expert | 14166 Delay 2 (AUX 2) hours 0.2 0 99 FLOAT 0.25
+Expert | 14167 Contact activated with the SOC 3 of battery (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14168 Contact activated below SOC 3 (AUX 2) % 20 0 100 FLOAT 5
+Expert | 14169 Delay 3 (AUX 2) hours 0 0 99 FLOAT 0.25
+Expert | 14170 Contact deactivated over SOC (AUX 2) % SOC | 90 0 100 FLOAT 5
+Expert | 14171 Delay to deactivate (AUX 2) hours 0.2 0 10 FLOAT 0.25
+Expert | 14172 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14173 | _ Resetall settings (AUX 2) s s s INT32 Signal
+
+VarioString infos
+
+Unit on
+Nr__| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+15000 | Battery voltage Ubat Vde Vv FLOAT
+15001 | Battery current Ibat Adc A FLOAT
+
+O:Bulk
+
+1:Absorpt.
+
+2:Equalize
+
+SHORT
+
+15002 | Battery cycle phase Phas ENUM
+
+V1.6.38 56
+

@@ -1,0 +1,39 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert 1277 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert | 1278 Program 3 (AUX 1) ONLY LEVEL | Menu
+Expert 1279 Day of the week (AUX 1) None t) 127 LONG ENUM | Bit field
+Expert 1280 Start hour (AUX 1) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 1281 End hour (AUX 1) Minutes 1200=20:00 1440=24:00 | INT32 1
+Expert 1455 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 1225 Xtender is OFF (AUX 1) 0:No. 0:No. BOOL 1
+Expert 1518 Xtender ON (AUX 1) 0:No 0:No BOOL 1
+Expert | 1543 Remote entry (AUX 1) 0:No 0:No BOOL 1
+Expert | 1226 Battery undervoltage alarm (AUX 1) 0:No 0:No BOOL 1
+Expert | 1227 Battery overvoltage (AUX 1) 0:No 0:No BOOL 1
+Expert 1228 Inverter overload (AUX 1) 0:No 0:No BOOL 1
+Expert | 1229 Overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 1520 No overtemperature (AUX 1) 0:No 0:No BOOL 1
+Expert | 1231 ‘Active charger (AUX 1) 0:No 0:No BOOL 1
+Expert 1232 Active inverter (AUX 1) 0:No 0:No BOOL 1
+Expert 1233 Active Smart-Boost (AUX 1) 0:No 0:No BOOL 1
+Expert | 1234 AC input presence but with fault (AUX 1) 0:No 0:No BOOL 1
+Expert | 1235 AC input presence (AUX 1) 0:No 0:No BOOL 1
+Expert | 1236 Transfer relay ON (AUX 1) 0:No 0:No BOOL 1
+Expert | 1237 ‘AC out presence (AUX 1) 0:No 0:No BOOL 1
+Expert | 1238 Bulk charge phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1239 ‘Absorption phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1240 Equalization phase (AUX 1) 0:No 0:No BOOL 1
+Expert | 1242 Floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 1243 Reduced floating (AUX 1) 0:No 0:No BOOL 1
+Expert | 1244 Periodic absorption (AUX 1) 0:No 0:No BOOL 1
+Inst. 1601 ‘AC-In energy quota (AUX 1) 0:No 0:No BOOL 1
+Expert | 1245 Contact active according to battery voltage (AUX 1) ONLY LEVEL | Menu
+Expert | 1288 Use dynamic compensation of battery level (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 1246 Battery voltage 1 activate (AUX 1) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1247 Battery voltage 1 (AUX 1) Vde 46.8 36 72 FLOAT 04
+
+V1.6.38 9
+

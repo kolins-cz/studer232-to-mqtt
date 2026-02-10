@@ -1,0 +1,75 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| Xtender information description Short desc. | the RCC _| Unit Format | Related parameter or description
+
+3114 | Input current (minute min) lin= ‘Aac A FLOAT | 1 minute minimum
+
+3115 _| Input current (minute max) line ‘Aac A FLOAT [1 minute maximum
+
+3116 _| Input current (minute avg) lin ‘Aac A FLOAT | 1 minute average
+
+3117 _| input active power (minute min) Pin-a kW kW FLOAT [1 minute minimum
+
+3118 _| Input active power (minute max) Pinsa kW kW FLOAT | 1 minute maximum
+
+3119 | input active power (minute avg) Pina kW kW FLOAT | 1 minute average
+
+3120 _| Input frequency (minute min) Fin- Hz Hz FLOAT | 1 minute minimum
+
+3121 _| Input frequency (minute max) Fins Hz Hz FLOAT [1 minute maximum
+
+3122 _| Input frequency (minute avg) Fin Hz Hz FLOAT | 1 minute average
+
+3124 | 1D type iat FLOAT | XTH family = 1, XTM family = 256 et XTS family = 512
+
+3125 | ID Power Power VA VA FLOAT
+
+3126 | 1D Uout Uout Vac Vv FLOAT
+
+3127 | ID batt voltage Idv Vde Vv FLOAT
+
+3128 _| ID lout nom lonom ‘Aac A FLOAT
+
+3129 [1D HW HW FLOAT
+
+3130_| ID SOFT msb ‘Smsb FLOAT | See section "Software version encoding”
+
+3131_ | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+
+3132_| ID HW PWR HWpwr FLOAT
+
+3133 _| Parameter number (in code) pCod FLOAT
+
+3134_| Info user number iCod FLOAT
+
+3135 [1D SID SID FLOAT
+
+3136 _| Output active power Pouta kW kW FLOAT | More accurate than info 3087
+
+3137 _| input active power Pina kW kW FLOAT | More accurate than info 3088
+
+3138 _| Input power Pin kVA kVA FLOAT | More accurate than info 3013
+
+3139 _| Output power Pout kVA kVA FLOAT | More accurate than info 3023
+
+3140 _| System debug 1 DBGI FLOAT
+
+3141_| System debug 2 DBG2 FLOAT
+
+3142 _| System state machine ssM FLOAT
+
+3154 _| input frequency Fin Hz Hz FLOAT
+
+3155 _| Desired AC injection current Inje ‘Aac A FLOAT
+
+3156 | 1D FID msb FLOAT | See section "FID encoding”
+
+3157 _| ID FIDIsb FLOAT | See section "FID encoding”
+
+3158 | Actual freezed current in ARN4105 P(f) Aac FLOAT | ARNA10S, maximum current that can be injected actually, grid
+
+requency dependance
+
+V1.6.38 21 Aorigen

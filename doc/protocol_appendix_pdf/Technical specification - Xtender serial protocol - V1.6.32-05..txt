@@ -1,0 +1,50 @@
+2. Physical layer
+
+The physical layer is RS-232. The Xcom-232i is equiped with a DE-9 (also known as DB-9)
+
+Female connector which provides this interface.
+
+The serial port is galvanically separated with an isolation of 500 V DC relative to the
+
+negative battery potential.
+
+2.1 Connector Pinning
+
+On the female connector of the Xcom-232i, only the wires “receive data”, “transmitted
+data” and ground are connected. The other wires are not connected, and the DTE must
+
+ignore signals such as CTS, DTR or DCD.
+
+pin number
+
+usage
+
+1
+
+not connected
+
+RxD
+
+TxD
+
+not connected
+
+GND
+
+not connected
+
+not connected
+
+not connected
+
+wo] of NN} a uo] A) wl N
+
+not connected
+
+2.2 Cable to use
+
+The cable to be used with a PC is a Female-Male, straight.
+
+V1.6.32
+
+y RY

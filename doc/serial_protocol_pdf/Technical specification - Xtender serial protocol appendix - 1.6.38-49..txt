@@ -1,0 +1,36 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+Expert 14008 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert 14009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Expert | 14010 Force absorption phase s s s INT32 Signal
+Expert 14011 Absorption duration min 120 5 510 FLOAT 5
+Expert | 14012 End of absorption triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 14013 Current threshold to end absorption phase Adc 10 2 120 FLOAT 2
+Expert | 14016 Equalization phase ONLY LEVEL | Menu
+Expert 14017 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 14018 Force equalization s s s INT32 Signal
+Expert 14021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Expert 14020 Equalization current Adc 80 2 120 FLOAT 2
+Expert 14022 Equalization duration min 30 5 510 FLOAT 5
+Expert 14023 Equalization with fixed interval 1:Yes 0:No 1:Yes BOOL 1
+Expert | 14024 Days between equalizations days 26 1 365 FLOAT 1
+Expert | 14025 End of equalization triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 14026 Current threshold to end equalization phase Adc 10 4 30 FLOAT 1
+Expert | 14019 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 14027 New cycle ONLY LEVEL | Menu
+Expert | 14028 Force a new cycle s s s INT32 Signal
+Expert 14029 Voltage level 1 to start a new cycle Vde 48.8 37.9 68.2 FLOAT 0.1
+Expert 14030 Time period under voltage level 1 to start anew cycle min 30 ) 240 FLOAT 1
+Expert 14031 Voltage level 2 to start a new cycle Vde 47.2 37.9 68.2 FLOAT 0.1
+Expert 14032 Time period under voltage level 2 to start anew cycle min 2 ) 240 FLOAT 1
+Expert 14033 Cycling restricted 1:Yes 0:No 1:Yes BOOL 1
+Expert 14034 Minimal delay between cycles hours 1 ) 540 FLOAT 1
+Expert 14065 Battery overvoltage level Vde 68.2 37.9 68.2 FLOAT 0.1
+Expert 14066 Restart voltage level after a battery overvoltage Vde 64.8 37.9 68.2 FLOAT 0.1
+Expert | 14037 | SYSTEM ONLY LEVEL | Menu
+Expert | 14174 | Block manual programming (dip-switch) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 49
+

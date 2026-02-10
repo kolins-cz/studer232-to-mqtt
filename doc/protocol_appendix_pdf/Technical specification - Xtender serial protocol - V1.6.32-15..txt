@@ -1,0 +1,16 @@
+SCOM_ERROR_OBJECT_NOT_SUPP | |. | this object id, through existant, is not supported
+ORTED x by the current implementation of the gateway
+SCOM_ERROR_MULTICAST_READ_ | |... | Read operation is not supported when used on
+NOT_SUPPORTED x multicast adresses.
+OBJECT_PROPERTY_INVALID oxoo2e | Duringa file transfer, the use of this property
+was unexpected
+FILE_OR_DIR_NOT_PRESENT 0x002F emt to download a file not present on the
+FILE_CORRUPTED 0x0030 A read error ocurred during the download of a
+INVALID. SHELL_ARG oxo081 | te command line tool used received the wrong
+arguments
+
+Remark: when writing Xtender parameters, take in acount the parameters
+interdependencies that reduce the allowed value ranges. See in RCC manual : "APPENDIX
+1: LIST OF CONFIGURATION INTERDEPENDENCIES".
+
+V1.6.32 15 Aerigery

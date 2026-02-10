@@ -1,0 +1,27 @@
+flags : is_response = 1, error= 0 ou 1
+
+service_id: Same value as the query
+object_type : Same value as the query
+object_id : Same value as the query
+property_id : Same value as the query
+
+property_data : If error=0 > the message asked (see 4.6.6)
+
+If error=1 > 2 bytes for the error code
+
+4.6.6 Content of property_data
+
+Name Size Format Remark
+The total number of the XCOM-
+message_total_number | 4 bytes INT32 ine otal number of message in the
+message type 2 byte cum The number defining the meaning of the
+message. See the appendix part messages.
+source address a byte INT32 Source address of the message. See 3.5
+Addressing the devices.
+The time at which the message occurred in
+timestamp 4 byte INT32 seconds since January 1, 1970.
+value a byte DYNAMIC ‘An optional value of the message. Not yet
+
+used currently.
+
+V1.6.32 21

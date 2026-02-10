@@ -1,0 +1,36 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Level_| Nr _| BSP parameter description Unit Default Min Max Scom format _| Increment
+Expert | 6031 | Reset of user counters s s s INTS2 Signal
+Expert_| 6055 | Manufacturer SOC for 0% displayed % 30 0 60 FLOAT 5
+Expert_| 6056 | Manufacturer SOC for 100% displayed % 100 80 100 FLOAT 5
+Expert_| 6042 | Activate the end of charge synchronization 0:No O:No 1:Yes BOOL 1
+Expert | 6024 | _ End of charge voltage level Vv 52.8 31.9 704 FLOAT 0.4
+Expert | 6025 | _ End of charge current level secap | 2 0 500 FLOAT 1
+Expert_| 6065 | Minimum duration before end of charge min 5 5 300 FLOAT 5
+Expert_| 6048 | Temperature correction of the end of charge voltage mV/*C/cell | 0 8 0 FLOAT 1
+Expert_| 6044 | Activate the state of charge correction by the open circuit voltage 1:Yes O:No 1:Yes BOOL 1
+Expert | 6058 | _ Battery charge current centralized regulation activated 0:No O:No 1:Yes BOOL 1
+Expert | 6059 | Max battery charge current A 60 0 10000 FLOAT 10
+Expert | 6019 | _ Self-discharge rate eaimonth | 3 0 25 FLOAT 0.4
+Expert_| 6020 | Nominal temperature °C 20 0 40 FLOAT 1
+Expert | 6021 | Temperature coefficient secaprc | 0.5 0 3 FLOAT 0.0999756
+Expert | 6022 | Charge efficiency factor % 90 50 100 FLOAT 1
+Expert | 6023 | _Peukert’s exponent 12 1 15 FLOAT 0.010098
+Expert | 6049 | Use C20 Capacity as reference value 1:Yes O:No 1:Yes BOOL 1
+BSP infos
+Unit on
+Nr_| BSP information description Short desc. |the RCC_| Unit Format | Related parameter or description
+7000 _| Battery voltage Ubat Vde 7 FLOAT
+7001 _| Battery current lbat ‘Adc ‘Ado FLOAT
+7002 _| State of Charge SOG % % FLOAT
+7003 | Power Phat Ww Ww FLOAT
+7004. | Remaining autonomy Trem minutes FLOAT oranges pint ialad before 0 % between -60000 and
+7005 _| BSP Temperature That °C °C FLOAT
+7006 _| Relative capacity Crel % % FLOAT | deprecated, return 100 % in version >= 1.5.6
+7007 _| Ah charged today Ode ‘Ah ‘Ah FLOAT
+7008 _| Ah discharged today Od> Ah Ah FLOAT
+7009 | Ah charged yesterday “Ade Ah Ah FLOAT
+V1.6.38 29 hereon

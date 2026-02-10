@@ -1,0 +1,30 @@
+1. Introduction
+
+This technical specification describes the protocol used to communicate with the Studer
+Innotec Xcom-232i communication module. It is also valid for the discontinuted RCC-02/-
+03 special execution ES N° 32 (RCC-02/-03-32).
+1.1 Conventions used in this document
+
+e Numbers that start with “Ox” are in hexadecimal, like in the C integer litterals.
+
+e Byte streams are represented with hexadecimal separeted by space like “OO 01 1F
+48”
+
+e constant values are usually represented in UPPER CASE
+
+e field names are in lower_case_with_underscore
+
+1.2 List of acronyms
+
+RCC The Studer Innotec remote control used to configure the Xtender
+system
+
+Xcom-232i The Studer Innotec RS-232 communication module that has the
+function of a DCE, Data Communications Equipment
+
+DTE Data Terminal Equipment, the PC or controller system that wants to
+communicate with the Xcom-232i
+
+SCOM Naming prefix used for the Studer Innotec serial protocol
+
+V1.6.32 4 Meriger

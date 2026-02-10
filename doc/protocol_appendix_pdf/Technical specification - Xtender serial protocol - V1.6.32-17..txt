@@ -1,0 +1,92 @@
+4.5 Parameter objects
+object_type = 0x0002
+
+All parameters accessible from the remote control can also be modified with the protocol.
+The behaviour is the same as if a physical person changes the value with the remote control
+buttons. Currently, only changes at the level qsp are possible.
+
+Values of type FLOAT are stored internally in various 16 bit fixed point formats. For this
+
+reason, the read back value after a write can be rounded slightly.
+
+4.5.1 Properties
+
+Name
+
+property_id
+
+format
+
+Remark
+
+value_gsp
+
+0x0005
+
+DYNAMIC
+
+the value that can be entered on the remote
+control in level qsp or installer.
+
+min_gsp
+
+0x0006
+
+DYNAMIC
+
+Minimum that can be entered on the remote
+control in level qsp or installer.
+
+max_gsp
+
+0x0007
+
+DYNAMIC
+
+Maximum that can be entered on the remote
+control in level qsp or installer.
+
+level_qsp
+
+0x0008
+
+ENUM
+
+accessibility level of this parameter modifiable
+in level qsp or installer.
+
+unsaved_value_qsp
+
+0x000D
+
+DYNAMIC
+
+the value that can be entered on the remote
+control in level gsp or installer, but without
+saving the value in internal flash. See section
+“Cyclic write of parameters on the Xtender
+Inverter” for more detail.
+
+4.5.2 Values of level properties
+
+The property level_qsp of type ENUM can take the following values:
+
+Name value
+
+VIEW_ONLY 0x0000
+BASIC 0x0010
+EXPERT 0x0020
+INSTALLER 0x0030
+QsP 0x0040
+
+4.5.3 Available parameters on the Xtender Inverter
+
+The change of parameters when the inverters are in operation should be done carefully.
+The modification of parameters can restart the corresponding algorithm inside the inverter.
+For example, the change of a delay can restart the timer attached to it.
+
+object_id : a number starting at 1000. See the complete parameter references at the end
+of the RCC User manual.
+
+V1.6.32 17
+

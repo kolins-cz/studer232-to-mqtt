@@ -1,0 +1,39 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Scom format__| Increment
+Expert 1340 Active inverter (AUX 2) 0:No 0:No BOOL 1
+Expert 1341 Active Smart-Boost (AUX 2) 0:No 0:No BOOL 1
+Expert | 1342 AC input presence but with fault (AUX 2) 0:No 0:No BOOL 1
+Expert | 1343 AC input presence (AUX 2) 0:No 0:No BOOL 1
+Expert 1344 Transfer contact ON (AUX 2) 0:No 0:No BOOL 1
+Expert | 1345 AC out presence (AUX 2) 0:No 0:No BOOL 1
+Expert | 1346 Bulk charge phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1347 Absorption phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1348 Equalization phase (AUX 2) 0:No 0:No BOOL 1
+Expert | 1350 Floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 1351 Reduced floating (AUX 2) 0:No 0:No BOOL 1
+Expert | 1352 Periodic absorption (AUX 2) 0:No 0:No BOOL 1
+inst. 1602 ‘AC-In energy quota (AUX 2) 0:No 0:No BOOL 1
+QsP 1643 Partial overload 0:No 0:No BOOL 1
+Expert | 1353 Contact active according to battery voltage (AUX 2) ONLY LEVEL | Menu
+Expert | 1354 Use dynamic compensation of battery level (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1355 Battery voltage 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1356 Battery voltage 1 (AUX 2) Vde 48 36 72 FLOAT 0.4
+Expert | 1357 Delay 1 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1358 Battery voltage 2 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1359 Battery voltage 2 (AUX 2) Vde 46.1 36 72 FLOAT 04
+Expert | 1360 Delay 2 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1361 Battery voltage 3 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1362 Battery voltage 3 (AUX 2) Vde 44.2 36 72 FLOAT 04
+Expert | 1363 Delay 3 (AUX 2) min 5 0 60 FLOAT 1
+Expert | 1364 Battery voltage to deactivate (AUX 2) Vde 50.4 36 72 FLOAT 04
+Expert 1365 Delay to deactivate (AUX 2) min 5 0 480 FLOAT 5
+Expert | 1517 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1366 Contact active with inverter power or Smart-Boost (AUX 2) ONLY LEVEL | Menu
+Expert | 1367 Inverter power level 1 activate (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert 1368 Power level 1 (AUX 2) % Pnom 120 20 120 FLOAT 10
+Expert 1369 Time delay 1 (AUX 2) min 0 0 60 FLOAT 1
+
+V1.6.38 13
+

@@ -1,0 +1,36 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Unit on
+Nr_| VarioTrack information description Short desc. | the RCC_| Unit Format | Related parameter or description
+0:
+1:A
+21 SHORT
+11064 | Relay aux 2 mode Aux 2 aM ENUM
+4M
+5:G
+3:
+4:XTslave
+‘cati 5:VTslave SHORT
+11066 | Synchronisation state Syne ENUM
+8:VTmaster
+9:Autonom.
+10:VSslave
+11:VSmaster
+11067 | ID FID msb FLOAT | See section "FID encoding”
+11068 | ID FID Isb FLOAT | See section "FID encoding”
+; 0:0ff SHORT
+11069 | State of the VarioTrack VT state 1:0n ENUM
+11076 | Local daily communication error counter (CAN) locEr FLOAT
+‘i 0:Opened SHORT
+11077 | State of auxiliary relay 3 Aux3 1Gosed ENUM
+‘i 0:Opened SHORT
+11078 | State of auxiliary relay 4 Aux 4 1Gosed ENUM
+SHORT
+11079 | Relay aux 3 mode Aux3 ENUM
+
+V1.6.38
+
+47
+

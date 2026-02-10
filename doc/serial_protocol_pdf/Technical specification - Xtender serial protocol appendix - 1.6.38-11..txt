@@ -1,0 +1,69 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format__| Increment
+
+Expert | 1582 Contact activated with the SOC 2 of battery (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1583 Contact activated below SOC 2 (AUX 1) %soc | 30 0 100 FLOAT 5
+
+Expert | 1584 Delay 2 (AUX 1) hours 0.2 0 99 FLOAT 0.25
+
+Expert | 1585 Contact activated with the SOC 3 of battery (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1586 Contact activated below SOC 3 (AUX 1) %soc | 20 0 100 FLOAT 5
+
+Expert | 1587 Delay 3 (AUX 1) hours 0 0 99 FLOAT 0.25
+
+Expert | 1441 Contact deactivated over SOC (AUX 1) %soc | 90 0 100 FLOAT 5
+
+Expert | 1588 Delay to deactivate (AUX 1) hours 0.2 0 10 FLOAT 0.25
+
+Expert | 1589 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1512 | Security, maximum time of contact (AUX 1) 0:No 0:No 1Yes BOOL 1
+
+Expert | 1514 | Maximum time of operation of contact (AUX 1) min 600 10 1200 FLOAT 10
+
+Expert | 1569 | Resetall settings (AUX 1) s s s INT32 Signal
+
+Expert | 1310 | AUXILIARY CONTACT 2 ONLY LEVEL | Menu
+Only 1 bit
+
+Expert | 1311 Operating mode (AUX 2) aeversed 1:Automatic ayer LONG ENUM 2Reversed automatic
+4:Manual ON
+8:Manual OFF
+
+O:Any O:Any 1A Only 1 bit
+Expert | 1498 | Combination of the events for the auxiliary contact (AUX 2) (Function | (Function | (Function | LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+
+Expert | 1312 | Temporal restrictions (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1313 Program 1 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1314 Day of the week (AUX 2) None 0 127 LONG ENUM | Bit field
+
+Expert | 1315 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 _| INT32. 1
+
+Expert | 1316 End hour (AUX 2) Minutes | 1200=20:00 | 0-00:00 1440=24:00 | INT32. 1
+
+Expert | 1317 Program 2 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1318 Day of the week (AUX 2) None 0 127 LONG ENUM _ | Bit field
+
+Expert | 1319 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 | INT32 1
+
+Expert | 1320 End hour (AUX 2) Minutes | 1200=20:00 | 0-00:00 1440=24:00 | INT32. 1
+
+Expert | 1321 Program 3 (AUX 2) ONLY LEVEL | Menu
+
+Expert | 1322 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+
+Expert | 1323 Start hour (AUX 2) Minutes | 420=07:00 _ | 0-00:00 1440=24:00 _| INT32. 1
+
+V1.6.38
+
+11
+

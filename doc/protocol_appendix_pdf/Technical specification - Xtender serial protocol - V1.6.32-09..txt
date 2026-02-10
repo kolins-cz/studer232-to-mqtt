@@ -1,0 +1,40 @@
+3.6 Multicast addresses
+
+A WRITE_PROPERTY to this kind of address will have the effect to change the property
+value on all devices of the same kind. READ_PROPERTY operations are not supported.
+
+3.7 Response delay
+
+The response delay of the Xcom-232i can be up to 2 seconds. This is a good value for a
+timeout in the DTE implementation.
+
+The reponse delay depends on the bus load (number of devices, number of RCC or Xcom-
+232i, values displayed on the RCC). The use of the datalogger on the Xcom-232i or on
+other RCC can cause a periodic increase of the reponse delay every 60 seconds.
+
+3.8 Hardware Watchdog
+
+The remote control parameter {5103} " Activation of the watchdog hardware (deactivation
+restarts the Xcom-232i)" allows activation or deactivation of the hardware watchdog,
+initially disabled. In case the Xcom-232i is not working properly a Reset will be initiated
+automatically. The bit 1 of the frame_flags (see 3.3) reflects a start or restart of the Xcom-
+232i. This bit can be cleared with the RCC/Xcom-232i parameter {5104} “Clears the restart
+flag of Xcom-232i”.
+
+This function reset only the Xcom-232i. For the Xtender, see the parameters {1628} and
+{1629} in section “XTENDER Watchdog”.
+
+3.9 SCOM Watchdog
+
+The RCC/Xcom-232i parameters {5095} “Enable SCOM watchdog” and {5096} “SCOM
+watchdog delay before reset of Xcom-232i” allow configuration of the SCOM watchdog,
+initially disabled. There is two kind of security activated by this parameter. First, when a
+request is received a timer is started. If the response is not send after {5096} seconds,
+for example if an inverter present does not respond, the Xcom-232i is reset. A second
+timer is also activated when the first request arrives. It is set to zero every time a request
+is received. When it reaches {5096} seconds the Xcom-232i is reset. Before both kind of
+reset a message will be sent. Like the hardware watchdog, the bit 1 of the frame_flags
+(see 3.3) reflects a start or restart of the Xcom-232i and it can be cleared with the
+RCC/Xcom-232i parameter {5104} “Clears the restart flag of Xcom-232i”.
+
+V1.6.32 9 Meriger

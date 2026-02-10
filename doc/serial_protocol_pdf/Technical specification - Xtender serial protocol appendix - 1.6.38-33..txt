@@ -1,0 +1,39 @@
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr Xcom-CAN information description Short desc. | the RCC Unit Format | Related parameter or description
+0:UNK. SOC.
+1:OVER GRID
+2:AT GRID
+3:UNDER GRID
+4:UNDER ADA
+7068 | Soc state state 5:AT BACKUP stone
+6:UNDER BACK
+7:END OF CH
+8:OVER ENDC.
+9:FULL
+10:NORMAL,
+7069 | Soc for backup SocBu % FLOAT
+7070 | Soc for grid-feeding SocGf % FLOAT
+7071 | Soc for end of charge SocEoc % FLOAT
+VarioTrack parameters
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10000 | BASIC SETTINGS ONLY LEVEL | Menu
+Expert | 10054 Block manual programming (dip-switch) 0:No 0:No 1:Yes BOOL 1
+Only 1 bit
+1:Automatic
+Basic 10001 Voltage of the system 1:Automatic 1:Automatic | 8:48V. LONG ENUM 212V
+4:24V
+8:48V
+Expert 10002 Battery charge current Adc 80 0 80 FLOAT 2
+Basic 10037 Synchronisation battery cycle with Xtender 1:Yes 0:No. 1:Yes BOOL 1
+Basic 10005, Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Basic 10009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Basic 10017 Equalization allowed 0:No. 0:No. 1:Yes BOOL 1
+Basic 10021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Basic 10056 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 10057 Restore factory settings Ss Ss Ss INT32 Signal
+Expert | 10003 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+
+V1.6.38 33
+

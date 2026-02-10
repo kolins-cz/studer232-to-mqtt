@@ -1,0 +1,62 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+
+Expert 14178 Ratio of PV1 open circuit voltage 0.7 0.5 1 FLOAT 0.010009766
+Only 1 bit
+1:P&O
+
+Expert 14046 Type of MPP tracking algorithm PV2 8:LSF 1:P&O 8:LSF LONG ENUM 2:0€ ratio
+4:Upv fixed
+8:LSF
+
+Expert 14047 PV2 voltage fixed Vde 500 100 600 FLOAT 10
+
+Expert 14048, Ratio of PV2 open circuit voltage 0.7 0.5 1 FLOAT 0.010009766,
+
+Inst. 14192 Establishment time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14193 Averaging time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14190 PV wiring type erased from memory Ss Ss Ss INT32 Signal
+
+Expert | 14195 Configuration for VS-70 ONLY LEVEL | Menu
+Only 1 bit
+1:No control
+
+Expert | 14196 Type of PV grounding 1:No control | 1:No control | 8:PV floating | LONG ENUM | 2:PV+ grounded
+4:PV- grounded
+8:PV floating
+
+Expert | 14180 Type of MPPT algorithm ONLY LEVEL | Menu
+Only 1 bit
+1:P&O
+
+Expert 14197 Type of MPP tracking algorithm PV 8:LSF 1:P&O 8:LSF LONG ENUM 2:0€ ratio
+4:Upv fixed
+8:LSF
+
+Expert 14198 PV voltage fixed Vde 500 100 600 FLOAT 10
+
+Expert 14199 Ratio of PV open circuit voltage 0.7 0.5 1 FLOAT 0.010009766,
+
+Inst. 14192 Establishment time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Inst. 14193 Averaging time (Algo MPPT) sec 0 0 300 FLOAT 1
+
+Expert | 14200 Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+
+, 4 1:Closed
+
+Expert | 14201 Remote entry active 2:Open 1:Closed 4:Edge LONG ENUM | 9:65en
+4:Edge
+
+Expert 14202 ON/OFF command 0:No. 0:No. 1:Yes BOOL 1
+
+Expert 14203 Activated by AUX1 state 0:No. 0:No. 1:Yes BOOL 1
+
+Expert 14204 Start equalization 0:No. 0:No. BOOL 1
+
+V1.6.38 51 Aorigen

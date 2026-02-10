@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <termios.h> // for baud rate constant
-#include <unistd.h>  // Include the header file for usleep
+#include <unistd.h>  // for usleep()
 
 // Function to read a parameter from a device at a specific address
 read_param_result_t read_param(int addr, int parameter)

@@ -1,0 +1,46 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1324 End hour (AUX 2) Minutes | 1200=20:00 1440=24:00 | INT32 1
+
+Inst. 1325 Program 4 (AUX 2) ONLY LEVEL | Menu
+Inst. 1326 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Inst. 1327 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+
+Inst. 1328 End hour (AUX 2) Minutes _ | 1200=20:00 1440=24:00 | INT32 1
+
+Inst. 1329 Program 5 (AUX 2) ONLY LEVEL | Menu
+Inst. 1330 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Inst. 1331 Start hour (AUX 2) Minutes | 420-07:00 _ | 0=00:00 1440=24:00 | INT32 1
+
+Inst. 1332 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1378 | Contact active with a fixed time schedule (AUX 2) ONLY LEVEL | Menu
+Expert | 1379 Program 1 (AUX 2) ONLY LEVEL | Menu
+Expert | 1380 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1381 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+Expert | 1382 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1383 Program 2 (AUX 2) ONLY LEVEL | Menu
+Expert | 1384 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1385 Start hour (AUX 2) Minutes | 420-07:00 _ | 0=00:00 1440=24:00 | INT32 1
+Expert | 1386 End hour (AUX 2) Minutes | 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 1387 Program 3 (AUX 2) ONLY LEVEL | Menu
+Expert | 1388 Day of the week (AUX 2) None 0 127 LONG ENUM _| Bit field
+Expert | 1389 Start hour (AUX 2) Minutes | 420-07:00 1440=24:00 | INT32 1
+Expert | 1390 End hour (AUX 2) Minutes | 1200=20:00 1440=24:00 | INT32 1
+Expert | 1456 | Contact active on event (AUX 2) ONLY LEVEL | Menu
+Expert | 1333 Xtender is OFF (AUX 2) 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1519 Xtender ON (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 1544 Remote entry (AUX 2) 0:No 0:No BOOL 1
+Expert | 1334 Battery undervoltage alarm (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1335 Battery overvoltage (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1336 Inverter overload (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1337 Overtemperature (AUX 2) 1:Yes 0:No BOOL 1
+Expert | 1521 No overtemperature (AUX 2) 0:No 0:No BOOL 1
+Expert | 1339 Active charger (AUX 2) 0:No 0:No BOOL 1
+
+V1.6.38
+
+12
+

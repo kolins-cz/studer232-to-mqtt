@@ -1,0 +1,38 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Basic | 5021 | EXTENDED AND SPECIAL FUNCTIONS ONLY LEVEL | Menu
+Basic | 5006 | Display contrast % 50 0 100 FLOAT 5
+Only 1 bit
+1:Clock
+, , . . Varios; 2:Xtender
+Expert | 5073 | Choice of standard display 2Xtender —_| 1:Clock 16:VarioString | LONG ENUM | 4:35)
+8:VarioTrack
+16:VarioString
+Only 1 bit
+play; Se . . i . j¢ | 4:By default 1:Automatic
+Inst. 5111 Displaying of configuration assistant on startup Automatic | 1:Automatic | feohay LONG ENUM i ee en anu
+4:By default {5073}
+Expert | 5010 | Come back to standard display after sec 600 5 600 FLOAT 5
+Expert | 5011 Visibility of the transitory messages sec 60 0 180 FLOAT 5
+Basic | 5027 | Acoustic alarm active 1:Yes 0:No 1:Yes BOOL 1
+Expert | 5031 Remote control acoustic alarm duration sec 120 5 120 FLOAT 5
+Expert | 5056 | Switching ON and OFF of system on level "VIEW ONLY" 1:Yes 0:No 1:Yes BOOL 1
+Expert | 5071 Reset of all the remotes control s s s INT32 Signal
+Expert | 5121 Reset all devices of the system s s s INT32 Signal
+asp 5090 | Update FID (only 1 device) ONLY LEVEL | Menu
+Only 1 bit
+1:XT
+asp 5091 Choose device type 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP
+4:VarioTrack
+8:VarioString
+asp 5092 Choose device id (UID) 1 1 30 FLOAT 1
+asp 5062 Update device FID (only 1 device) s s s INT32 Signal
+Expert | 5094 | XCOM AND SCOM ONLY LEVEL | Menu
+Expert | 5023 | —Xcom-LAN or Xcom-GSM ONLY LEVEL | Menu
+Expert | 5105 Test of the modem's GPRS signal level (Xcom-GSM) Ss Ss Ss INT32 Signal
+Expert | 5102 (63/90) saving of LAN/GSM connection messages O:No O:No 1-Yes BOOL 1
+
+V1.6.38 27
+

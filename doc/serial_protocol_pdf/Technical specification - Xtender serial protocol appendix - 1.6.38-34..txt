@@ -1,0 +1,39 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Basic 10037 Synchronisation battery cycle with Xtender 1:Yes 0:No 1:Yes BOOL 1
+Expert 10002 Battery charge current Adc 80 ) 80 FLOAT 2
+Expert 10334 Battery undervoltage Vde 40 34 68.2 FLOAT 0.1
+Expert 10036 Temperature compensation mV/°Cicell | -3 8 ) FLOAT 1
+Expert | 10004 | Floating phase ONLY LEVEL | Menu
+Basic 10005 Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Expert | 10006 Force phase of floating Ss Ss Ss INT32 Signal
+Expert | 10007 | Absorption phase ONLY LEVEL | Menu
+Expert 10008 Absorption phase allowed 1:Yes 0:No 1:Yes BOOL 1
+Basic 10009 Absorption voltage Vde 57.6 37.9 68.2 FLOAT 0.1
+Expert | 10010 Force absorption phase Ss Ss Ss INT32 Signal
+Expert 10011 Absorption duration min 120 5 510 FLOAT 5
+Expert | 10012 End of absorption triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 10013 Current threshold to end absorption phase Adc 10 2 80 FLOAT 2
+Expert | 10016 Equalization phase ONLY LEVEL | Menu
+Basic 10017 Equalization allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 10018 Force equalization Ss Ss Ss INT32 Signal
+Basic 10021 Equalization voltage Vde 62.4 52.1 68.2 FLOAT 0.1
+Expert 10020 Equalization current Adc 80 2 80 FLOAT 2
+Expert 10022 Equalization duration min 30 5 510 FLOAT 5
+Expert 10052 Equalization with fixed interval 1:Yes 0:No 1:Yes BOOL 1
+Expert | 10025 Days between equalizations days 26 1 365 FLOAT 1
+Expert | 10026 End of equalization triggered by the current 0:No 0:No 1:Yes BOOL 1
+Expert 10027 Current threshold to end equalization phase Adc 10 4 30 FLOAT 1
+Expert | 10019 Equalization before absorption phase 1:Yes 0:No 1:Yes BOOL 1
+Expert | 10028 New cycle ONLY LEVEL | Menu
+Expert | 10029 Force a new cycle Ss Ss Ss INT32 Signal
+Expert 10030 Voltage level 1 to start a new cycle Vde 48.8 37.9 68.2 FLOAT 0.1
+Expert 10031 Time period under voltage level 1 to start anew cycle min 30 ) 240 FLOAT 1
+Expert 10032 Voltage level 2 to start a new cycle Vde 47.2 37.9 68.2 FLOAT 0.1
+Expert 10033 Time period under voltage level 2 to start anew cycle min 2 ) 240 FLOAT 1
+Expert | 10034 Cycling restricted 1:Yes 0:No 1:Yes BOOL 1
+
+V1.6.38 34
+

@@ -1,0 +1,44 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+ARN4105, current limitation depending on grid frequency :
+0:No limit 0 = no limitation
+1:FreezeOF 1: Value was frozen, grid frequency is >= 50.2Hz
+ae a , 2:N_ImaxOF SHORT | 2: Value not frozen but not at maximum, grid frequency is <
+3159. | AC injection current, type of limitation ARN4105 P(f) Injt So hooeUr ENUM. | so.2he
+4:N_ImaxUF 3: Value was frozen, grid frequency is <-49.8Hz
+5:N_IMaxST 4: Value not frozen but not at maximum, grid frequency is >49.8Hz
+5 : Value not frozen but not at maximum, grid reconnection
+o:invatid val Limitation source is :
+1 Ubatt value 0: Invalid value
+: 1: U batt (actual phase of charge cycle)
+2:Ubattp :
+: 2: U batt peak
+3:Ubattpp :
+Sibert 3: U batt peak peak
+: 4: | batt ({1138})
+5:Pchar :
+3160 | Source of limitation of the functions charger or injector —_| LimSre 6:Ubattinj SHORT | 5:P charger
+9 ys Stim ENUM | 6: U batt injection
+lin} 7: | injection ({1523})
+8:lmax :
+9illim S:lmax
+to.khermal 9:1 input limit (1107})
+: 10 : I thermal
+11:PchNeg :
+IDARNT 1: Pcharger only neg ACout
+: 12: Charger limited by grid frequency
+a an 0:08f SHORT | Target voltage for charge/inject is battery priotrity (displayed on
+3161 | Battery priority active batPr On ENUM. | RCE with *BP") (Only v1 6x)
+“feeding acti , 0:08f SHORT | Target voltage for charge/inject is forced injection (displayed on
+3162 | Forced grid feeding active InjFo On ENUM. | RCC with “IF") (Only v1 6.x)
+DC voltage référence for charge and injection stage. Higher battery
+3164 | Battery voltage target for charger/injection Vde FLOAT | voltage can result in injection and lower battery voltage can result
+in battery charge if allowed.
+3165 | Allowed charge current in limited charger mode Aac FLOAT | AC max current allowed for charging stage to ensure power from
+3166 _| Current on converter output stage DC/AC ‘Aac FLOAT
+3167 _| Voltage on converter output stage DC/AC Vac FLOAT
+
+V1.6.38 22 berger

@@ -1,0 +1,54 @@
+4.6 Message objects
+
+The Message objects are supported for Xcom-232 with version >= 1.5.0.
+
+The messages sent by the devices on the communication bus are stored by Xcom-232i in
+its non-volatile flash memory. They can be read on the Xcom-232i (address 501) later.
+4.6.1 Description of the reading function:
+
+Reading a message with index 0 will return the last saved message in the flash memory of
+the Xcom-232i. In the reponse frame from the SCOM the first data indicates the number
+of remaining messages before attaining the very first message saved in the flash memory
+(this behaviour is identical with the history of RCC). A pointer is saved in the Xcom-232i
+when reading the index 0 (SCOM_MSG_IDX).
+
+Reading a message with an index superior to 0 will return the message saved in the
+SCOM_MSG_IDX index.
+
+Reading a message with index 0 will erase the flag informing that there are new messages.
+
+If a new message is received after the last reading of index 0, the notification flag is
+reactivated. Then the PC user must make a new index 0 reading in order to update the
+pointer (SCOM_MSG_IDX).
+
+4.6.2 Notification of new messages:
+
+A notification flag indicating new messages is sent in every response frame from the Xcom.
+
+4.6.3 Sorting the messages
+
+In order to determine whether the PC user has received all messages, he has to create a
+unique identifier including the address of the source, the time and date.
+
+4.6.4 Request frame :
+
+The server sends a request in the following format :
+
+flags service_id object_type object_id property_id
+1 byte 1 byte
+x00 x01 2 bytes 4 bytes 2 bytes
+flags : is_response =0, error=0
+service_id : 0x01 for READ_PROPERTY
+object_type : 0x0003 (MESSAGE)
+object_id : Index desired message
+property_id : 0x00
+
+4.6.5 Response frame :
+
+The XCOM-232i responds with the following format :
+
+service_flags service_id object_type object_id property_id property_data
+1 byte 1 byte
+0x02 or 0x03 oxo1 2 bytes 4 bytes 2 bytes N bytes
+
+V1.6.32 20 Meriger

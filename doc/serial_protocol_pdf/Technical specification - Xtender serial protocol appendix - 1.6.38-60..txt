@@ -1,0 +1,40 @@
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr_| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+
+15053 | Battery set point Bset Vde 7 FLOAT
+15054 | Battery voltage (minute avg) Ubat Vde Vv FLOAT
+15055 | Battery voltage (minute max) Ubat+ Vde Vv FLOAT
+15056 | Battery voltage (minute min) Ubat- Vde Vv FLOAT
+15057 | Battery current (minute avg) Ibat Adc A FLOAT
+15058 | PV voltage (minute avg) Upv Vde Vv FLOAT
+15059 | PV1 voltage (minute avg) Upvi Vde Vv FLOAT
+15060 | PV2 voltage (minute avg) Upv2 Vde Vv FLOAT
+15061 | PV power (minute avg) Ppv kW KW. FLOAT
+15062 | PV1 power (minute avg) Ppvi kW kW. FLOAT
+15063 | PV2 power (minute avg) Ppv2 kW KW. FLOAT
+15064 | Battery temperature (minute avg) Tat °C °C FLOAT
+15065 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT
+15066 | Electronic temperature 1 (minute max) Tpi+ °C °C FLOAT
+15067 | Electronic temperature 1 (minute min) Tpl- °C °C FLOAT
+15068 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT
+15069 | Electronic temperature 2 (minute max) Tp2+ °C °C FLOAT
+15070 | Electronic temperature 2 (minute min) Tp2- °C °C FLOAT
+15071 | Number of parameters (in code) pCod FLOAT
+15072. | Number of parameters (in flash) pFla FLOAT
+15073 | Number of infos users iCod FLOAT
+15074 | ID type Iat FLOAT | VS120 = 12801d (0x3201), VS70 = 13057d (0x3301)
+15075 | ID bat voltage Idv Vde Vv FLOAT
+15076 | ID HW HW FLOAT
+15077 | ID SOFT msb Smsb FLOAT | See section "Software version encoding”
+15078 | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+15079 | ID SID SID FLOAT
+15088 | State of auxiliary Aux 1 Aux 1 O:Opened sient
+15089 | State of auxiliary Aux 2 Aux 2 (Opened stone
+
+SHORT
+15090 | Relay Aux 1 mode Aux 1 ENUM
+
+V1.6.38 60
+

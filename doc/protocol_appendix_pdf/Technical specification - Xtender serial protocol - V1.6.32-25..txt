@@ -1,0 +1,80 @@
+4.8.3 Transfer sequence
+
+Sener ENV Xeon
+7 service id =READ_PROPERTY
+object _ty pe = Datalog Transfer
+readDirectorylist) = 1 object id = Directory List
+4 property id = Start
+Z___ director List) service id =READ_PROPERTY
+Y, object _ty pe = Datalog Transfer
+Z object_id = Directory List
+% property _id = Datablock
+Z data = 512 by tes block
+A
+% service id =READ_PROPERTY
+Z object _ty pe = Datalog Transfer
+kAndContinue() Z object_id = Directory List
+7 property id = Ack and Continue
+finish)
+% service id =READ_PROPERTY —*)
+% object_ty pe = Datalog Transfer
+Z object_id = Directory List
+property id = Finish
+Z data = The last 512 bytes block
+“4
+A
+startReadFile(Filename) 7 _ ees
+Y) object_id =File access
+Z fileBlock1 () property_id = Start
+Z sevice id —~=~« READ PROPERTY
+% object_ty pe = Datalog Transfer
+Z eect! a eercers
+% property id = Datablock
+4 data = 512 Bytes block
+A
+in case of success % RED PROPERTY
+service id =READ_PROPERTY
+kAndContinue) L——~ object ty pe = Datalog Transfer
+7 object_id =File access
+2 tteBexen property id = Ack and Continue
+[serviceid  -«~=READ_PROPERTY
+Z | -~~|Egeciires = Datalog Transfer
+% object_id =File access
+% property_id = Datablock
+% data = 512 Bytes block
+Zz
+Incase of falure % service id =READ_PROPERTY ©)
+nack Andretry () % | object ty pe = Datalog Transfer
+object_id =File access
+%  tieBeao property id = Nack and Retry
+NSN serviced =READ_PROPERTY
+% ‘object_ty pe = Datalog Transfer
+% object_id =File access
+% property id = Datablock
+% data = 512 Bytes block
+Z
+A
+Finish the file tansfer
+4 service id = READ_PROPERTY LS)
+ackAndContinue). object ty pe = Datalog Transfer
+object id =File access
+Y) property id = Ack and Continue
+Z_ tins service id READ_PROPERTY ©)
+object_ty pe = Datalog Transfer
+a object id = File access
+4 property id = Finish
+data = The last 512 bytes block
+“4
+A
+‘Abort the file transfert %
+abort() % service id =READ_PROPERTY
+object ty pe = Datalog Transfer
+Y) object_id =File access
+Z___tinishd) property id = Abort
+4 [sevice id —~—=~=« READ_PROPERTY
+% object_ty pe = Datalog Transt er
+Z object_id = File access
+Z Foes) atest
+Z data = No data
+
+V1.6.32 25 Meriger

@@ -1,0 +1,44 @@
+4.4 User info objects
+
+These objects are the information about the current state of the system. They cannot be
+modified and their values change during the operation of the system. Previously known as
+system states.
+
+object_type = 0x0001
+
+object_id : see the table in next section
+
+4.4.1 Properties
+
+Name property_id | format remark
+
+Value 0x0001 DYNAMIC variable length, see the format in following table
+
+4.4.2 Available user info
+
+The available user information is the same as the values that can be chosen to be displayed
+on the RCC. The user information is related with the inverter parameters that can be
+configured with the RCC. The functionalities of each parameter are described in the RCC
+manual. You can easily find specific parameters by using the parameter index at the end
+of the manual.
+
+4.4.3 Software version encoding
+
+The software version is of the form X.Y.Z. It is encoded in a 32 bit unsigned value:
+
+8 bit (MSB): X 8 bit: reserved | 8 bit: Y 8 bit (LSB):Z
+
+The 32 bit value is formed by combining the SOFT ID MSB (Most Significant Bits) and SOFT
+ID LSB (Least Significant Bits) User Info. These two values are in FLOAT and must
+be converted to 16 unsigned beforehand.
+
+4.4.4 FID encoding
+
+The FID is a unique identifier for the device. It is encoded in a 32 bit unsigned value.
+
+This value is formed by combining the ID FID MSB and ID FID LSB User Info. These two
+values are in FLOAT and must be converted to 16 unsigned beforehand.
+
+V1.6.32 16
+
+y RY

@@ -1,0 +1,67 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Only 1 bit
+
+Basic 1552 Type of detection of the grid loss (AC-In) 2:Tolerant 1:Slow 4:Fast LONG ENUM 2 ant
+4:Fast
+
+Basic 1187 Standby level % 10 0 100 FLOAT 10
+
+Basic 1395 Restore default settings Ss Ss Ss INT32 Signal
+
+Inst. 1287 Restore factory settings Ss Ss Ss INT32 Signal
+
+Expert 1137 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+
+Expert 1125 Charger allowed 1:Yes 0:No. BOOL 1
+
+Inst. 1646 Charger uses only power from AC-Out 0:No 0:No BOOL 1
+
+Basic 1138 Battery charge current Adc 60 0 FLOAT 1
+
+Expert 1139 Temperature compensation mvV/°Cicell | -3 8 FLOAT 1
+
+asp 1615 Fast charge/inject regulation 0:No 0:No BOOL 1
+
+asp 1645 Pulses cutting regulation for XT (Not XTS) 0:No 0:No BOOL 1
+
+Expert 1568 Undervoltage ONLY LEVEL | Menu
+
+Expert 1108 Battery undervoltage level without load Vde 46.3 36 72 FLOAT 0.1
+
+Expert | 1531 Battery undervoltage dynamic compensation ONLY LEVEL | Menu
+
+Expert | 1191 Battery undervoltage dynamic compensation 1:Yes 0:No 1:Yes BOOL 1
+Only 1 bit
+
+Expert 1532 Kind of dynamic compensation 1:Automatic | 0:Manual 1:Automatic | LONG ENUM 0:Manual
+1:Automatic
+
+asP 1632 Automatic adaptation of dynamic compensation % 65 0 100 FLOAT 1
+
+Expert 1109 Battery undervoltage level at full load Vde 42 36 72 FLOAT 0.1
+
+Expert 1190 Battery undervoltage duration before turn off min 3 0 60 FLOAT 1
+
+Expert 1110 Restart voltage after batteries undervoltage Vde 48 37.9 72 FLOAT 0.1
+
+Expert | 1194 Battery adaptive low voltage (B.L.O) 0:No 0:No 1:Yes BOOL 1
+
+Expert 1195 Max voltage for adaptive low voltage Vde 49.9 37.9 72 FLOAT 0.1
+
+Expert 1307 Reset voltage for adaptive correction Vde 52.8 37.9 72 FLOAT 0.1
+
+Expert 1298 Increment step of the adaptive low voltage Vde 0.5 0 14 FLOAT 0.01
+
+Expert 1121 Battery overvoltage level Vde 68.2 37.9 74.4 FLOAT 0.1
+
+Expert 1122 Restart voltage level after an battery overvoltage Vde 64.8 37.9 72 FLOAT 0.1
+
+Expert 1140 Floating voltage Vde 54.4 37.9 72 FLOAT 0.1
+
+Expert | 1467 Force phase of floating Ss Ss Ss INT32 Signal
+
+V1.6.38 hereon

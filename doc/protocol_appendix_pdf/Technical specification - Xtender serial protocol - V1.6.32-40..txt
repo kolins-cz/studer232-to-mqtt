@@ -1,0 +1,46 @@
+6.2 Screen object
+
+Modem connection with the Xtender installation is made by remote control. The application
+on the server must send the state of the 4 keys and will in turn receive the resulting
+display. A—distineti i de—bet: p ing—and—helding—the—butten—d ¢
+implémenté). = = +
+
+The display on the Xcom-232i is built in a buffer. In order to make the system more
+responsive, it’s important to reduce the quantity of returned data as much as possible.
+
+6.2.1 Request frame :
+
+The server sends a request in the following format :
+
+flags service_id object_type object_id property_id
+0x00 0x01 2 bytes 4 bytes 2 bytes
+flags : is_response =0, error=0
+service_id : 0x01 for READ_PROPERTY
+object_type : 0x100 (SCREEN)
+object_id : 0x00 > No buttons pressed (used for refresh)
+
+0x10 > Button "Down" pressed
+0x20 > Button "Esc" pressed
+0x40 > Button "Set" pressed
+0x80 > Button "Up" pressed
+
+property_id : 0x00 > Full screen
+0x04 Delt; ith+hetast ¢ plé +A)
+6.2.2 Trame de réponse :
+The XCOM-232i responds with the following format :
+service_flags service_id object_type object_id property_id property_data
+0x02 or 0x03 0x01 2 bytes 4 bytes 2 bytes N bytes
+
+flags : is_response = 1, error= 0 ou 1
+service_id: Same value as the query
+object_type : Same value as the query
+object_id : Same value as the query
+property_id : Same value as the query
+
+property_data : If error=0 > the screen (see 4.8.3)
+
+If error=1 > 2 bytes for the error code
+
+V1.6.32 40
+
+y RY

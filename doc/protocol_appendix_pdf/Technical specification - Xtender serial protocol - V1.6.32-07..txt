@@ -1,0 +1,60 @@
+3.3 Frame
+
+The Xcom-232i and the DTE exchange frames consist of a header of 14 bytes followed by
+a variable number of data bytes and 2 bytes of checksum.
+
+start_- frame_- src_- dst_- data_- header_- frame_- data_-
+byte flags addr addr length checksum data checksum
+2 bytes =
+1 byte 1byte | 4 bytes | 4 bytes i 2 bytes N bytes 2 bytes
+start_byte
+
+The start byte is always OxAA
+
+frame flags:
+
+BIT7-BIT6 :_ reserved.
+
+BITS : is_datalog_supported, 1 if the datalogger is supported.
+
+BIT4 :  is_new_datalogger_file_present, 1 if there is a new datalog file on the
+SD card. This bit is reseted by the datalog read command through the
+SCOM or by extracting the SD card.
+
+BIT3 :  is_sd_card_full, 1 if the SD card is full. This bit is reseted by extracting
+the SD card.
+
+BIT2 :  is_sd_card_present, 1 if the SD card is present
+
+BIT1 : 1 at each start or restart of the Xcom-232i, also after a WD Reset. This
+bit can be cleared with the RCC/Xcom-232i signal parameter {5104}.
+
+BITO :  is_message_pending flag, 1 if there are some messages pendings.
+
+src_addr
+
+src_addr is the source address, 32 bit little endian
+
+dst_addr
+
+dest_addr is the destination address, 32 bit little endian
+
+data_length
+the length of the frame’s data, in byte
+The maximum number of frame_data is 240 (so that 14+240+2 = 256)
+
+header_checksum
+
+the checksum of the header, from frame_flags to data_length (included)
+
+frame data
+
+the data bytes
+
+data_checksum
+
+the checksum of all the data bytes of frame_data
+
+V1.6.32 7
+
+y RY

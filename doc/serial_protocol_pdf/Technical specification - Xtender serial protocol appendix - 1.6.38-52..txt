@@ -1,0 +1,39 @@
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioString parameter description Unit Default Min Scom format__| Increment
+Expert | 14205 Send a message when remote entry changes state 0:No 0:No BOOL 1
+Inst. 14218 | VarioString watchdog enabled (SCOM) 0:No 0:No BOOL 1
+Inst. 14219 | VarioString watchdog delay (SCOM) sec 60 10 FLOAT 10
+Expert | 14182 | Reset PV energy meter s s INT32 Signal
+asp 14183 | Reset total produced PV energy meter s s INT32 Signal
+Expert | 14051 Reset daily solar production meters s s INT32 Signal
+Expert | 14052 | — Reset daily min-max s s INT32 Signal
+Basic 14067 Restore default settings Ss Ss INT32 Signal
+Inst. 14068 | Restore factory settings s s INT32 Signal
+Inst. 14069 Parameters saved in flash memory 1:Yes 0:No BOOL 1
+Expert 14038 ON of the VarioString Ss Ss INT32 Signal
+Expert 14039 OFF of the VarioString Ss Ss INT32 Signal
+Expert 14059 Reset of all VarioString Ss Ss INT32 Signal
+Expert | 14070 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 14071 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+0:Any O:Any 1:All Only 1 bit
+Expert | 14072 | Combination of the events for the auxiliary contact (AUX 1) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 14073 Contact activated in night mode (AUX 1) ONLY LEVEL | Menu
+Expert 14074 Activated in night mode (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14075 Delay of activation after entering night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 14076 Activation time for the auxiliary relay in night mode (AUX 1) min 1 0 1440 FLOAT 1
+Expert | 14206 Contact active with a fixed time schedule (AUX 1) ONLY LEVEL | Menu
+Expert 14207 Contact activated with fixed time schedule (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14208 Start hour (AUX 1) Minutes 420=07:00 0=00:00 1440=24:00 | INT32 1
+Expert 14209 End hour (AUX 1) Minutes 1200=20:00 | 0=00:00 1440=24:00 | INT32 1
+Expert | 14077 Contact active on event (AUX 1) ONLY LEVEL | Menu
+Expert 14188 VarioString is ON (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert 14078 VarioString is OFF (AUX 1) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 52
+

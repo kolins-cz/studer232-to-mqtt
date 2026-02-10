@@ -1,0 +1,39 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Scom format__| Increment
+Expert | 1131 After battery overvoltage 1:Yes 0:No BOOL 1
+Expert 1132 After inverter or Smart-Boost overload 1:Yes 0:No BOOL 1
+Expert 1533 Delay to restart after an overload sec 5 2 FLOAT 1
+Expert 1134 After overtemperature 1:Yes 0:No BOOL 1
+Expert 1111 Autostart to the battery connection 0:No 0:No BOOL 1
+Expert | 1484 System earthing (Earth - Neutral) ONLY LEVEL | Menu
+Expert 1485 Prohibited ground relay 1:Yes 0:No. BOOL 1
+Expert 1486 Continuous neutral 0:No 0:No BOOL 1
+Inst. 1628 Xtender watchdog enabled (SCOM) 0:No 0:No BOOL 1
+Inst. 1629 Xtender watchdog delay (SCOM) sec 60 10 FLOAT 10
+QsP 1616 Use of functions limited to a number of days 0:No 0:No BOOL 1
+QsP 1391 Number of days without functionalitie's restrictions days ) ) FLOAT 1
+QsP 1617 Transfer relay disabled after timeout 0:No 0:No BOOL 1
+QsP 1618 Inverter disabled after timeout 1:Yes 0:No BOOL 1
+QsP 1619 Charger disabled after timeout 0:No 0:No BOOL 1
+QsP 1620 Smart-Boost disabled after timeout 1:Yes 0:No BOOL 1
+QsP 1621 Grid feeding disabled after timeout 0:No 0:No BOOL 1
+Basic 1395 Restore default settings Ss Ss INT32 Signal
+inst. 1287 Restore factory settings s s s INT32 Signal
+Inst. 1550 Parameters saved in flash memory 1:Yes 0:No 1:Yes BOOL 1
+Inst. 1415 ON of the Xtenders Ss Ss Ss INT32 Signal
+Inst. 1399 OFF of the Xtenders Ss Ss Ss INT32 Signal
+Expert 1468 Reset of all the inverters Ss Ss Ss INT32 Signal
+Expert 1282 | MULTI XTENDER SYSTEM ONLY LEVEL | Menu
+Expert 1283 Integral mode 1:Yes 0:No BOOL 1
+Expert 1461 Multi inverters allowed 1:Yes 0:No BOOL 1
+Expert 1462 Multi inverters independents. Need reset {1468} 0:No 0:No BOOL 1
+Expert | 1555 Battery cycle synchronized by the master 1:Yes 0:No BOOL 1
+Expert 1547 Allow slaves standby in multi-Xtender system 1:Yes 0:No BOOL 1
+Expert | 1571 Splitphase: L2 with 180 degrees phaseshift 0:No 0:No BOOL 1
+QsP 1558 Separated Batteries 0:No 0:No BOOL 1
+Inst. 1437 Minigrid compatible 0:No 0:No BOOL 1
+
+V1.6.38 16
+

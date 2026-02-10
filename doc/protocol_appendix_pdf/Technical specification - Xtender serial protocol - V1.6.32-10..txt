@@ -1,0 +1,44 @@
+3.10 XTENDER Watchdog
+
+The parameters {1628} and {1629} make possible to set a watchdog function inside the
+inverter. The watchdog is a monitoring software that restarts the Xtender in case the
+communication is lost.
+
+This system is active when the parameter {1628} (Xtender watchdog enable) is enabled
+and the parameter {1550} (parameters saved in flash memory) is disabled or if you write
+parameter with the property unsaved_value_qsp. Each time the CAN receives a parameter
+the counter, whose duration is set in seconds by parameter {1629}, will be restarted. If
+no parameter is received during this period of time the Xtender will stop and a RESET will
+take place. The device restarts in the configuration determined by the parameter settings
+before {1550} was set to “no”.
+
+In a multi-unit system, each Xtender will handle this function independently. Each device
+must therefore receive a parameter within the time-frame set by {1629}.
+
+By default this level is deactivated and the time period is set to 60s, adjustable from 10s
+to 300s.
+
+3.11 VarioTrack Watchdog
+
+The parameters {10342} and {10343} make possible to set a watchdog function inside
+the VarioTrack. The watchdog is a monitoring software that restarts the VarioTrack in case
+the communication is lost.
+
+3.12 VarioString Watchdog
+
+The parameters {14218} and {14219} make possible to set a watchdog function inside
+the VarioString. The watchdog is a monitoring software that restarts the VarioString in
+case the communication is lost.
+
+3.13 Device identification
+
+The RCC/Xcom-232i parameter {5119} allows to identify a device with the signaling
+system by flashing all of its LEDs. The written value corresponds to the Xtender’s or
+VarioTrack’ SCOM addresses. Unicast and multicast addresses are supported. For the
+Xtender, the phase addresses (191, 192 and 193) enable the signalling of all Xtenders on
+a given phase at the same time. The value 0 disables all signals. Sending a new value
+disables the previous value. If there is no more writing, all signals turn off after 45 seconds.
+
+V1.6.32 10
+
+y RY

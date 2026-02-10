@@ -1,0 +1,54 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr__| VarioString information description Short desc. _| the RCC Format | Related parameter or description
+SHORT
+15091 | Relay Aux 2 mode Aux 2 ENUM
+15102 [1D FID msb FLOAT | See section "FID encoding”
+15103 | 1D FID Isb FLOAT | See section "FID encoding”
+ee 0:0ff SHORT
+15108 | State of the VarioString VS state ton ENUM
+15109 | Local daily communication error counter (CAN) locEr FLOAT
+O:RM EN 0 SHORT
+15111 | Remote entry state RME AMEN 4 ENUM
+
+RCC messages
+
+Level Nr___| Messages
+V.O. 0 | Warning (000): Battery low
+
+V.O. 1 Waring (001): Battery too high
+
+V.O. 2 __| Waring (002): Bulk charge too long
+
+V.O. 3 | (03): AC-In synchronization in progress
+
+V.O. 4 __ | Waring (004): Input frequency AC-In wrong
+V.O. 5 __ | Warning (005): Input frequency AC-In wrong
+V.O. 6 __| Warning (006): Input voltage AC-In too high
+V.O. 7 | Warning (007): Input voltage AC-In too low
+V.O. 8 __ | Halted (008): Inverter overload SC
+
+V.O. 9 __ | Halted (009): Charger short circuit
+
+V.O. 10 | (010): System start-up in progress
+
+V.O. 11 | Warming (011): AC-In Energy quota
+
+V.O. 12__| (012): Use of battery temperature sensor
+
+V.O. 13 _ | (013): Use of additional remote control
+
+V.O. 14 | Halted (014): Over temperature EL
+
+VO. 15 _| Halted (015): Inverter overload BL
+
+V.O. 16 | Waming (016): Fan error detected
+
+V.O. 17__| (017): Programing mode
+
+V.O. 18 _ | Warming (018): Excessive battery voltage ripple
+
+V1.6.38 61
+

@@ -1,0 +1,40 @@
+Technical specification
+
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format_| Increment
+Only 1 bit
+re . . 5 4 1:Automatic
+Inst. 5072 Studer Portal watchdog activation 1:Automatic | 1:Automatic | 4:No LONG ENUM 2Yes
+4:No
+Inst. 5113 Delay before Studer Portal watchdog forces reconnection | minutes | 10 8 1440 FLOAT 1
+Expert | 5024 | Xcom-232i and Scom ONLY LEVEL | Menu
+Inst. 5067 Clear info {17019} Maximum time interval between two s s s INT32 Signal
+scom requests
+asp 5119 Device identification (LEDs) with the SCOM address 0 0 831 FLOAT 1
+asp 5095 Enable SCOM watchdog 0:No 0:No 1:Yes BOOL 1
+asp 5096 SCOM watchdog delay before reset of Xcom-232i sec 60 10 300 FLOAT 10
+asp a fatvaton of the watchdog hardware (deactivation restarts the Xcom- ONo ONo Yes BOOL {
+asp 5104 Clears the restart flag of Xcom-232i s s s INT32 Signal
+asp 5035 | Erase messages s s s INT32 Signal
+BSP parameters
+Level Nr__| BSP parameter description Unit Default Min Max Scom format_| Increment
+Basic | 6000 | BASIC SETTINGS (BSP) ONLY LEVEL | Menu
+Only 1 bit
+1:Automatic
+Basic | 6057 | Voltage of the system 1:Automatic | 1:Automatic | 8:48V LONG ENUM | 2:12V
+4:24
+8:48V
+Basic | 6001 Nominal capacity Ah 110 20 20000 FLOAT 10
+Basic | 6002 | Nominal discharge duration (C-rating) h 20 1 100 FLOAT 1
+Basic | 6017 | Nominal shunt current A 500 10 10000 FLOAT 10
+Basic | 6018 | Nominal shunt voltage mV 50 10 200 FLOAT 10
+Expert | 6003 | Reset of battery history s s s INT32 Signal
+Basic | 6004 | Restore default settings s s s INT32 Signal
+Inst. 6005 | Restore factory settings s s s INT32 Signal
+Expert | 6016 | ADVANCED SETTINGS (BSP) ONLY LEVEL | Menu
+
+V1.6.38
+
+28
+

@@ -1,0 +1,37 @@
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr___| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Inst. 1577 | _ Minigrid with shared battery energy 0:No 0:No : BOOL 1
+Inst. 1556 | _Is the central inverter in distributed minigrid 0:No 0:No BOOL 1
+Expert | 1522 | GRID-FEEDING ONLY LEVEL | Menu
+Expert | 1127 | Grid feeding allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1523 | Max grid feeding current ‘Aac 10 0 50 FLOAT 0.2
+Expert | 1524 | _ Battery voltage target for forced grid feeding Vde 48 72 FLOAT 04
+Expert | 1525 | Forced grid feeding start time Minutes | 1200=20:00 1440=24:00 | INT32 1
+Expert | 1526 | Forced grid feeding stop time Minutes | 1200=20:00 1440=24:00 | INT32 1
+Inst. 1610 | Use of the defined phase shift curve for injection 0:No 1:Yes BOOL 1
+A: +0.1:
+Inst. 1622 | Cos phi at P = 0% 0: Cos phi 1 Inductive Capacitive | FLOAT 0.01
+0.4: +0.1:
+Inst. 1623 | Cos phi at the power defined by param {1613} 0: Cos phi1 | Inductive Capacitive | FLOAT 0.01
+0.90 0.90
+Inst. 1613 | Power of the second cos phi point in % of Pnom % 50 20 85 FLOAT 5
++0. 0.4: +0.1:
+Inst. 1624 | Cos phiat P = 100% Capacitive Inductive Capacitive | FLOAT 0.01
+Inst. 1627 | _ARN4105 frequency control enabled 0:No 0:No 1:Yes BOOL 1
+Inst. 1630 | Delta from user frequency to start derating Hz 1 0 3.9 FLOAT 04
+Inst. 1631 Delta from user frequency to reach 100% derating Hz 2 0 3.9 FLOAT 04
+asP 1561 Correction for XTS saturation Reg U 0 -300 300 FLOAT 1
+asP 1562 | Correction for XTS saturation Reg | 0 -300 300 FLOAT 1
+asP 1648 | _Imagnet INT level adjustment for correction 0 -300 300 FLOAT 1
+asP 1649 | magnet ERROR level adjustment for correction 0 -300 300 FLOAT 1
+The cos phi parameter range goes from -0.1 (Inductive 0.9) to +0.1 (Capacitive 0.9) by 0.01 steps.
+Xtender infos
+Unit on
+Nr__| Xtender information description Short desc. | the RCC _| Unit Format | Related parameter or description
+3000 _| Battery voltage Ubat Vde 7 FLOAT
+3001 | Battery temperature That °C soo sersor ‘return | £1 OAT | Value given by the external battery temperature sensor BTS-01
+V1.6.38 17 berger

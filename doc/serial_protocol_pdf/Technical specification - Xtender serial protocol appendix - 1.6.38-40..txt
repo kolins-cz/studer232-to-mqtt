@@ -1,0 +1,39 @@
+Technical specification
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Max Scom format__| Increment
+Expert 10190 Contact activated below SOC 3 (AUX 2) % 20 ) 100 FLOAT 5
+Expert 10191 Delay 3 (AUX 2) hours ) ) 99 FLOAT 0.25
+Expert 10192 Contact deactivated over SOC (AUX 2) % SOC 90 t) 100 FLOAT 5
+Expert 10193 Delay to deactivate (AUX 2) hours 0.2 ) 10 FLOAT 0.25
+Expert | 10194 Deactivate if battery in floating phase (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 10195 | _ Reset all settings (AUX 2) s s s INT32 Signal
+Expert | 10202 | AUXILIARY CONTACT 3 ONLY LEVEL | Menu
+Only 1 bit
+, , ig | Manual YAutomatic ,
+Expert | 10203 | Operating mode (AUX 3) 1:Automatic | 1:Automatic | Ore LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any 1All Only 1 bit
+Expert | 10204 | Combination of the events for the auxiliary contact (AUX 3) (Function (Function (Function LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 10205 | Contact activated in night mode (AUX 3) ONLY LEVEL | Menu
+Expert 10206 Activated in night mode (AUX 3) 0:No 0:No 1:Yes BOOL 1
+Expert | 10207 Delay of activation after entering night mode (AUX 3) min 1 0 1440 FLOAT 1
+Expert | 10208 Activation time for the auxiliary relay in night mode (AUX 3) min 1 0 1440 FLOAT 1
+Expert | 10326 Contact active with a fixed time schedule (AUX 3) ONLY LEVEL | Menu
+Expert 10327 Contact activated with fixed time schedule (AUX 3) 0:No 1:Yes BOOL 1
+Expert 10328 Start hour (AUX 3) Minutes 420=07:00 1440=24:00 | INT32 1
+Expert 10329 End hour (AUX 3) Minutes 1200=20:00 : 1440=24:00 | INT32 1
+Expert | 10209 Contact active on event (AUX 3) ONLY LEVEL | Menu
+Expert 10210 VarioTrack is ON (AUX 3) 0:No 0:No BOOL 1
+Expert 10211 VarioTrack is OFF (AUX 3) 0:No 0:No BOOL 1
+Expert | 10310 Remote entry (AUX 3) 0:No 0:No BOOL 1
+Expert | 10212 Battery undervoltage (AUX 3) 0:No 0:No BOOL 1
+Expert | 10213 Battery overvoltage (AUX 3) 0:No 0:No BOOL 1
+Expert 10214 Earth fault (AUX 3) 0:No 0:No BOOL 1
+Expert | 10215 PV error (48h without charge) (AUX 3) 0:No 0:No BOOL 1
+Expert | 10216 Overtemperature (AUX 3) 0:No 0:No BOOL 1
+Expert | 10217 Bulk charge phase (AUX 3) 0:No 0:No BOOL 1
+
+V1.6.38 40
+

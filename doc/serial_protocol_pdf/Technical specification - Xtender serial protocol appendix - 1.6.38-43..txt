@@ -1,0 +1,38 @@
+Technical specification
+
+Xtender serial protocol appendix
+Level Nr VarioTrack parameter description Unit Default Min Scom format__| Increment
+Expert | 10271 Absorption phase (AUX 4) 0:No 0:No BOOL 1
+Expert | 10272 Equalization phase (AUX 4) 0:No 0:No BOOL 1
+Expert | 10273 Floating (AUX 4) 0:No 0:No BOOL 1
+Expert | 10274 Reduced floating (AUX 4) 0:No 0:No BOOL 1
+Expert | 10275 Periodic absorption (AUX 4) 0:No 0:No BOOL 1
+Expert | 10276 | Contact active according to battery voltage (AUX 4) ONLY LEVEL | Menu
+Expert | 10277 Battery voltage 1 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10278 Battery voltage 1 (AUX 4) Vde 46.8 36 72 FLOAT 0.4
+Expert | 10279 Delay 1 (AUX 4) min 1 0 60 FLOAT 1
+Expert | 10280 Battery voltage 2 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10281 Battery voltage 2 (AUX 4) Vde 47.8 36 72 FLOAT 04
+Expert 10282 Delay 2 (AUX 4) min 10 ) 60 FLOAT 1
+Expert | 10283 Battery voltage 3 activate (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10284 Battery voltage 3 (AUX 4) Vde 48.5 36 72 FLOAT 04
+Expert 10285 Delay 3 (AUX 4) min 60 ) 60 FLOAT 1
+Expert | 10286 Battery voltage to deactivate (AUX 4) Vde 54 36 72 FLOAT 04
+Expert 10287 Delay to deactivate (AUX 4) min 60 ) 480 FLOAT 5
+Expert | 10288 Deactivate if battery in floating phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10289 | Contact active according to battery temperature (AUX 4) With BSP or BTS. ONLY LEVEL | Menu
+Expert | 10290 Contact activated with the temperature of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10291 Contact activated over (AUX 4) °C 3 -10 50 FLOAT 1
+Expert 10292 Contact deactivated below (AUX 4) °c 5 -10 50 FLOAT 1
+Expert | 10293 Only activated if the battery is not in bulk phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert | 10294 | Contact active according to SOC (AUX 4) Only with BSP ONLY LEVEL | Menu
+Expert 10295 Contact activated with the SOC 1 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10296 Contact activated below SOC 1 (AUX 4) % SOC 50 ) 100 FLOAT 5
+Expert 10297 Delay 1 (AUX 4) hours 12 ) 99 FLOAT 0.25
+Expert 10298 Contact activated with the SOC 2 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+Expert 10299 Contact activated below SOC 2 (AUX 4) % 30 ) 100 FLOAT 5
+Expert 10300 Delay 2 (AUX 4) hours 0.2 ) 99 FLOAT 0.25
+Expert 10301 Contact activated with the SOC 3 of battery (AUX 4) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38 43
+

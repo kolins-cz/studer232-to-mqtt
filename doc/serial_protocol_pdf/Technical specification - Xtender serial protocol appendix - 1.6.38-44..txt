@@ -1,0 +1,42 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| VarioTrack parameter description Unit Default Min Max Scom format_| Increment
+Expert | 10302 Contact activated below SOC 3 (AUX 4) % 20 0 100 FLOAT 5
+
+Expert | 10303 Delay 3 (AUX 4) hours 0 0 99 FLOAT 0.25
+Expert | 10304 Contact deactivated over SOC (AUX 4) %Soc | 90 0 100 FLOAT 5
+
+Expert | 10305 Delay to deactivate (AUX 4) hours 0.2 0 10 FLOAT 0.25
+Expert | 10306 Deactivate if battery in floating phase (AUX 4) 0:No 0:No 1:Yes BOOL 1
+
+Expert | 10307 | Reset all settings (AUX 4) s s s INT32 Signal
+
+VarioTrack infos
+
+Unit on
+Nr__| VarioTrack information description Short desc. |the RCC_| Unit Format | Related parameter or description
+11000 | Battery voltage Ubat Vde Vv FLOAT
+11001 | Battery current Ibat ‘Adc A FLOAT
+11002 | Voltage of the PV generator Upv Vde Vv FLOAT
+11003 | Current of the PV generator Ipv ‘Adc A FLOAT
+11004 | Power of the PV generator Psol kW kW FLOAT
+11005 | Battery temperature That °C °C FLOAT
+11006 | Production in (Ah) for the current day Cd Ah Ah FLOAT
+11007 | Production in (kWh) for the current day Ed kWh kWh FLOAT
+11008 | Produced energy resettable counter kWhR kWh kWh FLOAT
+11009 | Total produced energy MWhT. MWh MWh FLOAT
+11010 | Production in (Ah) for the previous day Cat Ah Ah FLOAT
+11011 | Production in (Wh) for the previous day Edt kWh kWh FLOAT
+11012 | Number of parameters (in code) pCod FLOAT
+11013 | Number of parameters (in flash) pFla FLOAT
+11014 | Number of infos users iCod FLOAT
+0:VT-80 5
+
+. 1:VT-65 HORT
+
+11015 | Model of VarioTrack Type DVT AO ENUM
+3:VT-HV
+
+V1.6.38 44
+

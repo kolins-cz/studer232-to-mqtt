@@ -1,0 +1,47 @@
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr VarioTrack information description Short desc. | the RCC Unit Format | Related parameter or description
+
+0:
+
+1s
+
+2:1 SHORT
+
+11080 | Relay aux 4 mode Aux 4 3M ENUM
+
+4:M
+
+5:G
+
+0:RM EN 0 SHORT
+
+11082 | Remote entry state RME 1:RMEN 1 ENUM
+VarioString parameters
+Level Nr VarioString parameter description Unit Default Min Max Scom format__| Increment
+Basic 14000 | BASIC SETTINGS ONLY LEVEL | Menu
+Expert | 14174 Block manual programming (dip-switch) 0:No. 0:No. 1:Yes BOOL 1
+Expert | 14001 Battery charge current (VS-120) Adc 120 0 120 FLOAT 2
+Expert | 14217 Battery charge current (VS-70) Adc 70 0 70 FLOAT 1
+Only 1 bit
+1:Automatic
+Basic 14002 Configuration of PV modules (VS-120) 1:Automatic 1:Automatic | 8:Parallel LONG ENUM 2:Independent
+4:Serial
+8:Parallel
+
+Basic 14067 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 14068 Restore factory settings Ss Ss Ss INT32 Signal
+Expert | 14003 | BATTERY MANAGEMENT AND CYCLE ONLY LEVEL | Menu
+Basic 14036 Synchronisation battery cycle with Xtender 1:Yes 0:No. 1:Yes BOOL 1
+Expert | 14001 Battery charge current (VS-120) Adc 120 0 120 FLOAT 2
+Expert | 14217 Battery charge current (VS-70) Adc 70 0 70 FLOAT 1
+Expert 14216 Battery undervoltage Vde 40 34 68.2 FLOAT 0.1
+Expert 14035, Temperature compensation mV/°Cicell | -3. 8 0 FLOAT 1
+Expert | 14004 Floating phase ONLY LEVEL | Menu
+Expert 14005, Floating voltage Vde 54.4 37.9 68.2 FLOAT 0.1
+Expert | 14006 Force phase of floating Ss Ss Ss INT32 Signal
+Expert | 14007 Absorption phase ONLY LEVEL | Menu
+
+V1.6.38 48
+

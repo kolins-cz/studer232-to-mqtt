@@ -1,0 +1,44 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+" 0:Opened SHORT
+3031 | State of auxiliary relay 1 Aux 1 Creed ENUM | See parameter {1201}
+a 0:Opened SHORT
+3032. | State of auxiliary relay 2 Aux 2 Creed ENUM | See parameter {1201}
+3045 _ | Nbr. of overloads novid FLOAT
+3046_| Nor. overtemperature novimp FLOAT
+3047 _| Nor. batterie overvoltage nowolt FLOAT
+: 0:08f SHORT
+3049. | State of the inverter XT state ton ENUM
+3050 _| Number of battery elements Bat cells FLOAT
+0:08f SHORT
+3051 | Search mode state SB state On ENUM. | See parameter (1187)
+O:Invalid value 0: Invalid value
+TA 1: Automatic
+21 SHORT | 2: Reversed automatic
+3054 | Relay aux 1 mode Aux 1 3M ENUM. | 3: Manual ON
+4M 4: Manual OFF
+5:G 5: Coupled for generator start
+O:Invalid value
+21 SHORT | o. ,
+3055 | Relay aux 2 mode Aux 2 aM ENUM. | See info (3055)
+4M
+5:G
+Bit 0: forbidden inverter {1124}
+Bit 1: forbidden charger {1125}
+Bit 2: forbidden boost {1126}
+: , Bit 3: forbidden transfert {1128}
+3056 | Lockings flag Lockings FLOAT | it 4: forbidden injection {1127}
+Bit 8: forbidden multi {1461}
+Bit 9: multi independants allowed {1462}
+Bit 10: standy slave allowed {1547}
+0:Opened SHORT
+3074 | State of the ground relay Rel_gnd Cece ENUM
+0:Opened SHORT
+3075. | State of the neutral transfer relay Rel_neutral ction ENUM
+3076 _| Discharge of battery of the previous day E out YD kWh kWh FLOAT
+
+V1.6.38 19
+

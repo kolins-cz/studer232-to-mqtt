@@ -1,0 +1,77 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr_| VarioString information description Short desc. | the RCC_| Unit Format | Related parameter or description
+
+15041 | Min battery voltage for the current day Ubmn Vde Vv FLOAT
+15042 | Time in absorption of the current day Tabs h h FLOAT
+15043 | BAT- and Earth voltage Baté Vde Vv FLOAT
+15044 | PV- and Earth voltage pv-E Vde Vv FLOAT
+15045. | PV1- and Earth voltage pvié Vde Vv FLOAT
+15046 | PV2- and Earth voltage pv2E Vde Vv FLOAT
+
+O:None
+
+1:OverV_B
+
+2:OverV_PV
+
+3:OverV_PV1
+
+4:OverV_PV2
+
+5:Overl_PV
+
+6:Overl_PV1
+
+7:Overl_PV2 SHORT
+18049 | Type of error Er 8:GroundBat ENUM
+
+9:GroundPV
+
+10:GroundPV1
+
+11:GroundPV2
+
+12:OverTemp
+
+13:UnderV_B
+
+14:Cabling
+
+1:Other
+
+od wi 0:No SHORT
+
+15050 | Synchronized with Xtender battery cycle Sync tvs ENUM
+
+0
+
+1
+
+2
+
+3
+
+4:XTslave
+
+“cath 5:VTslave SHORT
+
+15051. | Synchronisation state Sync 8 ENUM
+
+7
+
+8:VTmaster
+
+9:Autonom
+
+10:VSslave
+
+11:VSmaster
+15052_| Number of days before next equalization Eqin days days FLOAT
+
+V1.6.38
+
+59
+

@@ -1,0 +1,40 @@
+6.1.5 Read GUID sample
+Reading of GUID frame.
+
+Request
+start_- | frame_- header_- | frame_- | data_-
+byte flags sre_addr dst_addr data_length checksum | data checksum
+1byte | 1 byte 4 bytes 4 bytes 2 bytes 2 bytes N bytes 2 bytes
+always 501 (Xcom- A
+‘AA 0 1 232i gateway) =N=10 computed | 10 bytes | computed
+AA 00 01 00 00 00 F5 01 00 00 0A 00 00 D6 10 bytes 04 1F
+service_flags service_id object_type object_id property_id | property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 0 byte
+is_response = false | read_property GUID 0 0 =
+
+error = false
+
+00 o1 04 00 00 00 00 00 00 00 -
+
+Total number of bytes: 14+10+2 = 26 bytes
+
+Response
+start_- | frame_- header_- | frame_- | data_-
+byte flags sre_addr dst_addr data_length checksum | data checksum
+1 byte 1 byte 4 bytes 4 bytes 2 bytes 2 bytes N bytes 2 bytes
+always 501 (Xcom- ye
+‘Aa | 00110200 | 9395 ooteway) 1 =N=26 computed | 26 bytes | computed
+AA 23 F5 01 00 00 01000000 1A 00 33 4B 26 bytes 34 A3
+service_flags service_id object_type object_id property_id | property_data
+1 byte 1 byte 2 bytes 4 bytes 2 bytes 16 bytes
+is_response = true read_property GUID 0 0 GUID
+error = false
+3A DO 1B 0B 58
+C9 32 BA EC 4D
+02 o1 04 00 00 00 00 00 00 00 35 28 61 3D 7D
+40
+
+Total number of bytes: 14+26+2 = 42 bytes
+
+V1.6.32 39 fr
+

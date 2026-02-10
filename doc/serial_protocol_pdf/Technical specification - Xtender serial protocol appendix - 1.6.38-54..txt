@@ -1,0 +1,44 @@
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level_| Nr__| VarioString parameter description Unit Default Min Max Scom format _| Increment
+Expert_| 14109 Contact activated with the SOC 1 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert_| 14110 Contact activated below SOG 1 (AUX 1) %S0C | 50 0 100 FLOAT 5
+Expert | 14111 Delay 1 (AUX 1) hours 12 0 99 FLOAT 0.25
+Expert | 14112 Contact activated with the SOC 2 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14113 Contact activated below SOG 2 (AUX 1) % 30 0 100 FLOAT 5
+Expert | 14114 Delay 2 (AUX 1) hours | 0.2 0 99 FLOAT 0.25
+Expert | 14115 Contact activated with the SOC 3 of battery (AUX 1) 0:No 0:No 1:Yes BOOL 1
+Expert | 14116 Contact activated below SOG 3 (AUX 1) % 20 0 100 FLOAT 5
+Expert | 14117 Delay 3 (AUX 1) hours [0 0 99 FLOAT 0.25
+Expert | 14118 Contact deactivated over SOC (AUX 1) %S0c | 90 0 100 FLOAT 5
+Expert_| 14119 Delay to deactivate (AUX 1) hours | 0.2 0 10 FLOAT 0.25
+Expert | 14120 Deactivate if battery in floating phase (AUX 1) 0:No 0:No 1:¥es BOOL 1
+Expert_| 14121 | Reset all settings (AUX 1) s s s INTS2 Signal
+Expert | 14122 | AUXILIARY CONTACT 2 ONLY LEVEL | Menu
+Only 1 bit
+. , _. |8:Manual T:Automatic ,
+Expert | 14123 | Operating mode (AUX 2) :Automatic | 1:Automatic | 8M LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+O:Any O:Any +All Only 1 bit
+Expert | 14124 | Combination of the events for the auxiliary contact (AUX 2) (Function | (Function | (Function | LONG ENUM | 0:Any (Function OR)
+OR) OR) AND) 1:All (Function AND)
+Expert | 14125 | Contact activated in night mode (AUX 2) ONLY LEVEL | Menu
+Expert | 14126 ‘Activated in night mode (AUX 2) 0:No 0:No 1:Yes BOOL 1
+Expert | 14127 Delay of activation after entering night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 14128 Activation time for the auxiliary relay in night mode (AUX 2) min 1 0 1440 FLOAT 1
+Expert | 14210 | Contact active with a fixed time schedule (AUX 2) ONLY LEVEL | Menu
+Expert | 14211 Contact activated with fixed time schedule (AUX 2) 0:No 0:No 1:¥es BOOL 1
+Expert | 14212 Start hour (AUX 2) Minutes | 420=07:00 _ | 0=00:00 1440=24:00 | INT32, 1
+Expert | 14213 End hour (AUX 2) Minutes _ | 1200=20:00 | 0-00-00 1440=24:00 | INT32, 1
+Expert | 14129 | Contact active on event (AUX 2) ONLY LEVEL _| Menu
+Expert | 14189 VarioString is ON (AUX 2) 0:No 0:No 1:¥es BOOL 1
+Expert_| 14130 VarioString is OFF (AUX 2) 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+54
+

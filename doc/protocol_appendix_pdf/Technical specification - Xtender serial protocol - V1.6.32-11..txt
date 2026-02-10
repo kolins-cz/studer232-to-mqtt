@@ -1,0 +1,46 @@
+4. Application layer
+
+The OSI layers 3 to 6 are not used. The application layer defines a number of « services ».
+A DTE sends a request frame and waits for a response frame from the Xcom-232i. If an
+error in the header checksum or data checksum is detected, there is no response from the
+application layer and the Xcom-232i waits for another request as if nothing has been
+received.
+
+The Xcom-232i copies the src_addr of the request in the response dst_addr.
+
+4.1 Services
+
+The first two bytes of frame_data define the type of service and different flags for this
+service.
+
+service_flags service_id service_data
+
+1 byte 1 byte N bytes
+
+service flags:
+BIT7-BIT4_ : reserved.
+
+BIT1 : is_response flag, 0 if it is a request from the DTE to the Xcom-232i, 1
+if it is response from the Xcom-232i.
+
+BITO : error flag, 0 in case of success, 1 if an error occurred. In case of a
+request, error is always 0.
+
+service_id:
+
+One of the following services, described later in this document:
+
+READ_PROPERTY = 0x01
+
+service data:
+
+The data specific to the service. In case of a problem the errors are reported in a service-
+specific way, but the response has to include the error code described in the next section.
+
+4.2 Object model
+
+The different data accessible on each device are organized in object classes. Every object
+class has a number of properties. The service READ_PROPERTY is used to read the object’s
+properties.
+
+V1.6.32 it Meriger

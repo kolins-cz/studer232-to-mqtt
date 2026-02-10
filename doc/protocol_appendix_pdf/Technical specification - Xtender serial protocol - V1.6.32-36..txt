@@ -1,0 +1,54 @@
+5.8 Read Multi Infos
+
+Exemple basé sur les 24 demandes pour |’affichage du synoptique sur le portail Xcom.
+
+No | Ref. Assemblage Device | Description
+
+1 3000 | 253: average XT Battery voltage [Vdc]
+
+2 | 3080 | 254: sum XT Energy AC-In from the previous day [kWh]
+
+3 | 3081 | 254: sum XT Energy AC-In from the current day [kWh]
+
+4 | 3082 | 254: sum XT Consumers energy of the previous day [kWh]
+
+5 | 3083 | 254: sum XT Consumers energy of the current day [kWh]
+
+6 | 3136 | 254: sum XT Output active power [kW]
+
+7 | 3137 | 254: sum XT Input active power [kW]
+
+8 | 7000 | 0: master BSP Battery voltage [Vdc]
+
+9 | 7001 | 0: master BSP Battery current [Adc]
+
+10 | 7002 | 0: master BSP State of Charge (SoC) [%]
+
+11 | 7003 | 0: master BSP Power [W]
+
+12 | 7005 | 0: master BSP BSP Temperature [°C]
+
+13 | 7007 | 0: master BSP Ah charged today [kAh]
+
+14 | 7008 | 0: master BSP Ah discharged today [kAh]
+
+15 | 7009 | 0: master BSP Ah charged yesterday [kAh]
+
+16 | 7010 | 0: master BSP Ah discharged yesterday [kAh]
+
+17 | 11000 | 253: average VT Battery voltage [Vdc]
+
+18 | 11004 | 254: sum VT Power of the PV generator [kW]
+
+19 | 11007 | 254: sum VT Production in (kWh) for the current day
+
+20 | 11011 | 254: sum VT Production in (kWh) for the previous day
+
+21 | 15000 | 253: average VS Battery voltage [Vdc]
+
+22 | 15010 | 254: sum VS Power of the PV generator [kW]
+
+23 | 15017 | 254: sum VS Production in (kWh) for the current day
+
+24 | 15027 | 254: sum VS Production in (kWh) for the previous day
+V1.6.32 36 bergen

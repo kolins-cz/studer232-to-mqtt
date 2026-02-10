@@ -1,0 +1,37 @@
+Technical specification
+Xtender serial protocol appendix
+Level Nr Xtender parameter description Unit Default Min Max Scom format__| Increment
+Expert | 1492 Starter pulse duration (with AUX2) sec 3 1 20 FLOAT 1
+Expert 1494 Time before a starter pulse sec 3 1 20 FLOAT 1
+Expert 1574 Main contact hold/interrupt time sec t) t) 30 FLOAT 1
+Expert 1101 | SYSTEM ONLY LEVEL | Menu
+Expert | 1537 Remote entry (Remote ON/OFF) ONLY LEVEL | Menu
+Only 1 bit
+Expert | 1545 Remote entry active 1:Open 0:Closed 1:Open LONG ENUM | 0:Closed
+1:Open
+Expert 1538 Prohibits transfert relay 0:No 0:No 1:Yes BOOL 1
+Expert 1539 Prohibits inverter 0:No 0:No BOOL 1
+Expert 1540 Prohibits charger 0:No 0:No 2 BOOL 1
+Expert 1541 Prohibits Smart-Boost 0:No 0:No 1:Yes BOOL 1
+Expert 1542 Prohibits grid feeding 0:No 0:No 1:Yes BOOL 1
+Expert 1566 Using a secondary value for the maximum current of the AC source 0:No 0:No 1:Yes BOOL 1
+Expert 1567 Second maximum current of the AC source (Input limit) Aac 16 2 50 FLOAT 1
+Expert | 1554 Decrease of the max. current of the source with input voltage activated ONo ONo BOOL {
+Expert 1576 ON/OFF command 0:No 0:No BOOL 1
+Expert 1578 Activated by AUX 1 state 0:No 0:No BOOL 1
+Expert | 1579 Prohibits battery priority 0:No 0:No BOOL 1
+Inst. 1600 Disable minigrid mode 0:No 0:No BOOL 1
+QsP 1640 Clear AUX2 event partial overload 0:No 0:No BOOL 1
+inst. 1647 Prohibits charger using only power from AC-Out 0:No 0:No BOOL 1
+Expert | 1296 Batteries priority as energy source (Not recommended in parallel) 0:No 0:No BOOL 1
+Expert | 1297 Battery priority voltage Vde 51.6 37.9 FLOAT 04
+Expert 1565 Buzzer alarm duration min ) ) 60 FLOAT 1
+Expert 1129 Auto restarts ONLY LEVEL | Menu
+Expert 1130 After battery undervoltage 1:Yes 0:No 1:Yes BOOL 1
+Expert 1304 Number of batteries undervoltage allowed before definitive stop 3 1 20 FLOAT 1
+Expert 1404 Time period for batteries undervoltages counting sec 0 0 3000 FLOAT 60
+Expert 1305 Number of batteries critical undervoltage allowed before definitive stop 10 1 20 FLOAT 1
+Expert 1405 Time period for critical batteries undervoltages counting sec 10 ) 3000 FLOAT 5
+
+V1.6.38 15
+

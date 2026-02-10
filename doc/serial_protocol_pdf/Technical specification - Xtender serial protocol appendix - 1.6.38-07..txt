@@ -1,0 +1,61 @@
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr_| Xtender parameter description Unit Default Min Max Scom format _| Increment
+
+Expert | 1567 Second maximum current of the AC source (Input limit) Aac 16 2 50 FLOAT 1
+
+Expert | 1527 Decrease max input limit current with AC-In voltage 0:No 0:No 1Yes BOOL 1
+
+exer | 1554 Decrease of the max. current of the source with input voltage activated ONo ONo 1Yes BOOL 1
+
+Expert | 1309 AC input low limit voltage to allow charger function Vac 180 100 230 FLOAT 5
+
+Expert | 1433 Adaptation range of the input current according to the input voltage Vac 10 4 30 FLOAT 1
+
+Expert | 1553 Speed of input limit increase 50 0 100 FLOAT 2
+
+expen | 1205 Charge current decrease coet. at voltage limit to tun back in inverter | 4, 100 0 100 FLOAT 5
+
+exer | 1496 Overun ‘AC source current limit without opening the transfer relay (Input ves ONo 1Yes BOOL 1
+Only 1 bit
+
+Basic | 1552 | Type of detection of the grid loss (AC-In) 2Tolerant | 1:Slow 4-Fast LONG ENUM 8 at
+4:Fast
+
+Expert | 1510 | Tolerance on detection of AC-input loss (tolerant UPS mode) 100 2 120 FLOAT 2
+
+Expert | 1199 | _ input voltage giving an opening of the transfer relay with delay Vac 200 80 230 FLOAT 5
+
+Expert | 1198 | _ Time delay before opening of transfer relay sec 8 0 30 FLOAT 1
+
+Expert | 1200 | _ input voltage giving an immediate opening of the transfer relay (UPS) Vac 180 80 230 FLOAT 5
+
+Inst. 1432_| Absolute max limit for input voltage Vac 270 235 290 FLOAT 5
+
+asp__| 1500 | _ Standby of the charger allowed 1:Yes 0:No 1Yes BOOL 1
+
+Expert | 1505 | Delta frequency allowed above the standard input frequency Hz 5 0 35 FLOAT 0.4
+
+Expert | 1506 | Delta frequency allowed under the standard input frequency Hz 5 0 15 FLOAT 0.4
+
+Expert | 1507 | Duration with frequency error before opening the transfer sec 2 0 5 FLOAT 1
+
+Expert | 1575 | _AC-IN current active filtering (Not in parallel) 0:No 0:No 1Yes BOOL 1
+
+Inst. 1557 | Use an energy quota on AC-input 0:No 0:No 1Yes BOOL 1
+
+Inst. 1559 | _AC-In energy quota kWh 1 0.5 100 FLOAT 0.5
+
+Expert | 1201 | AUXILIARY CONTACT 1 ONLY LEVEL | Menu
+Only 1 bit
+
+, , | 8:Manual YAutomatic ,
+
+Expert | 1202 | Operating mode (AUX 1) 1:Automatic | 1:Automatic | 8M LONG ENUM | 2:Reversed automatic
+4:Manual ON
+8:Manual OFF
+
+V1.6.38 7 berger

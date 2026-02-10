@@ -1,0 +1,66 @@
+3.4 Checksum algorithm
+
+The checksum is computed with the following algorithm:
+
+A = OXFF
+
+B=0
+
+For I FROM 0 TO number_of_bytes -1 DO
+A := (A + DATA[I]) mod 0x100;
+B := (B + A) mod 0x100;
+
+END
+
+checksum[0] :=A
+
+checksum[1] :=B
+
+A and B are byte values and the addition is made modulo 256.
+
+After an invalid parity bit, header or data checksum, the data link layer is reseted and waits
+for an other frame.
+
+3.5 Addressing the devices
+
+Address | Devices Remarks
+
+(0) Broadcast
+
+100 a virtual address to access all XTH, | see section “multicast addresses”
+XTM and XTS
+
+101 to | a single XTH, XTM or XTS inverter | ordered by the index displayed on the
+
+109 RCC
+
+191 to | virtual address to access properties | a read access return the value of the
+
+193 on all inverters on a phase : 191 for | master of the phase
+L1, 192 for L2 and 193 for L3
+
+300 a virtual address to access all | see section “multicast addresses”
+VarioTrack
+
+301 to | VarioTrack ordered by the index displayed on the
+
+315 RCC
+
+501 Xcom-232i alias for the gateway that the DTE uses
+
+to communicate (the Xcom-232i to
+which you speak with RS-232)
+
+600 a virtual address to access all BSP | see section “multicast addresses”
+
+601 BSP
+
+700 a virtual address to access all | see section “multicast addresses”
+VarioString
+
+701 to | VarioString ordered by the index displayed on the
+
+715 RCC
+
+V1.6.32 8 Meriger
+

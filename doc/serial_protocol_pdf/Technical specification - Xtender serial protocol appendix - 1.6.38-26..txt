@@ -1,0 +1,41 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Expert | 5034 Load Xtender configuration file (masterfile) s s s INT32 Signal
+Expert | 5045 Load Xtender parameters preset 1 1 1 Not supported
+Expert | 5051 Save and restore BSP files ONLY LEVEL | Menu
+Expert | 5052 Save BSP parameters s s s INT32 Signal
+Expert | 5053 Load BSP parameters s s s INT32 Signal
+Inst. 5054 Create BSP configuration file (masterfile) s s s INT32 Signal
+Expert | 5055 Load BSP configuration file (masterfile) Ss Ss Ss INT32 Signal
+Expert | 5084 Save and restore VarioTrack files ONLY LEVEL | Menu
+Expert | 5085 Save VarioTrack parameters s s s INT32 Signal
+Expert | 5086 Load VarioTrack parameters s s s INT32 Signal
+Inst. 5087 Create VarioTrack configuration file (masterfile) s s s INT32 Signal
+Expert | 5088 Load VarioTrack configuration file (masterfile) Ss Ss s INT32 Signal
+Expert | 5114 Save and restore VarioString files ONLY LEVEL | Menu
+Expert | 5115 Save VarioString parameters s s s INT32 Signal
+Expert | 5116 Load VarioString parameters s s s INT32 Signal
+Inst. 5117 Create VarioString configuration file (masterfile) s s s INT32 Signal
+Expert | 5118 Load VarioString configuration file (masterfile) Ss Ss s INT32 Signal
+Inst. 5047 Format the SD card s s s INT32 Signal
+Expert | 5061 Start update s s s INT32 Signal
+Inst. 5042 | MODIFICATION OF ACCESS LEVELS OF MANY PARAMETERS ONLY LEVEL | Menu
+Only 1 bit
+1:Choose
+Inst. 5043 | Change all parameters access level to: 1:Choose | 1:Choose ‘| 8:INSTALLER | LONG ENUM | 2:BASIC.
+4:EXPERT
+&:INSTALLER
+Inst. 5044 Restore default access level of all parameters Ss Ss s INT32 Signal
+Basic | 5007 | BACKLIGHT ONLY LEVEL | Menu
+Only 1 bit
+Basic | 5093 | Backlight mode 1:Delayed | 1:Delayed | 4:0N LONG ENUM zon
+4:0N
+Basic | 5009 | Backlight switch off after sec 120 5 120 FLOAT 5
+Expert | 5026 Red backlight flashing on Xtender off and faulty 1:Yes 0:No 1:Yes BOOL 1
+
+V1.6.38
+
+26
+

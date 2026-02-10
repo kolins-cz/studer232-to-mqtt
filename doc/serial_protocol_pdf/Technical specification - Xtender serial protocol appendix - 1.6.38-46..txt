@@ -1,0 +1,33 @@
+Technical specification
+Xtender serial protocol appendix
+Unit on
+Nr VarioTrack information description Shortdesc. | the RCC | Unit Format | Related parameter or description
+O:Bulk
+1:Absorpt.
+2:Equalize
+3:Floating
+4
+SHORT
+11038 | Battery cycle phase Phas ENUM
+11039 | Battery voltage (minute avg) UbaM Vde 7 FLOAT
+11040 | Battery current (minute avg) ibaM ‘Adc A FLOAT
+11041 | PV voltage (minute avg) UpvM Vde Vv FLOAT
+11043 | PV power (minute avg) PsoM kw kW FLOAT
+11044 | Battery temperature (minute avg) TbaM °C °C FLOAT
+11045 | Electronic temperature 1 (minute avg) TpiM °C °C FLOAT
+11046 | Electronic temperature 2 (minute avg) Tp2M °C °C FLOAT
+11047 | ID type Idt FLOAT | VT65 and VT80 = 9079d (0x2601)
+11048 | ID batt voltage Idv Vde Vv FLOAT
+11049 | ID HW HW FLOAT
+11050 | ID SOFT msb Smsb FLOAT | See section "Software version encoding"
+11051 | ID SOFT Isb Slsb FLOAT | See section "Software version encoding”
+11052 | ID SID SID FLOAT
+7 0:Opened SHORT
+11061. | State of auxiliary relay 1 Aux 1Cheed ENUM
+7 0:Opened SHORT
+11062 | State of auxiliary relay 2 Aux 2 1:Coecd ENUM
+SHORT
+11063 | Relay aux 1 mode Aux ENUM
+
+V1.6.38 46
+

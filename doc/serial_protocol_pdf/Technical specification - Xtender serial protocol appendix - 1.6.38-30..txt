@@ -1,0 +1,66 @@
+Technical specification
+Xtender serial protocol appendix
+
+Unit on
+Nr BSP information description Short desc. | the RCC Unit Format | Related parameter or description
+
+7010 | Ahdischarged yesterday -1d> Ah Ah FLOAT
+
+7011 | Total An charged tot< kAh kAh FLOAT
+
+7012 | Total Ah discharged tot> kAh kAh FLOAT
+
+7013 | Total time Ttot days days FLOAT
+
+7017 | Custom charge Ah counter cus< Ah Ah FLOAT
+
+7018 | Custom discharge Ah counter cus> Ah Ah FLOAT
+
+7019 | Custom counter duration Tcus h h FLOAT
+
+7029 | Battery temperature That °c °c FLOAT
+
+7030 | Battery voltage (minute avg) Ubat Vde Vv FLOAT
+
+7031 | Battery current (minute avg) Ibat Adc Adc FLOAT
+
+7032 | State of Charge (minute avg) SOC % % FLOAT
+
+7033 _| Battery temperature (minute avg) That °C °C FLOAT
+
+7034 | ID type Idt FLOAT | BSP500 and BSP1200 = 10241d (0x2801)
+
+7035 | ID batt voltage Idv. Vde v FLOAT
+
+7036 | ID HW HW FLOAT
+
+7037 | ID SOFT msb Smsb FLOAT | See section "Software version encoding”
+
+7038 | ID SOFT Isb Sisb FLOAT | See section "Software version encoding”
+
+7039 | Parameter number (in code) pCod FLOAT
+
+7040 | Info user number iCod FLOAT
+
+7041 ID SID SID FLOAT
+
+7047 | Manufacturer State of Charge mSOC % % FLOAT
+
+7048 | ID FIDmsb FLOAT | See section "FID encoding”
+
+7049 | ID FIDIsb FLOAT | See section "FID encoding”
+
+7059 | Local daily communication error counter (CAN) locE FLOAT
+
+7060 | Number of parameters (in flash) pFsh FLOAT
+
+Xcom-CAN BMS parameters
+
+Level Nr Xcom-CAN parameter description Unit Default Min Max Scom format_| Increment
+Basic 6060 | BASIC SETTINGS (Xcom-CAN BMS) ONLY LEVEL | Menu
+Basic 6004 Restore default settings Ss Ss Ss INT32 Signal
+Inst. 6005 Restore factory settings Ss Ss Ss INT32 Signal
+Expert 6061 | ADVANCED SETTINGS (Xcom-CAN BMS) ONLY LEVEL | Menu
+Expert 6083 SOC settings ONLY LEVEL | Menu
+
+V1.6.38 30 berger

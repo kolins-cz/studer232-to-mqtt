@@ -1,0 +1,37 @@
+Technical specification
+Xtender serial protocol appendix
+Xcom-CAN BMS infos
+Unit on
+Nr_| Xcom-CAN information descri Short desc. | the RCC_| Unit Format | Related parameter or description
+7000 _| Battery voltage Ubat Vde Vv FLOAT
+7001 _| Battery current Ibat Adc Adc FLOAT
+7002 _| State of Charge soc % % FLOAT
+7003 | Power Pat w w FLOAT
+7007 | Ah charged today Ode Ah Ah FLOAT
+7008 _| Ah discharged today Od> Ah Ah FLOAT
+7009 | Ah charged yesterday -td< Ah Ah FLOAT
+7010 | Ah discharged yesterday -1d> Ah Ah FLOAT
+7029 _| Battery temperature That °C °C FLOAT
+7030 _| Battery voltage (minute avg) Ubat Vde Vv FLOAT
+7031 _| Battery current (minute avg) bat Adc Adc FLOAT
+7032 _| State of Charge (minute avg) soc % % FLOAT
+7033_| Battery temperature (minute avg) That °C °C FLOAT
+7047 | Manufacturer State of Charge mSOC % % FLOAT
+7053 _| Battery Type bTyp FLOAT
+7054 | BMS Version BMSv FLOAT
+7055 Nominal or remaining battery capacity (see battery bCap Ah Ah FLOAT
+7056 _| Reserved Manufacturer ID bmid FLOAT
+7057 _| State Of Health SOH % FLOAT
+7058 _| High resolution manufacturer State of Charge hSOC % FLOAT
+7061 _| Charge voltage limit UChL Vde Vv FLOAT
+7062 _| Discharge voltage limit UDiL Vde Vv FLOAT
+7063 _| Charge current limit IChL Adc A FLOAT
+7064 | Discharge current limit IDiL Adc A FLOAT
+7065 | Recommended charge current IChR Adc A FLOAT
+7066 _| Recommended discharge current IDIR Adc A FLOAT
+0:OTHERS
+7067 | Manufacturer name name DBYLON stone
+3:WECO
+
+V1.6.38 32
+

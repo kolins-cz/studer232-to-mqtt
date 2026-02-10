@@ -1,0 +1,52 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr__| RCC / Xcom-232i parameter description Unit Default Min Max Scom format__| Increment
+Expert | 5079 | Track 2: user information reference (1 to n) 141 0 255 FLOAT 1
+Only 1 bit
+1:XT
+Expert | 5080 | Track 3: device 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP/BMS
+
+4:VarioTrack
+8:VarioString
+
+Expert | 5065 | Track 3: device UID 1 1 15 FLOAT 1
+Expert | 5081 | Track 3: user information reference (1 to n) 142 0 255 FLOAT 1
+Only 1 bit
+1:XT
+Expert | 5082 | Track 4: device 1:XT 1:XT 8:VarioString | LONG ENUM | 2:BSP/BMS
+
+4:VarioTrack
+8:VarioString
+
+Expert | 5066 | Track 4: device UID 1 1 15 FLOAT 1
+Expert | 5083 Track 4: user information reference (1 to n) 160 0 255 FLOAT 1
+
+Basic | 5013 | SAVE AND RESTORE FILES ONLY LEVEL | Menu
+
+Basic | 5041 Save all files (system backup) s s s INT32 Signal
+
+Basic | 5068 | Restore all files (system recovery) s s s INT32 Signal
+
+Basic | 5070 | Apply configuration files (masterfile) s s s INT32 Signal
+
+Only 1 bit
+Expert | 5032 | Separator of the .csv files 1:Automatic | 1:Automatic LONG ENUM pamomatic
+4:,
+
+Expert | 5069 | Advanced backup functions ONLY LEVEL | Menu
+Expert | 5030 Save messages s s s INT32 Signal
+Expert | 5049 Save and restore RCC files ONLY LEVEL | Menu
+Expert | 5015 Save RCC parameters s s s INT32 Signal
+Expert | 5016 Load RCC parameters s s s INT32 Signal
+
+Inst. 5097 Create RCC configuration file (masterfile) s s s INT32 Signal
+Expert | 5098 Load RCC configuration file (masterfile) s s s INT32 Signal
+Expert | 5050 Save and restore Xtender files ONLY LEVEL | Menu
+Expert | 5017 Save Xtender parameters s s s INT32 Signal
+Expert | 5018 Load Xtender parameters s s s INT32 Signal
+
+Inst. 5033 Create Xtender configuration file (masterfile) s s s INT32 Signal
+
+V1.6.38 25
+

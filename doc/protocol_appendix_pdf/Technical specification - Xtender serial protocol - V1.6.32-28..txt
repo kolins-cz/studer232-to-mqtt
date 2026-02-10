@@ -1,0 +1,22 @@
+5. Examples of frames
+The byte stream is represented in hexadecimal and the encoding is little endian as specified
+in chapter 3.2.
+
+In the different exemples, the “frame_flags” byte contains the value 0x34, 00110100b in
+binary code. It means :
+
+e BIT2 : SD card present.
+e BIT4_: there is a new datalog file on the SD card.
+e BITS : the datalogger is supported.
+
+5.1 C library
+
+A portable C library that implements the protocol is included with this specification on
+www.studer-innotec.com. See the documentation provided with the library for more detail.
+5.2 Command line tool
+
+To help the implementation of the protocol we supply also the command line tool
+scom.exe. It is included with the protocol specification available on www.studer-
+innotec.com.
+
+V1.6.32 28 Meriger

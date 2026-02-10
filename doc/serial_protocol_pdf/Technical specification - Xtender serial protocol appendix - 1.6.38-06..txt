@@ -1,0 +1,42 @@
+Xtender
+
+Technical specification
+r serial protocol appendix
+
+Level Nr__| Xtender parameter description Unit Default Min Max Scom format_| Increment
+Expert | 1171 Floating duration before reduced floating days 1 0 31 FLOAT 1
+Expert | 1172 Reduced floating voltage Vde 528 37.9 72 FLOAT 04
+Expert | 1454 | Periodic absorption phase ONLY LEVEL | Menu
+Expert | 1173 Periodic absorption allowed 0:No 0:No 1:Yes BOOL 1
+Expert | 1174 Periodic absorption voltage Vde 576 37.9 72 FLOAT 04
+Expert | 1175 Reduced floating duration before periodic absorption days 7 0 31 FLOAT 1
+Expert | 1176 Periodic absorption duration hours 05 0 10 FLOAT 0.25
+Expert | 1186 | INVERTER ONLY LEVEL | Menu
+Basic | 1124 | _ Inverter allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1286 | AC Output voltage Vac 230 110 280 FLOAT 1
+Expert | 1548 | AC voltage increase according to battery voltage 0:No 0:No 1:Yes BOOL 1
+Expert | 1560 | Max AC voltage increase with battery voltage Vac 10 4 16 FLOAT 1
+Expert | 1112 | _ Inverter frequency Hz 50 45 65 FLOAT 04
+Expert | 1536 | _ Inverter frequency increase when battery full 0:No 0:No 1:Yes BOOL 1
+Expert | 1549 | _ Inverter frequency increase according to battery voltage 0:No 0:No 1:Yes BOOL 1
+Expert | 1546 | Max frequency increase Hz 4 0 10 FLOAT 04
+Expert | 1534 | Speed of voltage or frequency change in function of battery 0 4 3 FLOAT 1
+Expert | 1420 | Standby and tum on ONLY LEVEL | Menu
+Basic | 1187 Standby level % 10 0 100 FLOAT 10
+Expert | 1189 Time delay between standby pulses sec 0.8 0.2 10 FLOAT 0.2
+Expert | 1188 Standby number of pulses 1 1 10 FLOAT 1
+Expert | 1599 Softstart duration sec 0 0 1 FLOAT 0.25
+Expert | 1438 | — Solsafe presence Energy source at AC-Out side 0:No 0:No 1:Yes BOOL 1
+asP 1572 | Modulator ru_soll 0:No 0:No 1:Yes BOOL 1
+Expert | 1197 | AC-IN AND TRANSFER ONLY LEVEL | Menu
+Expert | 1128 | Transfer relay allowed 1:Yes 0:No 1:Yes BOOL 1
+Expert | 1580 | Delay before closing transfer relay min 0 0 30 FLOAT 0.25
+Basic | 1126 | Smart-Boost allowed 1:Yes 0:No 1:Yes BOOL 1
+
+Inst. 1607 | _ Limitation of the power Boost % 100 0 100 FLOAT 5
+Basic | 1107 | Maximum current of AC source (Input limit) ‘Aac 32 2 50 FLOAT 1
+Expert | 1471 Max input current modification ONLY LEVEL | Menu
+Expert | 1566 Using a secondary value for the maximum current of the AC source 0:No 0:No 1:Yes BOOL 1
+
+V1.6.38
+

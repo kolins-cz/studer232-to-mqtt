@@ -1,0 +1,58 @@
+4.5.4 Cyclic write of parameters on the Xtender Inverter
+
+The Xtender inverter store the parameter values in a non volatile flash memory. Because
+of the endurance of this memory, the number of write on a single parameter property is
+only guaranteed for 1000 write operations.
+
+To allow the cyclic write of parameters without count limit, the flash should not be
+accessed. There are two different ways to archive this. The first is to deactivate the write
+via parameter {1550} “Parameters saved in flash memory”. On newer software versions,
+there is the possibility to modify the value without accessing the flash with the property
+unsaved_value_qsp.
+
+Deactivating the save in flash with {1550}
+
+The parameter {1550} “Parameters saved in flash memory” has the value “yes” by default.
+A write of “no” to this parameter value stop the write in the non-volatile flash memory.
+This operation is written in the flash memory only the first time, so consecutive writes of
+the value “no” to {1550} can be repeated without limit.
+
+After parameter {1550} has been set to “no”, all other parameters can be written without
+count limit. Because the values of all other parameters are not stored in flash, the read
+operation will give the values before {1550} as be changed to “no”. Also, after a reset the
+old values will be taken.
+
+To use the inverter with cyclic write operations you must:
+- ensure that all inverters have a firmware version >= 1.4.6
+- set the parameter {1550} to “no” on all targeted inverter
+- avoid to write cyclically on other devices like BSP, RCC, ...
+
+- ensure that no “reset default/factory settings”, “apply configuration file
+(masterfile)” or modification with the remote control change {1550} to “yes”
+
+It is a good pratice to cyclically write “no” to {1550}.
+
+Awrite of “yes” to the parameter {1550} reactivate the write in flash. It will be written in
+the flash every time and should not be used more that 1000 time.
+
+Use of the unsaved_value_qsp property
+
+This possibility is only available since version XT >= 1.6.12.
+
+The property unsaved_value_qsp, described in section “Parameter objects, Properties”,
+allows to modify the value used by the device software in RAM, without changing the value
+saved in flash and loaded at start up. The property va/ue_qsp can be used at the same
+time, for example to configure the default value after a turn off or a watchdog reset.
+
+4.5.5 Cyclic write of parameters on VarioTrack and VarioString
+
+The Variotrack and Variostring behave the same way as the Xtender Inverter. The
+parameter {10058} for the VarioTrack and {14069} for the VarioString allows to
+deactivate the write in non volatile memory.
+
+The property unsaved_value_qsp is available since version VT >= 1.6.14 and VS >=
+1.6.12.
+
+V1.6.32 18
+
+y RY

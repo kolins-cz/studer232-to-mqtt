@@ -1,0 +1,69 @@
+Technical specification
+Xtender serial protocol appendix
+
+Level Nr___| Messages
+V.O. 121 __ | Error (121): Impossible communication with target device
+VO. 122 D card corrupted
+
+V.O. 123 D card not formatted
+
+Vv.O. 124 _ | Error (124): SD card not compatible
+
+V.O. 125 D card format not recognized. Should be FAT
+Vv.O. 126 SD card write protected
+
+V.O. 127 __ | Error (127): SD card, file(s) corrupted
+
+V.O. 128 D card file or directory could not be found
+V.O. 129 _ | Error (129): SD card has been prematurely removed
+V.O. 130__| Error (130): Update directory is empty
+
+V.O. 131__ | (131): The VarioTrack is configured for 12V batteries
+V.O. 132__ | (132): The VarioTrack is configured for 24V batteries
+V.O. 133 __ | (133): The VarioTrack is configured for 48V batteries
+V.O. 134 _ | (134): Reception level of the GSM signal
+
+V.O. 137__| (137): VarioTrack master synchronization lost
+
+V.O. 138 _ | Error (138): XT master synchronization lost
+
+V.O. 139 _ | (139): Synchronized on VarioTrack master
+
+V.O. 140 __ | (140): Synchronized on XT master
+
+V.O. 141__ | Error (141): More than 1 Xcom-SMS in the system
+
+V.O. 142__ | Error (142): More than 15 VarioString in the system
+
+V.O. 143 _ | (143): Save parameter Xcom-SMS.
+
+V.O. 144 _ | (144): Save parameter VarioString
+
+V.O. 145 _ | Error (145): SIM card blocked, PUK code required
+
+V.O. 146 _ | Error (146): SIM card missing
+
+V.O. 147 __| Error (147): Install R532 firmware release prior to install an older release
+V.O. 148 _ | (148): Datalogger function interrupted (SD card removed)
+V.O. 149 _ | Error (149): Parameter setting incomplete
+
+V.O. 150 _ | Error (150): Cabling error between PV and VarioString
+V.O. 162 ommunication loss with RCC or Xcom-232i
+V.O. 163 ommunication loss with Xtender
+
+V.O. 164 | Error (164): Communication loss with BSP
+
+V.O. 165 ommunication loss with Xcom-MS
+
+Vv.O. 166 Communication loss with VarioT rack
+
+VO. 167 __| Error (167): Communication loss with VarioString
+
+V.O. 168 _| (168): Synchronized with VarioString master
+
+V.O. 169 _ | (169): Synchronization with VarioString master lost
+
+V1.6.38
+
+64
+

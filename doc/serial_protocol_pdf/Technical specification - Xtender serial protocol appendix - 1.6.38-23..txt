@@ -1,0 +1,36 @@
+Xtender serial protocol appendix
+
+Technical specification
+
+Unit on
+Nr_| Xtender information description Short desc. | the RCC_| Unit Format | Related parameter or description
+, Thermal state :
+one aor 0 = thermal OK
+3168 | Over temperature state OvTempS 2:TR.Eror SHORT | 1 = Transformer alarm
+: ENUM J 2 = Transformer error
+S:EL.Error 4
+ZELStop 4 = Electronique error
+ey 8 = Electronique error halted
+RCC parameters
+Level Nr_| RCC / Xcom-232i parameter description Unit Default Min Max Scom format _| Increment
+Basic_| 5000 | Language 0 3 INT32, 1
+Expert | 5036 | OTHER LANGUAGES ONLY LEVEL | Menu
+Only 1 bit
+1:English
+2:French
+4:German
+Basic | 5038 | Choice of the second language 2:French 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:italian
+128:Slovak
+Only 1 bit
+1:English
+2:French
+4:German
+Basic | 5039 | Choice of the third language 4:German | 1:English | 128:Slovak | LONG ENUM | 8:Spanish
+16:Dutch
+32:Latinoellinika
+64:italian
+128:Slovak
+V1.6.38 23

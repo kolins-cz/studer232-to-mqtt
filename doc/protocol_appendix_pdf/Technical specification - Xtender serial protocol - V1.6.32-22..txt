@@ -1,0 +1,45 @@
+4.7 Custom datalog field object
+object_type = 0x0005
+
+The custom datalog field is a string present in each Xcom-232i on the system. It has a
+maximum length of 250 bytes and is stored in volatile memory. The most recent string of
+all the Xcom-232i in a system is stored at the end of the datalog file when it is written to
+the SD card. This appends every day at 00:00:30 or when the user requests it via
+parameter {5059}, for example.
+
+During the save process of the custom datalog field on the SD card, the use of the SCOM
+service results in an error “Ox0013 SCOM_ERROR_GATEWAY_BUSY”.
+
+After a reset, this value is an empty string. Only the service WRITE_PROPERTY on
+property_id = Ox1 is allowed.
+4.7.1 Format of the string
+
+The 3 characters ; , and # are reserved characters. The characters ; and , are used as a
+separator within the string.
+
+The string should begin with a string identifier, for example #STU for the company Studer.
+The # character is used to identify the name of the string.
+
+String example:
+
+"#STU:,Service datalog text,STUDER INNOTEC SA,Rue des Casernes 57,1950
+Sion,Switzerland,,Tel.: +41 (0)27 205 60 80,Fax.: +41 (0)27 205 60 88, info(at)studer-
+innotec.com,,Long:46.227649,Lat: 7.380954".
+
+4.7.2 Importing into Data Analysis Tool
+
+The imported data is displayed on the second sheet of the Data Analysis Tool.
+
+The string identifier is not shown in the display of the Data Analysis Tool.
+
+Each ; or , of the string corresponds to a line break in the Data Analysis Tool.
+
+4.7.3 Property
+
+Name property_id | format Remark
+
+A string of maximum 250 bytes that will be
+value 0x0001 STRING stored in the datalog file. This value is write
+only.
+
+V1.6.32 22 Meriger

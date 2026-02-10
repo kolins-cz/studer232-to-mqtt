@@ -1,0 +1,28 @@
+4.8.2 Response frame
+
+The XCOM-232i responds with the following format:
+
+flags service_id object_type object_id property_id property_data
+1 byte 1 byte
+ox02 oxo1 2 bytes 4 bytes 2 bytes N bytes
+flags: is_response = 1, error = 0
+service_id: 0x01 for READ_PROPERTY
+
+0x02 for WRITE_PROPERTY
+object_type: 0x0101 (Datalog Transfer, content of CSVFILES\LOG)
+object_id: 0x00000001 > Directory list
+0x00000002 > File access
+property_id: 0x0000 > Invalid Action
+0x0021 > SD_Start
+0x0022 > SD_Datablock
+0x0023 > SD_Ack_Continue
+0x0024 > SD_Nack_Retry
+0x0025 > SD_Abort
+0x0026 > SD_Finish
+property_data: If object_id = Directory list > Each filename with “CR” for separation
+If property_id = Datablock > 512 Bytes / block
+If property_id = Finish > No data
+
+If error = 1 > Error number
+
+V1.6.32 24 Meriger

@@ -1,0 +1,42 @@
+4.5.6 Cyclic write of parameters on other devices
+
+On other devices, such as BSP, Xcom-232i, Xcom-CAN, there no parameter to deactivate
+the writing to the non volatile flash memory.
+
+On BSP >= 1.6.12, xcom-CAN >= 1.6.12 and Xcom-232i >= 1.6.12, the property
+unsaved_value can be used for cyclical write.
+
+4.5.7 Hours encoding
+
+the hours encoding is in minute since 00:00 in INT32. For example 13:41 is 13*60+41 =
+821.
+
+4.5.8 Days of the week encoding
+
+The days of the week selection (parameters {1205}, for example) is coded as a bit field in
+a INT32. A day selected as it bit set to 1.
+
+bit BIT31-7 BIT6 | BITS | BIT4 | BIT3 | BIT2 | BIT1 | BITO
+
+day of the week | undefined | SU SA FR TH WE | TU MO
+
+4.5.9 Month of the year encoding
+
+The month of the year selection (parameters {1479}, for example) is coded as a bit field
+in a INT32. A month selected as it bit set to 1. January is BITO and December BIT11. The
+BIT31 to 12 are undefined.
+
+4.5.10 Date and time encoding
+
+The time of the Real Time Clock of the system is coded as a INT32. The value is the number
+of second since 1.1.1970 00:00:00. The parameters {5002} (Date) take and return the
+value that contains the complete day and hour information.
+
+4.5.11 Signal encoding
+
+The Signal (parameters {1468}, for example) is coded as a INT32. To send a signal, you
+must write the value 1 to the parameter value.
+
+V1.6.32 19
+
+y RY
