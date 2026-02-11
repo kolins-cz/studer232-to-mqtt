@@ -21,6 +21,37 @@
 #include <string.h>
 #include <termios.h> // for baud rate constant
 #include <unistd.h>  // for usleep()
+#include <time.h>     // for timestamps
+
+// MQTT connection state tracking
+static int mqtt_connected = 0;
+static time_t last_mqtt_check = 0;
+
+// MQTT callbacks
+void on_connect(struct mosquitto *mosq, void *obj, int rc)
+{
+    mqtt_connected = (rc == 0) ? 1 : 0;
+    printf("[%ld] MQTT connect callback: rc=%d (%s)\n", time(NULL), rc, 
+           rc == 0 ? "success" : "failed");
+    
+    if (rc == 0) {
+        // Publish online status
+        mosquitto_publish(mosq, NULL, "studer/commstatus", 6, "online", 0, true);
+    }
+}
+
+void on_disconnect(struct mosquitto *mosq, void *obj, int rc)
+{
+    mqtt_connected = 0;
+    printf("[%ld] MQTT disconnected: rc=%d (%s)\n", time(NULL), rc,
+           rc == 0 ? "clean disconnect" : "unexpected disconnect");
+}
+
+void on_publish(struct mosquitto *mosq, void *obj, int mid)
+{
+    // Optional: Track successful publishes if needed for debugging
+    // printf("Published message id: %d\n", mid);
+}
 
 // Function to read a parameter from a device at a specific address
 read_param_result_t read_param(int addr, int parameter)
@@ -144,6 +175,11 @@ int main(int argc, const char *argv[])
     mosquitto_lib_init();
     struct mosquitto *mqtt_client = mosquitto_new(NULL, true, NULL);
 
+    // Set up MQTT callbacks
+    mosquitto_connect_callback_set(mqtt_client, on_connect);
+    mosquitto_disconnect_callback_set(mqtt_client, on_disconnect);
+    mosquitto_publish_callback_set(mqtt_client, on_publish);
+
     // Set up the last will before connecting
     int rc = mosquitto_will_set(mqtt_client, "studer/commstatus", strlen(lwt_message), lwt_message, 0, true);
     if (rc != MOSQ_ERR_SUCCESS) {
@@ -154,18 +190,14 @@ int main(int argc, const char *argv[])
     // Enable automatic reconnection
     mosquitto_reconnect_delay_set(mqtt_client, 1, 30, true);
 
+    printf("[%ld] Connecting to MQTT broker %s:%d\n", time(NULL), mqtt_server, mqtt_port);
     rc = mosquitto_connect(mqtt_client, mqtt_server, mqtt_port, 60);
     if (rc != MOSQ_ERR_SUCCESS) {
         printf("Connect failed, return code %d - continuing anyway (will retry)\n", rc);
+        mqtt_connected = 0;
     } else {
-        printf("Connected to MQTT broker\n");
-        
-        // Publish "online" status after connecting
-        char *online_status = "online";
-        rc = mosquitto_publish(mqtt_client, NULL, "studer/commstatus", strlen(online_status), online_status, 0, true);
-        if (rc != MOSQ_ERR_SUCCESS) {
-            printf("Publish online status failed, return code %d\n", rc);
-        }
+        printf("Initial MQTT connect() succeeded\n");
+        mqtt_connected = 1;
     }
     
     // Start the network loop in background thread
@@ -175,7 +207,23 @@ int main(int argc, const char *argv[])
         return rc;
     }
 
+    // Give the connection a moment to establish
+    sleep(1);
+
     while (1) {
+        // Check MQTT connection status every 60 seconds
+        time_t now = time(NULL);
+        if (now - last_mqtt_check >= 60) {
+            last_mqtt_check = now;
+            if (!mqtt_connected) {
+                printf("[%ld] MQTT disconnected, attempting manual reconnect...\n", now);
+                rc = mosquitto_reconnect(mqtt_client);
+                printf("[%ld] Reconnect result: %d\n", now, rc);
+            } else {
+                printf("[%ld] MQTT status: connected\n", now);
+            }
+        }
+
         // Iterate over the requested_parameters array
         for (int i = 0; i < sizeof(requested_parameters) / sizeof(parameter_t); i++) {
             // Get the current parameter
