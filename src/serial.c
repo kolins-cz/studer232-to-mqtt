@@ -79,9 +79,12 @@ static int set_interface_attribs(int fd, int speed, serial_parity_t parity, int 
     tio.c_lflag = 0; // will be noncanonical mode (ICANON not set)
 
     // set blocking with timeout
-    // VMIN = 0 and VTIME > 0: read returns as soon as data is available or timeout occurs
+    // VMIN = 0 and VTIME > 0: read() returns immediately when data arrives,
+    // or after VTIME deciseconds if no data received.
+    // NOTE: Timer resets on each received byte, so total frame time can exceed VTIME.
+    // The serial_read() function loops to collect full frames.
     tio.c_cc[VMIN] = 0;   // minimum number of characters for noncanonical read
-    tio.c_cc[VTIME] = 20; // 2 second read timeout (in deciseconds)
+    tio.c_cc[VTIME] = 20; // 2 second timeout per read() call (in deciseconds)
 
     if (tcsetattr(fd, TCSANOW, &tio) != 0) {
         error_message("tcsetattr error %d: %s\n", errno, strerror(errno));
@@ -124,7 +127,7 @@ int serial_write(const void *ptr, unsigned size) {
     
     if (bytes_written < 0) {
         error_message("Write error %d: %s\n", errno, strerror(errno));
-    } else if (bytes_written != size) {
+    } else if ((unsigned int)bytes_written != size) {
         SERIAL_DEBUG_PRINT("Warning: Only wrote %d of %u bytes\n", bytes_written, size);
     } else {
         SERIAL_DEBUG_PRINT("Successfully wrote %d bytes\n", bytes_written);

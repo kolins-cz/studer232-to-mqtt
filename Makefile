@@ -1,28 +1,54 @@
 CC := gcc
-CFLAGS := -g
-LIBS := -lmosquitto
+CFLAGS_COMMON := -Wall -Wextra -pthread
+CFLAGS_NORMAL := $(CFLAGS_COMMON) -O2
+CFLAGS_DEBUG := $(CFLAGS_COMMON) -g -DSERIAL_DEBUG
+LIBS := -lmosquitto -lpthread
 
-# Enable serial debug output by setting DEBUG=1 on command line: make DEBUG=1
-ifdef DEBUG
-    CFLAGS += -DSERIAL_DEBUG
-endif
+# Source files - libraries (no debug symbols) and main sources
+LIB_SOURCES := scomlib_extra/scomlib_extra.c scomlib_extra/scomlib_extra_errors.c \
+               scomlib/scom_data_link.c scomlib/scom_property.c \
+               src/serial.c
 
-OBJECTS := scomlib_extra/scomlib_extra.o scomlib_extra/scomlib_extra_errors.o scomlib/scom_data_link.o scomlib/scom_property.o src/serial.o src/main.o
+SRC_SOURCES := src/main.c
+
+# Header dependencies
+HEADERS := src/main.h src/serial.h \
+           scomlib_extra/scomlib_extra.h \
+           scomlib/scom_data_link.h scomlib/scom_property.h scomlib/scom_port_c99.h
+
+# Object files - shared libs + per-build main
+LIB_OBJECTS := $(LIB_SOURCES:%.c=build/lib/%.o)
+MAIN_NORMAL := build/normal/src/main.o
+MAIN_DEBUG := build/debug/src/main.o
 
 .PHONY: all clean debug
 
-all: bin/studer232-to-mqtt
+all: bin/studer232-to-mqtt bin/studer232-to-mqtt-debug
 
-debug:
-	@echo "Building with serial debug output enabled..."
-	$(MAKE) DEBUG=1 all
+debug: bin/studer232-to-mqtt-debug
 
 clean:
-	rm -f $(OBJECTS) bin/studer232-to-mqtt
+	rm -rf build bin/studer232-to-mqtt bin/studer232-to-mqtt-debug
 
-bin/studer232-to-mqtt: $(OBJECTS)
-	mkdir -p ../bin
-	$(CC) $(OBJECTS) $(LIBS) -o bin/studer232-to-mqtt
+bin/studer232-to-mqtt: $(LIB_OBJECTS) $(MAIN_NORMAL)
+	@mkdir -p bin
+	$(CC) $(CFLAGS_NORMAL) $(LIB_OBJECTS) $(MAIN_NORMAL) $(LIBS) -o $@
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+bin/studer232-to-mqtt-debug: $(LIB_OBJECTS) $(MAIN_DEBUG)
+	@mkdir -p bin
+	$(CC) $(CFLAGS_DEBUG) $(LIB_OBJECTS) $(MAIN_DEBUG) $(LIBS) -o $@
+
+# Shared library object files (no debug symbols, optimized)
+build/lib/%.o: %.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS_NORMAL) -c -o $@ $<
+
+# Normal main.o
+build/normal/src/main.o: src/main.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS_NORMAL) -c -o $@ $<
+
+# Debug main.o (with SERIAL_DEBUG)
+build/debug/src/main.o: src/main.c $(HEADERS)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS_DEBUG) -c -o $@ $<

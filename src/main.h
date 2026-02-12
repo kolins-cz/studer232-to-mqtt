@@ -20,6 +20,9 @@ typedef struct {
 
 const char *mqtt_topic = "studer";
 
+// Number of parameters in the array
+#define NUM_PARAMETERS (sizeof(requested_parameters) / sizeof(parameter_t))
+
 // List of parameters
 // param,	addr,	name,	mqtt prefix,	unit, sign
 const parameter_t requested_parameters[] = {
@@ -56,9 +59,7 @@ const parameter_t requested_parameters[] = {
     {3104, 103, "xt3_temperature",            "XT", "°C",  1},
     {3104, 104, "xt4_temperature",            "XT", "°C",  1},
     {3085, 100, "output_freq",                "AC", "Hz",  1},
-    {3138, 100, "total_input_apparent_power", "AC", "kVA", 1},
-    {3136, 100, "total_input_active_power",   "AC", "kW", -1},
-    {3138, 100, "total_output_apparent_power","AC", "kVA", 1},
+    {3137, 100, "total_input_active_power",   "AC", "kW", -1},
     {3136, 100, "total_output_active_power",  "AC", "kW", -1},
     {3000, 100, "battery_voltage",            "DC", "V",   1},
     {3005, 191, "l1_batt_current",            "DC", "A",   1},
