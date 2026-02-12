@@ -292,30 +292,11 @@ mqtt:
       availability_topic: "studer/commstatus"
       expire_after: 20
 #-------------------------------------------------------------------------------------------------------------------------------------------
-    - name: "Studer AC Total Input Apparent Power"
-      state_topic: "studer/AC/total_input_apparent_power"
-      unit_of_measurement: "VA"
-      value_template: "{{ value | multiply(1000) }}"
-      device_class: apparent_power
-      state_class: measurement
-      availability_topic: "studer/commstatus"
-      expire_after: 20
-
     - name: "Studer AC Total Input Active Power"
       state_topic: "studer/AC/total_input_active_power"
       unit_of_measurement: "W"
       value_template: "{{ value | multiply(1000) }}"
       device_class: power
-      state_class: measurement
-      availability_topic: "studer/commstatus"
-      expire_after: 20
-
-    - name: "Studer AC Total Output Apparent Power"
-      state_topic: "studer/AC/total_output_apparent_power"
-      unit_of_measurement: "VA"
-      value_template: "{{ value | multiply(1000) }}"
-      
-      device_class: apparent_power
       state_class: measurement
       availability_topic: "studer/commstatus"
       expire_after: 20
