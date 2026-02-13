@@ -17,6 +17,7 @@
 #include "../scomlib_extra/scomlib_extra.h"
 #include "serial.h"
 #include <mosquitto.h>
+#include <json-c/json.h>
 #include <stdio.h>
 #include <string.h>
 #include <termios.h> // for baud rate constant
@@ -35,6 +36,7 @@
 
 // MQTT connection state tracking (protected by mutex)
 static int mqtt_connected = 0;
+static int comm_status_online = 0;  // Track if we're receiving valid serial data
 static time_t last_mqtt_check = 0;
 static pthread_mutex_t mqtt_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -49,6 +51,66 @@ void signal_handler(int signum)
     g_shutdown_requested = 1;
 }
 
+// Publish Home Assistant MQTT Discovery config for a single sensor
+void publish_discovery_config(struct mosquitto *mosq, const parameter_t *param)
+{
+    char config_topic[256];
+    char unique_id[128];
+    char state_topic[256];
+    
+    // Create unique_id: xtender_<name>
+    snprintf(unique_id, sizeof(unique_id), "xtender_%s", param->name);
+    
+    // State topic
+    snprintf(state_topic, sizeof(state_topic), "%s/%s/%s", mqtt_topic, param->mqtt_prefix, param->name);
+    
+    // Discovery topic: homeassistant/sensor/<unique_id>/config
+    snprintf(config_topic, sizeof(config_topic), "homeassistant/sensor/%s/config", unique_id);
+    
+    // Build JSON config
+    struct json_object *config = json_object_new_object();
+    json_object_object_add(config, "name", json_object_new_string(param->friendly_name));
+    json_object_object_add(config, "unique_id", json_object_new_string(unique_id));
+    json_object_object_add(config, "object_id", json_object_new_string(unique_id));
+    json_object_object_add(config, "has_entity_name", json_object_new_boolean(false));
+    json_object_object_add(config, "state_topic", json_object_new_string(state_topic));
+    json_object_object_add(config, "availability_topic", json_object_new_string("studer/commstatus"));
+    json_object_object_add(config, "payload_available", json_object_new_string("online"));
+    json_object_object_add(config, "payload_not_available", json_object_new_string("offline"));
+    json_object_object_add(config, "expire_after", json_object_new_int(20));
+    
+    // Add unit of measurement (convert kW/kVA to W/VA)
+    if (strcmp(param->unit, "kW") == 0) {
+        json_object_object_add(config, "unit_of_measurement", json_object_new_string("W"));
+        json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
+    } else if (strcmp(param->unit, "kVA") == 0) {
+        json_object_object_add(config, "unit_of_measurement", json_object_new_string("VA"));
+        json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
+    } else {
+        json_object_object_add(config, "unit_of_measurement", json_object_new_string(param->unit));
+    }
+    
+    // Add device class and state class
+    json_object_object_add(config, "device_class", json_object_new_string(param->device_class));
+    json_object_object_add(config, "state_class", json_object_new_string("measurement"));
+    
+    // Add device with empty name - keeps sensors grouped but prevents name concatenation
+    struct json_object *device = json_object_new_object();
+    struct json_object *identifiers = json_object_new_array();
+    json_object_array_add(identifiers, json_object_new_string("studer_xtender"));
+    json_object_object_add(device, "identifiers", identifiers);
+    json_object_object_add(device, "name", json_object_new_string(""));  // Empty name prevents concatenation
+    json_object_object_add(device, "manufacturer", json_object_new_string("Studer Innotec"));
+    json_object_object_add(device, "model", json_object_new_string("Xtender XTM4000-48"));
+    json_object_object_add(config, "device", device);
+    
+    // Get JSON string and publish
+    const char *json_str = json_object_to_json_string(config);
+    mosquitto_publish(mosq, NULL, config_topic, (int)strlen(json_str), json_str, 0, true);
+    
+    json_object_put(config);  // Free JSON object
+}
+
 // MQTT callbacks
 void on_connect(struct mosquitto *mosq, void *obj __attribute__((unused)), int rc)
 {
@@ -60,8 +122,15 @@ void on_connect(struct mosquitto *mosq, void *obj __attribute__((unused)), int r
            rc == 0 ? "success" : "failed");
     
     if (rc == 0) {
-        // Publish online status
-        mosquitto_publish(mosq, NULL, "studer/commstatus", 6, "online", 0, true);
+        // Reset status flag so we republish online after reconnection
+        comm_status_online = false;
+        
+        // Publish Home Assistant discovery configs for all sensors
+        printf("[%ld] Publishing MQTT Discovery configs...\n", time(NULL));
+        for (size_t i = 0; i < NUM_PARAMETERS; i++) {
+            publish_discovery_config(mosq, &requested_parameters[i]);
+        }
+        printf("[%ld] Discovery configs published (%zu sensors)\n", time(NULL), NUM_PARAMETERS);
     }
 }
 
@@ -304,6 +373,15 @@ int main(int argc, const char *argv[])
 
             // Check if the read was successful
             if (result.error == 0) {
+                // First successful read - publish online status if not already done
+                pthread_mutex_lock(&mqtt_mutex);
+                if (!comm_status_online && mqtt_connected) {
+                    mosquitto_publish(mqtt_client, NULL, "studer/commstatus", 6, "online", 0, true);
+                    printf("[%ld] Serial communication established - status set to online\n", time(NULL));
+                    comm_status_online = 1;
+                }
+                pthread_mutex_unlock(&mqtt_mutex);
+                
 #ifdef SERIAL_DEBUG
                 // Print the parameter name and value
                 printf("%s = %.3f %s\n", current_param.name, result.value * current_param.sign, current_param.unit);
@@ -320,6 +398,15 @@ int main(int argc, const char *argv[])
                     // Don't try to reconnect manually - loop_start handles it automatically
                 }
             } else {
+                // Serial read failed - set status to offline
+                pthread_mutex_lock(&mqtt_mutex);
+                if (comm_status_online) {
+                    mosquitto_publish(mqtt_client, NULL, "studer/commstatus", 7, "offline", 0, true);
+                    printf("[%ld] Serial communication lost - status set to offline\n", time(NULL));
+                    comm_status_online = 0;
+                }
+                pthread_mutex_unlock(&mqtt_mutex);
+                
                 // Print an error message
                 printf("%s = read failed\n", current_param.name);
                 mosquitto_publish(mqtt_client, NULL, topic, 3, "nAn", 0, false);
