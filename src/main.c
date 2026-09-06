@@ -64,8 +64,11 @@ void publish_discovery_config(struct mosquitto *mosq, const parameter_t *param)
     // State topic
     snprintf(state_topic, sizeof(state_topic), "%s/%s/%s", mqtt_topic, param->mqtt_prefix, param->name);
     
-    // Discovery topic: homeassistant/sensor/<unique_id>/config
-    snprintf(config_topic, sizeof(config_topic), "homeassistant/sensor/%s/config", unique_id);
+    // Relay/enum states are read-only ON/OFF values, so publish them as binary_sensor
+    const char *component = param->is_bool ? "binary_sensor" : "sensor";
+
+    // Discovery topic: homeassistant/<component>/<unique_id>/config
+    snprintf(config_topic, sizeof(config_topic), "homeassistant/%s/%s/config", component, unique_id);
     
     // Build JSON config
     struct json_object *config = json_object_new_object();
@@ -79,20 +82,26 @@ void publish_discovery_config(struct mosquitto *mosq, const parameter_t *param)
     json_object_object_add(config, "payload_not_available", json_object_new_string("offline"));
     json_object_object_add(config, "expire_after", json_object_new_int(20));
     
-    // Add unit of measurement (convert kW/kVA to W/VA)
-    if (strcmp(param->unit, "kW") == 0) {
-        json_object_object_add(config, "unit_of_measurement", json_object_new_string("W"));
-        json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
-    } else if (strcmp(param->unit, "kVA") == 0) {
-        json_object_object_add(config, "unit_of_measurement", json_object_new_string("VA"));
-        json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
+    if (param->is_bool) {
+        // binary_sensor: state is published as ON/OFF, no unit/device_class needed
+        json_object_object_add(config, "payload_on", json_object_new_string("ON"));
+        json_object_object_add(config, "payload_off", json_object_new_string("OFF"));
     } else {
-        json_object_object_add(config, "unit_of_measurement", json_object_new_string(param->unit));
+        // Add unit of measurement (convert kW/kVA to W/VA)
+        if (strcmp(param->unit, "kW") == 0) {
+            json_object_object_add(config, "unit_of_measurement", json_object_new_string("W"));
+            json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
+        } else if (strcmp(param->unit, "kVA") == 0) {
+            json_object_object_add(config, "unit_of_measurement", json_object_new_string("VA"));
+            json_object_object_add(config, "value_template", json_object_new_string("{{ value | float * 1000 }}"));
+        } else {
+            json_object_object_add(config, "unit_of_measurement", json_object_new_string(param->unit));
+        }
+
+        // Add device class and state class
+        json_object_object_add(config, "device_class", json_object_new_string(param->device_class));
+        json_object_object_add(config, "state_class", json_object_new_string("measurement"));
     }
-    
-    // Add device class and state class
-    json_object_object_add(config, "device_class", json_object_new_string(param->device_class));
-    json_object_object_add(config, "state_class", json_object_new_string("measurement"));
     
     // Add device with empty name - keeps sensors grouped but prevents name concatenation
     struct json_object *device = json_object_new_object();
@@ -146,7 +155,8 @@ void on_disconnect(struct mosquitto *mosq __attribute__((unused)),
 }
 
 // Function to read a parameter from a device at a specific address
-read_param_result_t read_param(int addr, int parameter)
+// is_bool selects whether the SCOM value is decoded as an enum/int (relay state) or a float
+read_param_result_t read_param(int addr, int parameter, int is_bool)
 {
     read_param_result_t result;
     scomx_enc_result_t encresult;
@@ -259,8 +269,8 @@ read_param_result_t read_param(int addr, int parameter)
             continue;  // Retry the entire request (outer loop)
         }
 
-        // Extract the float value from the decoded frame
-        result.value = scomx_result_float(decres);
+        // Extract the value from the decoded frame (enum/int for relay states, float otherwise)
+        result.value = is_bool ? (float)scomx_result_int(decres) : scomx_result_float(decres);
         result.error = 0; // no error
 
 #ifdef SERIAL_DEBUG
@@ -365,7 +375,7 @@ int main(int argc, const char *argv[])
             parameter_t current_param = requested_parameters[i];
 
             // Read the parameter
-            read_param_result_t result = read_param(current_param.address, current_param.parameter);
+            read_param_result_t result = read_param(current_param.address, current_param.parameter, current_param.is_bool);
 
             // Current topic
             char topic[256];
@@ -387,9 +397,13 @@ int main(int argc, const char *argv[])
                 printf("%s = %.3f %s\n", current_param.name, result.value * current_param.sign, current_param.unit);
 #endif
 
-                // Convert the float value to a string
+                // Convert the value to a string (ON/OFF for relay states, decimal otherwise)
                 char value_str[32];
-                snprintf(value_str, sizeof(value_str), "%.3f", result.value * current_param.sign);
+                if (current_param.is_bool) {
+                    snprintf(value_str, sizeof(value_str), "%s", result.value != 0.0f ? "ON" : "OFF");
+                } else {
+                    snprintf(value_str, sizeof(value_str), "%.3f", result.value * current_param.sign);
+                }
 
                 // Publish the value to MQTT
                 rc = mosquitto_publish(mqtt_client, NULL, topic, (int)strlen(value_str), value_str, 0, false);
